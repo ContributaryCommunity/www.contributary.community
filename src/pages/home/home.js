@@ -80,7 +80,7 @@ class HomePageComponent extends LitElement {
       response.forEach((key) => {
         this.topology = {
           ...this.topology,
-          // ???
+          // TODO needed ???
           [key]: {
             projects: [{
               repositories: []
@@ -121,7 +121,11 @@ class HomePageComponent extends LitElement {
 
       // TODO if wild card, fetch from github
       if (this.topology[this.selectedLanguage].projects[this.selectedProjectIndex].repositories[0] === '*') {
+        console.log('****** wild card for ******!', this.selectedProjectName);
         this.getRepositoriesForProject();
+      } else {
+        // TODO
+        console.log('!!!! NEED TO HANDLE have to get repos manually !!!!!');
       }
     }
   }
@@ -129,7 +133,6 @@ class HomePageComponent extends LitElement {
   getRepositoriesForProject() {
     const project = this.topology[this.selectedLanguage].projects[this.selectedProjectIndex];
     
-    console.log('****** wild card for ******!', project);
     this.githubService.getRepositoriesForProject(project.name, project.type).then((response) => {
 
       const repositories = response.map((repo) => {
@@ -164,10 +167,7 @@ class HomePageComponent extends LitElement {
 
   // step 4 - scroll to views issues per repo
   getIssuesForRepository() {
-    console.log('getIssuesForRepository');
-
     this.githubService.getIssuesForRepository(this.selectedProjectName, this.selectedRepositoryName).then(response => {
-      console.log('response', response);
       const currentRepoName = this.selectedProjectName;
       const repositories = this.repositoriesCache[this.selectedProjectName].repositories.map((repo) => {
         return {
@@ -182,8 +182,6 @@ class HomePageComponent extends LitElement {
           repositories
         }
       };
-
-      console.log('issues, shabam!', this.repositoriesCache);
     });
   }
 
@@ -192,7 +190,7 @@ class HomePageComponent extends LitElement {
     // clean up mixed this. vs destructuring usage 
     const { username, avatarUrl, topology, repositoriesCache } = this;
     
-    console.log('render', topology);
+    // console.log('render', topology);
 
     /* eslint-disable indent */
     return html`
