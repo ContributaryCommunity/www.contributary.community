@@ -1,5 +1,4 @@
 import { html, LitElement } from '@polymer/lit-element';
-import css from './home.css';
 import { GitHubService } from '../../services/github-service';
 
 class HomePageComponent extends LitElement {
@@ -28,14 +27,10 @@ class HomePageComponent extends LitElement {
     const { username, avatarUrl } = this;
 
     return html`
-      <style>
-        ${css}
-      </style>
 
-      <div>
-
-        <p>Hello ${username}!</p>
         <img src="${avatarUrl}" alt="${username}"/>
+        
+        <p>Hello ${username}!</p>
 
       </div>
     `;
