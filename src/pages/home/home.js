@@ -20,6 +20,12 @@ class HomePageComponent extends LitElement {
       },
       selectedProjectIndex: {
         type: Number
+      },
+      selectedProjectName: {
+        type: String
+      },
+      repositoriesCache: {
+        types: String
       }
     };
   }
@@ -27,9 +33,10 @@ class HomePageComponent extends LitElement {
   constructor() {
     super();
 
-    // TODO handle defaults
+    // TODO handle defaults, index vs name?  more ambigious
     this.selectedLanguage = 'javascript';
     this.selectedProjectIndex = 0;
+    this.selectedProjectName = 'ProjectEvergreen';
     this.selectedRepositoryIndex = 0;
     this.topology = {
       javascript: {
@@ -38,19 +45,25 @@ class HomePageComponent extends LitElement {
         }]
       }
     };
+    this.repositoriesCache = {
+      ProjectEvergreen: {
+        repositories: []
+      }
+    };
 
     this.topologyService = new TopologyService();
-
-    // testing github by showing user details
-    new GitHubService().getUserDetails().then((data) => {
-      this.username = data.username;
-      this.avatarUrl = data.avatar;
-    });
+    this.githubService = new GitHubService();
   }
 
   // step 1 - populate topology key (language) dropdown 
   connectedCallback() {
     this.getTopologyKeys();
+
+    // testing github by showing user details
+    this.githubService.getUserDetails().then((data) => {
+      this.username = data.username;
+      this.avatarUrl = data.avatar;
+    });
   }
 
   getTopologyKeys() {
@@ -94,8 +107,34 @@ class HomePageComponent extends LitElement {
 
     if (selectedOption.value !== '') {
       this.selectedProjectIndex = selectElement.selectedIndex - 1;
+      this.selectedProjectName = selectedOption.value; 
+
       // TODO if wild card, fetch from github
+      if (this.topology[this.selectedLanguage].projects[this.selectedProjectIndex].repositories[0] === '*') {
+        this.getRepositoriesForProject();
+      }
     }
+  }
+
+  getRepositoriesForProject() {
+    const project = this.topology[this.selectedLanguage].projects[this.selectedProjectIndex];
+    
+    console.log('****** wild card for ******!', project);
+    this.githubService.getRepositoriesForProject(project.name, project.type).then((response) => {
+
+      this.repositoriesCache = {
+        ...this.repositoriesCache,
+        [project.name]: {
+          repositories: []
+        }
+      };
+
+      response.forEach((repo) => {
+        this.repositoriesCache[project.name].repositories.push(repo);
+      });
+
+      console.log('repositoriesCache', this.repositoriesCache);
+    });
   }
 
   // step 3 - dropdown to browse repos per project
@@ -117,7 +156,7 @@ class HomePageComponent extends LitElement {
 
   // TODO conditional rendering
   render() {
-    const { username, avatarUrl, topology } = this;
+    const { username, avatarUrl, topology, repositoriesCache } = this;
     
     console.log('render', topology);
 
@@ -169,8 +208,8 @@ class HomePageComponent extends LitElement {
       <select @change="${this.getSelectedRepository.bind(this)}">
         <option value="">Repo...</option> 
         
-        ${topology[this.selectedLanguage].projects[this.selectedRepositoryIndex].repositories.map((repo) => {
-            return html`<option value="${repo}">${repo}</option>`;
+        ${repositoriesCache[this.selectedProjectName].repositories.map((repo) => {
+            return html`<option value="${repo.name}">${repo.name}</option>`;
           })
         }
       </select>

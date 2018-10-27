@@ -22,4 +22,21 @@ export class GitHubService {
         return user;
       });
   }
+
+  getRepositoriesForProject(projectName, type) {
+    const urlSuffix = type === 'org'
+      ? `orgs/${projectName}/repos`
+      : '';
+
+    // https://developer.github.com/v3/repos/#get
+    return axios.get(`https://api.github.com/${urlSuffix}`)
+      .then((response) => {
+        return response.data.map((repo) => {
+          return {
+            id: repo.id,
+            name: repo.name
+          };
+        });
+      });
+  }
 }
