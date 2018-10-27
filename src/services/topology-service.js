@@ -26,43 +26,4 @@ export class TopologyService {
     });
   }
 
-  // getLanguages() {
-  //   return new Promise((resolve) => {
-  //     const languages = this.topologies.languages;
-
-  //     console.log('languages', languages);
-
-  //     resolve(languages);
-  //   });
-  // }
-
-  // getProjectsForLanguage(language) {
-  //   return new Promise((resolve) => {
-  //     const projects = this.topologies[language];
-
-  //     console.log('projects', projects);
-
-  //     resolve(projects);
-  //   });
-  // }
-
-  // getRepositoriesForProjectsByLangauge(language, project) {
-  //   return new Promise((resolve) => {
-  //     const repos = this.topologies[language][project];
-
-  //     console.log('repos', repos);
-
-  //     resolve(repos);
-  //   });
-  // }
-
-  // getIssueForProject(language, project, repo) {
-  //   return new Promise((resolve) => {
-  //     const issues = this.topologies[language][project][repo];
-
-  //     console.log('issues', issues);
-
-  //     resolve(issues);
-  //   });
-  // }
 }

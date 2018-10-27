@@ -4,24 +4,19 @@
       "label": "JavaScript",
       "projects": [{
         "name": "ProjectEvergreen",
-        "repos": "*"
+        "repositories": ["*"]
       }, {
         "name": "thescientist13",
-        "repos": [
-          "github-dashboard"
-        ]
+        "repositories": [{
+          "name": "github-dashboard"
+        }]
       }]
     },
     "php": {
       "label": "PHP",
       "projects": [{
-        "name": "ProjectEvergreen",
-        "repos": "*"
-      }, {
-        "name": "thescientist13",
-        "repos": [
-          "github-dashboard"
-        ]
+        "name": "composer",
+        "repositories": ["*"]
       }]
     }
   }

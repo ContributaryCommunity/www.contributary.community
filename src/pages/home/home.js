@@ -17,6 +17,9 @@ class HomePageComponent extends LitElement {
       },
       selectedLanguage: {
         type: String
+      },
+      selectedProjectIndex: {
+        type: Number
       }
     };
   }
@@ -26,9 +29,13 @@ class HomePageComponent extends LitElement {
 
     // TODO handle defaults
     this.selectedLanguage = 'javascript';
+    this.selectedProjectIndex = 0;
+    this.selectedRepositoryIndex = 0;
     this.topology = {
       javascript: {
-        projects: []
+        projects: [{
+          repositories: []
+        }]
       }
     };
 
@@ -38,61 +45,74 @@ class HomePageComponent extends LitElement {
       this.avatarUrl = data.avatar;
     });
 
-    // start building the experience...
     this.topologyService = new TopologyService();
+  }
 
-    // step 1 - get languages for dropdown
+  // step 1 - populate topology key (language) dropdown 
+  connectedCallback() {
+    this.getTopologyKeys();
+  }
+
+  getTopologyKeys() {
     this.topologyService.getTopologyKeys().then((response) => {
       response.forEach((key) => {
         this.topology = {
           ...this.topology,
           [key]: {
-            projects: []
+            projects: [{
+              repositories: []
+            }]
           }
         };
       });
     });
-
-    // step 3 - dropdown to browse repos per project
-
-    // step 4 - scroll to views issues per repo
-
-    // step 5 - filtering?
   }
-
+  
+  // step 2 - select a language from the topology to get available projects
   getSelectedLanguage(event) {
-    const selectOptions = Array.from(event.path[0].children);    
-    const selectedOption = selectOptions.filter((option) => {
-      return option.selected;
-    })[0];
+    const selectElement = event.path[0];
+    const selectOptions = Array.from(selectElement.children);   
+    const selectedOption = selectOptions[selectElement.selectedIndex];
 
     if (selectedOption.value !== '') {
       this.selectedLanguage = selectedOption.value;
-      this.hydrateTopologyByKey(this.selectedLanguage);
+      
+      this.topologyService.getFullTopologyByKey(this.selectedLanguage).then((response) => {
+        this.topology = {
+          ...this.topology,
+          [this.selectedLanguage]: response
+        };
+      });
     }
   }
 
+  // step 2 - select a project to get available repos
   getSelectedProject(event) {
-    console.log('getSelectedProjectLanguage', event);
-    // const selectOptions = Array.from(event.path[0].children);    
-    // const selectedOption = selectOptions.filter((option) => {
-    //   return option.selected;
-    // })[0];
+    const selectElement = event.path[0];
+    const selectOptions = Array.from(selectElement.children);   
+    const selectedOption = selectOptions[selectElement.selectedIndex];
 
-    // if (selectedOption.value !== '') {
-    //   this.selectedLanguage = selectedOption.value;
-    //   this.hydrateTopologyByKey(this.selectedLanguage);
-    // }
+    if (selectedOption.value !== '') {
+      this.selectedProjectIndex = selectElement.selectedIndex - 1;
+      // TODO if wild card, fetch from github
+    }
   }
 
-  // step 2 - dropdown to browse projects per language auto populated by step 1
-  hydrateTopologyByKey(key) {
-    this.topologyService.getFullTopologyByKey(key).then((response) => {
-      this.topology = {
-        ...this.topology,
-        [key]: response
-      };
-    });
+  // step 3 - dropdown to browse repos per project
+  getSelectedRepository(event) {
+    const selectElement = event.path[0];
+    const selectOptions = Array.from(selectElement.children);   
+    const selectedOption = selectOptions[selectElement.selectedIndex];
+
+    if (selectedOption.value !== '') {
+      this.selectedRepositoryIndex = selectElement.selectedIndex - 1;
+      this.getIssuesForRepository(this.selectedRepositoryIndex);
+    }
+  }
+
+  // step 4 - scroll to views issues per repo
+  getIssuesForRepository(index) {
+    console.log('getIssuesForRepository', index);
   }
 
   // TODO conditional rendering
@@ -104,54 +124,70 @@ class HomePageComponent extends LitElement {
     /* eslint-disable indent */
     return html`
 
-        <img src="${avatarUrl}" alt="${username}"/>
+      <img src="${avatarUrl}" alt="${username}"/>
+      
+      <p>Hello ${username}!</p>
+
+      <hr/>
+      
+      <h2>Step 1: Pick a language!</h2>
+
+      <select @change="${this.getSelectedLanguage.bind(this)}">
+        <option value="">Languages...</option>
+
+        ${Object.keys(topology).map((key) => {
+            return html`<option value="${key}">${key}</option>`;
+          })
+        }                        
+      </select>
+
+      <br/>
+      <br/>
+
+      <span>Selected Language: ${this.selectedLanguage}<span>
+      
+      <hr/>
+
+      <h2>Step 2: Pick a project!</h2>
+      <select @change="${this.getSelectedProject.bind(this)}">
+        <option value="">Projects...</option>
+
+        ${topology[this.selectedLanguage].projects.map((project) => {
+            return html`<option value="${project.name}">${project.name}</option>`;
+          })
+        }                        
+      </select>
+
+      <br/>
+      <br/>
+
+      <span>Selected Project (idx): ${this.selectedProjectIndex}<span>
+          
+      <hr/>
+      
+      <h2>Step 3: Pick a repo!</h2>
+      <select @change="${this.getSelectedRepository.bind(this)}">
+        <option value="">Repo...</option> 
         
-        <p>Hello ${username}!</p>
+        ${topology[this.selectedLanguage].projects[this.selectedRepositoryIndex].repositories.map((repo) => {
+            return html`<option value="${repo}">${repo}</option>`;
+          })
+        }
+      </select>
 
-        <hr/>
-        
-        <h2>Step 1: Pick a language!</h2>
+      <br/>
+      <br/>
 
-        <select @change="${this.getSelectedLanguage.bind(this)}">
-          <option value="">Languages...</option>
+      <span>Selected Repo (idx): ${this.selectedRepositoryIndex}<span>
 
-          ${Object.keys(topology).map((key) => {
-              return html`<option value="${key}">${key}</option>`;
-            })
-          }                        
-        </select>
+      <hr/>
 
-        <br/>
-        <br/>
+      <h2>Step 4: Find an issue and help out!</h2>
+      <p>TODO</p>
+      <hr/>
 
-        <span>Selected Language: ${this.selectedLanguage}<span>
-        
-        <hr/>
-
-        <h2>Step 2: Pick a project!</h2>
-        <select @change="${this.getSelectedProject.bind(this)}">
-          <option value="">Projects...</option>
-
-          ${topology[this.selectedLanguage].projects.map((project) => {
-              return html`<option value="${project.name}">${project.name}</option>`;
-            })
-          }                        
-        </select>
-
-        <br/>
-        <br/>
-        <hr/>
-        
-        <h2>Step 3: Pick a repo!</h2>
-        <p>TODO</p>
-        <hr/>
-
-        <h2>Step 4: Find an issue and help out!</h2>
-        <p>TODO</p>
-        <hr/>
-
-      </div>
-    `;
+    </div>
+  `;
     /* eslint-enable */
   }
 }
