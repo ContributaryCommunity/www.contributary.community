@@ -29,7 +29,7 @@ export class GitHubService {
   getRepositoriesForProject(projectName, type) {
     const urlSuffix = type === 'org'
       ? `orgs/${projectName}/repos`
-      : '';
+      : `users/${projectName}/repos`;
 
     return axios.get(`https://api.github.com/${urlSuffix}`)
       .then((response) => {

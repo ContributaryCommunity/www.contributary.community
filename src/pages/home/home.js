@@ -120,35 +120,38 @@ class HomePageComponent extends LitElement {
       this.selectedProjectName = selectedOption.value; 
 
       // TODO if wild card, fetch from github
-      if (this.topology[this.selectedLanguage].projects[this.selectedProjectIndex].repositories[0] === '*') {
-        console.log('****** wild card for ******!', this.selectedProjectName);
-        this.getRepositoriesForProject();
+      const projectRepositories = this.topology[this.selectedLanguage].projects[this.selectedProjectIndex].repositories;
+
+      if (projectRepositories[0] === '*') {
+        this.fetchRepositoriesForProject();
       } else {
-        // TODO
-        console.log('!!!! NEED TO HANDLE have to get repos manually !!!!!');
+        this.setRepositoriesForProject(projectRepositories);
       }
     }
   }
 
-  getRepositoriesForProject() {
+  fetchRepositoriesForProject() {
     const project = this.topology[this.selectedLanguage].projects[this.selectedProjectIndex];
     
     this.githubService.getRepositoriesForProject(project.name, project.type).then((response) => {
+      this.setRepositoriesForProject(response);
+    });
+  }
 
-      const repositories = response.map((repo) => {
-        return {
-          ...repo,
-          issues: []
-        };
-      });
-
-      this.repositoriesCache = {
-        ...this.repositoriesCache,
-        [project.name]: {
-          repositories
-        }
+  setRepositoriesForProject(repositories) {
+    const modeledRepositories = repositories.map((repo) => {
+      return {
+        ...repo,
+        issues: []
       };
     });
+
+    this.repositoriesCache = {
+      ...this.repositoriesCache,
+      [this.selectedProjectName]: {
+        repositories: modeledRepositories
+      }
+    };
   }
 
   // step 3 - dropdown to browse repos per project

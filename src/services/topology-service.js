@@ -1,4 +1,4 @@
-import topology from './topologies.json';
+import topology from './topology.json';
 
 // static?
 export class TopologyService {
