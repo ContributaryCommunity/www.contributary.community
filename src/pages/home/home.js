@@ -2,6 +2,8 @@ import { html, LitElement } from '@polymer/lit-element';
 import { GitHubService } from '../../services/github-service';
 import { TopologyService } from '../../services/topology-service';
 
+import '../../components/dropdown/dropdown';
+
 class HomePageComponent extends LitElement {
   
   static get properties() {
@@ -223,14 +225,11 @@ class HomePageComponent extends LitElement {
       <hr/>
 
       <h2>Step 2: Pick a project!</h2>
-      <select @change="${this.getSelectedProject.bind(this)}">
-        <option value="">Projects...</option>
-
-        ${topology[this.selectedLanguage].projects.map((project) => {
-            return html`<option value="${project.name}">${project.name}</option>`;
-          })
-        }                        
-      </select>
+      <eve-dropdown 
+        label="Projects..."
+        .options="${topology[this.selectedLanguage].projects}"
+        .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
+      ></eve-dropdown>
 
       <br/>
       <br/>
@@ -240,14 +239,11 @@ class HomePageComponent extends LitElement {
       <hr/>
       
       <h2>Step 3: Pick a repo!</h2>
-      <select @change="${this.getSelectedRepository.bind(this)}">
-        <option value="">Repo...</option> 
-        
-        ${repositoriesCache[this.selectedProjectName].repositories.map((repo) => {
-            return html`<option value="${repo.name}">${repo.name}</option>`;
-          })
-        }
-      </select>
+      <eve-dropdown 
+        label="Repositories..."
+        .options="${repositoriesCache[this.selectedProjectName].repositories}"
+        .optionSelectedCallback="${this.getSelectedRepository.bind(this)}"
+      ></eve-dropdown>
 
       <br/>
       <br/>
