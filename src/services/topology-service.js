@@ -1,7 +1,7 @@
 import topology from './topologies.json';
 
 // static?
-export class TopologiesService {
+export class TopologyService {
   constructor() {
     this.topology = topology;
   }
@@ -20,9 +20,9 @@ export class TopologiesService {
     });
   }
 
-  getTopologiesByLanguage(language) {
+  getFullTopologyByKey(key) {
     return new Promise((resolve) => {
-      resolve(this.topologies[language]);
+      resolve(this.topology.language[key]);
     });
   }
 

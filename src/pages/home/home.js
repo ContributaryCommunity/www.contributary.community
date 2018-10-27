@@ -1,6 +1,6 @@
 import { html, LitElement } from '@polymer/lit-element';
 import { GitHubService } from '../../services/github-service';
-import { TopologiesService } from '../../services/topologies-service';
+import { TopologyService } from '../../services/topology-service';
 
 class HomePageComponent extends LitElement {
   
@@ -13,7 +13,7 @@ class HomePageComponent extends LitElement {
         type: String
       },
       topology: {
-        type: Array
+        type: Object
       },
       selectedLanguage: {
         type: String
@@ -24,7 +24,13 @@ class HomePageComponent extends LitElement {
   constructor() {
     super();
 
-    this.selectedLanguage = '';
+    // TODO handle defaults
+    this.selectedLanguage = 'javascript';
+    this.topology = {
+      javascript: {
+        projects: []
+      }
+    };
 
     // testing github by showing user details
     new GitHubService().getUserDetails().then((data) => {
@@ -33,16 +39,19 @@ class HomePageComponent extends LitElement {
     });
 
     // start building the experience...
-    let service = new TopologiesService();
+    this.topologyService = new TopologyService();
 
     // step 1 - get languages for dropdown
-    service.getTopologyKeys().then((response) => {
-      this.topology = {
-        keys: response
-      };
+    this.topologyService.getTopologyKeys().then((response) => {
+      response.forEach((key) => {
+        this.topology = {
+          ...this.topology,
+          [key]: {
+            projects: []
+          }
+        };
+      });
     });
-
-    // step 2 - dropdown to browse projects per language
 
     // step 3 - dropdown to browse repos per project
 
@@ -59,11 +68,38 @@ class HomePageComponent extends LitElement {
 
     if (selectedOption.value !== '') {
       this.selectedLanguage = selectedOption.value;
+      this.hydrateTopologyByKey(this.selectedLanguage);
     }
   }
 
+  getSelectedProject(event) {
+    console.log('getSelectedProjectLanguage', event);
+    // const selectOptions = Array.from(event.path[0].children);    
+    // const selectedOption = selectOptions.filter((option) => {
+    //   return option.selected;
+    // })[0];
+
+    // if (selectedOption.value !== '') {
+    //   this.selectedLanguage = selectedOption.value;
+    //   this.hydrateTopologyByKey(this.selectedLanguage);
+    // }
+  }
+
+  // step 2 - dropdown to browse projects per language auto populated by step 1
+  hydrateTopologyByKey(key) {
+    this.topologyService.getFullTopologyByKey(key).then((response) => {
+      this.topology = {
+        ...this.topology,
+        [key]: response
+      };
+    });
+  }
+
+  // TODO conditional rendering
   render() {
     const { username, avatarUrl, topology } = this;
+    
+    console.log('render', topology);
 
     /* eslint-disable indent */
     return html`
@@ -79,7 +115,7 @@ class HomePageComponent extends LitElement {
         <select @change="${this.getSelectedLanguage.bind(this)}">
           <option value="">Languages...</option>
 
-          ${topology.keys.map((key) => {
+          ${Object.keys(topology).map((key) => {
               return html`<option value="${key}">${key}</option>`;
             })
           }                        
@@ -93,7 +129,17 @@ class HomePageComponent extends LitElement {
         <hr/>
 
         <h2>Step 2: Pick a project!</h2>
-        <p>TODO</p>
+        <select @change="${this.getSelectedProject.bind(this)}">
+          <option value="">Projects...</option>
+
+          ${topology[this.selectedLanguage].projects.map((project) => {
+              return html`<option value="${project.name}">${project.name}</option>`;
+            })
+          }                        
+        </select>
+
+        <br/>
+        <br/>
         <hr/>
         
         <h2>Step 3: Pick a repo!</h2>
