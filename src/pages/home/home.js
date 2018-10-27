@@ -39,13 +39,13 @@ class HomePageComponent extends LitElement {
       }
     };
 
+    this.topologyService = new TopologyService();
+
     // testing github by showing user details
     new GitHubService().getUserDetails().then((data) => {
       this.username = data.username;
       this.avatarUrl = data.avatar;
     });
-
-    this.topologyService = new TopologyService();
   }
 
   // step 1 - populate topology key (language) dropdown 
@@ -67,7 +67,7 @@ class HomePageComponent extends LitElement {
       });
     });
   }
-  
+
   // step 2 - select a language from the topology to get available projects
   getSelectedLanguage(event) {
     const selectElement = event.path[0];
