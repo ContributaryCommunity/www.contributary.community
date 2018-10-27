@@ -1,0 +1,28 @@
+{
+  "language": {
+    "javascript": {
+      "label": "JavaScript",
+      "projects": [{
+        "project": "ProjectEvergreen",
+        "repos": "*"
+      }, {
+        "project": "thescientist13",
+        "repos": [
+          "github-dashboard"
+        ]
+      }]
+    },
+    "php": {
+      "label": "PHP",
+      "projects": [{
+        "project": "ProjectEvergreen",
+        "repos": "*"
+      }, {
+        "project": "thescientist13",
+        "repos": [
+          "github-dashboard"
+        ]
+      }]
+    }
+  }
+}

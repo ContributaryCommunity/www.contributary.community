@@ -1,6 +1,7 @@
 import * as axios from 'axios';
 import { credentials } from '../credentials';
 
+// static?
 export class GitHubService {
 
   // TODO should use fetch

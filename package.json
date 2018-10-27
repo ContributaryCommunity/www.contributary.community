@@ -12,7 +12,7 @@
   "scripts": {
     "build": "rimraf ./public && webpack --config ./webpack.config.prod.js --progress",
     "develop": "webpack-dev-server --config ./webpack.config.develop.js --open",
-    "lint": "eslint *.js src/**/**/*.js tasks/*.js",
+    "lint": "eslint *.js src/**/**/*.js",
     "serve": "npm run build && ws",
     "start": "npm run develop",
     "test": "rimraf ./reports && karma start"

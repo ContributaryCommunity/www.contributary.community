@@ -12,7 +12,7 @@ class AppComponent extends LitElement {
       
       <div>
 
-        <h1>Welcome to Contributary!<h1>
+        <h1>Welcome to Contributary!</h1>
         
         <section>
           <eve-home-page></eve-home-page>
