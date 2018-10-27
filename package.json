@@ -18,7 +18,8 @@
     "test": "rimraf ./reports && karma start"
   },
   "dependencies": {
-    "@polymer/lit-element": "^0.6.1"
+    "@polymer/lit-element": "^0.6.2",
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",

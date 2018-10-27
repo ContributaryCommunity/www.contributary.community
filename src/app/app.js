@@ -1,5 +1,4 @@
 import { html, LitElement } from '@polymer/lit-element';
-import '../components/header/header.js';
 import '../pages/home/home.js';
 import css from './app.css';
 
@@ -12,10 +11,6 @@ class AppComponent extends LitElement {
       </style>
       
       <div>
-
-        <section>
-          <eve-header></eve-header>
-        </section>
 
         <section>
           <eve-home-page></eve-home-page>
