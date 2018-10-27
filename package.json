@@ -1,7 +1,7 @@
 {
   "name": "contributary",
   "version": "0.1.0",
-  "description": "Helping contributors find OSS projects in GitHub to contribut to.",
+  "description": "Helping contributors find OSS projects in GitHub to contribute to.",
   "license": "MIT",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
   "main": "src/index.js",
