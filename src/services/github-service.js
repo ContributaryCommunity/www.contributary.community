@@ -10,6 +10,7 @@ export class GitHubService {
     axios.defaults.headers.common.Authorization = `token ${credentials.token}`;
   }
 
+  // https://developer.github.com/v3/users/
   getUserDetails() {
     return axios.get('https://api.github.com/user')
       .then((response) => {
@@ -23,18 +24,36 @@ export class GitHubService {
       });
   }
 
+  // https://developer.github.com/v3/repos/#get
+  // TODO static list
   getRepositoriesForProject(projectName, type) {
     const urlSuffix = type === 'org'
       ? `orgs/${projectName}/repos`
       : '';
 
-    // https://developer.github.com/v3/repos/#get
     return axios.get(`https://api.github.com/${urlSuffix}`)
       .then((response) => {
         return response.data.map((repo) => {
           return {
             id: repo.id,
             name: repo.name
+          };
+        });
+      });
+  }
+
+  // https://developer.github.com/v3/issues/
+  // application/vnd.github.symmetra-preview+json
+  getIssuesForRepository(projectName, repositoryName) {
+    const urlMidfix = `${projectName}/${repositoryName}`;
+
+    return axios.get(`https://api.github.com/repos/${urlMidfix}/issues`)
+      .then((response) => {
+        return response.data.map((issue) => {
+          return {
+            id: issue.id,
+            title: issue.title,
+            url: issue.html_url
           };
         });
       });

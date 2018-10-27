@@ -24,6 +24,12 @@ class HomePageComponent extends LitElement {
       selectedProjectName: {
         type: String
       },
+      selectedRepositoryIndex: {
+        type: Number
+      },
+      selectedRepositoryName: {
+        type: String
+      },
       repositoriesCache: {
         types: String
       }
@@ -38,6 +44,7 @@ class HomePageComponent extends LitElement {
     this.selectedProjectIndex = 0;
     this.selectedProjectName = 'ProjectEvergreen';
     this.selectedRepositoryIndex = 0;
+    this.selectedRepositoryName = 'project-evergreen';
     this.topology = {
       javascript: {
         projects: [{
@@ -47,7 +54,9 @@ class HomePageComponent extends LitElement {
     };
     this.repositoriesCache = {
       ProjectEvergreen: {
-        repositories: []
+        repositories: [{
+          issues: [] 
+        }]
       }
     };
 
@@ -71,6 +80,7 @@ class HomePageComponent extends LitElement {
       response.forEach((key) => {
         this.topology = {
           ...this.topology,
+          // ???
           [key]: {
             projects: [{
               repositories: []
@@ -122,18 +132,19 @@ class HomePageComponent extends LitElement {
     console.log('****** wild card for ******!', project);
     this.githubService.getRepositoriesForProject(project.name, project.type).then((response) => {
 
+      const repositories = response.map((repo) => {
+        return {
+          ...repo,
+          issues: []
+        };
+      });
+
       this.repositoriesCache = {
         ...this.repositoriesCache,
         [project.name]: {
-          repositories: []
+          repositories
         }
       };
-
-      response.forEach((repo) => {
-        this.repositoriesCache[project.name].repositories.push(repo);
-      });
-
-      console.log('repositoriesCache', this.repositoriesCache);
     });
   }
 
@@ -145,17 +156,40 @@ class HomePageComponent extends LitElement {
 
     if (selectedOption.value !== '') {
       this.selectedRepositoryIndex = selectElement.selectedIndex - 1;
-      this.getIssuesForRepository(this.selectedRepositoryIndex);
+      this.selectedRepositoryName = selectedOption.value;
+
+      this.getIssuesForRepository();
     }
   }
 
   // step 4 - scroll to views issues per repo
-  getIssuesForRepository(index) {
-    console.log('getIssuesForRepository', index);
+  getIssuesForRepository() {
+    console.log('getIssuesForRepository');
+
+    this.githubService.getIssuesForRepository(this.selectedProjectName, this.selectedRepositoryName).then(response => {
+      console.log('response', response);
+      const currentRepoName = this.selectedProjectName;
+      const repositories = this.repositoriesCache[this.selectedProjectName].repositories.map((repo) => {
+        return {
+          ...repo,
+          issues: response
+        };
+      });
+
+      this.repositoriesCache = {
+        ...this.repositoriesCache,
+        [currentRepoName]: {
+          repositories
+        }
+      };
+
+      console.log('issues, shabam!', this.repositoriesCache);
+    });
   }
 
   // TODO conditional rendering
   render() {
+    // clean up mixed this. vs destructuring usage 
     const { username, avatarUrl, topology, repositoriesCache } = this;
     
     console.log('render', topology);
@@ -200,7 +234,7 @@ class HomePageComponent extends LitElement {
       <br/>
       <br/>
 
-      <span>Selected Project (idx): ${this.selectedProjectIndex}<span>
+      <span>Selected Project: ${this.selectedProjectName}<span>
           
       <hr/>
       
@@ -217,13 +251,15 @@ class HomePageComponent extends LitElement {
       <br/>
       <br/>
 
-      <span>Selected Repo (idx): ${this.selectedRepositoryIndex}<span>
+      <span>Selected Repo: ${this.selectedRepositoryName}<span>
 
       <hr/>
 
       <h2>Step 4: Find an issue and help out!</h2>
-      <p>TODO</p>
-      <hr/>
+        ${repositoriesCache[this.selectedProjectName].repositories[this.selectedRepositoryIndex].issues.map((issue) => {
+            return html`<p><a href="${issue.url}" target="_blank">${issue.title}</a></p>`;
+          })
+        }
 
     </div>
   `;
