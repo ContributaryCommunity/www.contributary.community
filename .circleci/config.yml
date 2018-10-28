@@ -25,8 +25,13 @@ jobs:
           command: yarn lint
       
       - run:
+<<<<<<< HEAD
           name: Setup Credentials File
           command: touch ./src/credentials.js
+=======
+        name: Setup Credentials File
+        command: touch ./src/credentials.js
+>>>>>>> ci
 
       - run:
           name: Run Unit Tests
@@ -34,4 +39,4 @@ jobs:
 
       - run:
           name: Execute The Build
-          command: touch ./src/credentials.js && yarn build
+          command: yarn build
