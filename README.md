@@ -3,7 +3,7 @@
 ## Overview
 The goal of Contributary is to help those looking to get started with contributing to OSS projects by providing a convenient and easy way to search for great projects on GitHub that could use their help!
 
-> Since the project only lives in this repo for right now, to run it, follow the development steps and make sure to create a GitHub personal access token and put it into _src/credentials.js_.
+> Since the project only lives in this repo for right now, to run it, follow the development steps and make sure to create a GitHub personal access token (with _repo_ permissions) and put it into _src/credentials.js_.
 
 ## Usage
 To use the application, follow the prompts:
@@ -61,7 +61,7 @@ Here a small example:
 }
 ```
 
-For more information, visit the [wiki](TODO).
+For more information, visit the [wiki](https://github.com/ContributaryCommunity/contributary/wiki).
 
 ## Development
 This project is an evergreen web application, bootstrapped from [Create Evergeen App](https://github.com/ProjectEvergreen/create-evergreen-app) using modern JavaScript and CSS features, powered by [`LitElement`](https://github.com/Polymer/lit-element) and [Web Components](https://www.webcomponents.org/).  
