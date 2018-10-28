@@ -35,9 +35,10 @@ describe('Issues List Component', () => {
     it('should have two table head rows', () => {
       const thead = list.shadowRoot.querySelectorAll('table thead tr th');
 
-      expect(thead.length).toBe(2);
+      expect(thead.length).toBe(3);
       expect(thead[0].innerHTML).toBe('Issue No.');
       expect(thead[1].innerHTML).toBe('Title');
+      expect(thead[2].innerHTML).toBe('Labels');
     });
 
     it('should have one table body', () => {
@@ -103,7 +104,7 @@ describe('Issues List Component', () => {
         const issue = issues[index];
         const td = row.querySelectorAll('td');
         const a = td[1].querySelectorAll('a')[0];
-        const labels = td[1].querySelectorAll('span');
+        const labels = td[2].querySelectorAll('span');
 
         expect(td[0].innerHTML).toMatch(issue.number);
         expect(a.href).toMatch(issue.url);

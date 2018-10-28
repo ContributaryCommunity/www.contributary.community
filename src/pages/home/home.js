@@ -185,56 +185,64 @@ class HomePageComponent extends LitElement {
 
       <hr/>
 
-      <h2>Step 1: Pick a language!</h2>
-      <eve-dropdown 
-        label="Languages.."
-        .options="${languageOptions}"
-        .optionSelectedCallback="${this.getSelectedLanguage.bind(this)}"
-      ></eve-dropdown>
+      <div class="selection-wrapper">
+        <h2>Step 1: Pick a language!</h2>
+        <eve-dropdown 
+          label="Languages.."
+          .options="${languageOptions}"
+          .optionSelectedCallback="${this.getSelectedLanguage.bind(this)}"
+        ></eve-dropdown>
+      </div>
 
       ${projectOptions
         ? html`
-            <hr/>
-            
-            <p>Selected Language: ${languageOptions[this.selectedLanguageIndex].label}<p>
-            
-            <h2>Step 2: Pick a project!</h2>
-            <eve-dropdown 
-              label="Projects..."
-              .options="${projectOptions}"
-              .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
-            ></eve-dropdown>
+            <div class="selection-wrapper">
+              <hr/>
+              
+              <p>Selected Language: ${languageOptions[this.selectedLanguageIndex].label}<p>
+              
+              <h2>Step 2: Pick a project!</h2>
+              <eve-dropdown 
+                label="Projects..."
+                .options="${projectOptions}"
+                .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
+              ></eve-dropdown>
+            </div>
           `
         : ''
       }
     
       ${repositoryOptions
         ? html`
-            <p>Selected Project: ${this.selectedProjectName}<p>
-    
-            <hr/>
-            
-            <h2>Step 3: Pick a repo!</h2>
-            <eve-dropdown 
-              label="Repositories..."
-              .options="${repositoryOptions}"
-              .optionSelectedCallback="${this.getSelectedRepository.bind(this)}"
-            ></eve-dropdown>
+            <div class="selection-wrapper">
+              <p>Selected Project: ${this.selectedProjectName}<p>
+      
+              <hr/>
+              
+              <h2>Step 3: Pick a repo!</h2>
+              <eve-dropdown 
+                label="Repositories..."
+                .options="${repositoryOptions}"
+                .optionSelectedCallback="${this.getSelectedRepository.bind(this)}"
+              ></eve-dropdown>
+            </div>
           `
         : ''
       }
 
       ${issues
         ? html`
-            <p>Selected Repo: ${this.selectedRepositoryName}<p>
+            <div class="selection-wrapper">
+              <p>Selected Repo: ${this.selectedRepositoryName}<p>
 
-            <hr/>
+              <hr/>
 
-            <h2>Step 4: Find an issue and help out!</h2>
+              <h2>Step 4: Find an issue and help out!</h2>
 
-            <eve-issues-list 
-              .issues="${issues}">
-            </eve-issues-list>
+              <eve-issues-list 
+                .issues="${issues}">
+              </eve-issues-list>
+            </div>
           `
         : ''
       }
