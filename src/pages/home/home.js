@@ -9,9 +9,6 @@ class HomePageComponent extends LitElement {
   
   static get properties() {
     return {
-      selectedLanguage: {
-        type: String
-      },
       languageOptions: {
         type: Array
       },
@@ -54,16 +51,6 @@ class HomePageComponent extends LitElement {
 
   // step 0 - populate topology key (language) dropdown 
   connectedCallback() {
-    this.getTopologyKeys();
-
-    // testing github by showing user details
-    this.githubService.getUserDetails().then((data) => {
-      this.username = data.username;
-      this.avatarUrl = data.avatar;
-    });
-  }
-
-  getTopologyKeys() {
     this.topologyService.getTopologyKeys().then((response) => {
       const newLanguageOptions = [];
 
@@ -78,6 +65,12 @@ class HomePageComponent extends LitElement {
         ...newLanguageOptions
       ];
     });
+
+    // just for testing github by showing user details
+    this.githubService.getUserDetails().then((data) => {
+      this.username = data.username;
+      this.avatarUrl = data.avatar;
+    });
   }
 
   // step 1 - user selects a language from the topology to see available projects
@@ -85,12 +78,12 @@ class HomePageComponent extends LitElement {
     const selectElement = event.path[0];
     const selectOptions = Array.from(selectElement.children);   
     const selectedOption = selectOptions[selectElement.selectedIndex];
-
-    if (selectedOption.value !== '') {
-      this.selectedLanguage = selectedOption.value;
+    const { value } = selectedOption;
+    
+    if (value !== '') {
       this.selectedLanguageIndex = selectElement.selectedIndex - 1;
 
-      this.topologyService.getFullTopologyByKey(this.selectedLanguage).then((response) => {
+      this.topologyService.getFullTopologyByKey(value).then((response) => {
         const newProjectOptions = response.projects.map((project) => {
           const { name, type, repositories } = project;
 
@@ -117,7 +110,6 @@ class HomePageComponent extends LitElement {
 
     if (selectedOption.value !== '') {
       this.selectedProjectIndex = selectElement.selectedIndex - 1;
-      this.selectedProjectName = selectedOption.value;
 
       const projectRepositories = this.projectOptions[this.selectedProjectIndex].repositories;
 
@@ -160,7 +152,6 @@ class HomePageComponent extends LitElement {
 
     if (selectedOption.value !== '') {
       this.selectedRepositoryIndex = selectElement.selectedIndex - 1;
-      this.selectedRepositoryName = selectedOption.value;
 
       this.getIssuesForRepository();
     }
@@ -190,7 +181,7 @@ class HomePageComponent extends LitElement {
       <img src="${avatarUrl}" alt="${username}"/>
       <p>Hello ${username}!</p>
 
-      <hr/></p>
+      <hr/>
 
       <h2>Step 1: Pick a language!</h2>
       <eve-dropdown 
