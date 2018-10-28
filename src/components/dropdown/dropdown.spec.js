@@ -75,7 +75,7 @@ describe('Dropdown Component', () => {
     it(`should have ${numOptions} options`, () => {
       const selectOptions = dropdown.shadowRoot.querySelectorAll('select option');
   
-      // +1 accounts for default option
+      // +1  accounts for default option
       expect(selectOptions.length).toBe(numOptions + 1);
     });
 
@@ -102,8 +102,8 @@ describe('Dropdown Component', () => {
       });
     });
 
-    xit('should call the callback function', () => {
-
+    xit('should call the callback function when an option is selected', () => {
+      
     });
 
   });

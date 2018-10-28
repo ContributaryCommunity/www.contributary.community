@@ -45,9 +45,11 @@ class IssuesListComponent extends LitElement {
 
           return html`
             <tr class="issue-row">
-              <td><a href="${issue.url}" target="_blank">${issue.number}</a></td>
-              <td><a href="${issue.url}" target="_blank">${issue.title}</a></td>
-              ${labels}
+              <td>${issue.number}</td>
+              <td>
+                <a href="${issue.url}" target="_blank">${issue.title}</a>
+                ${labels}
+              </td>
             </tr>
           `;
         })}
