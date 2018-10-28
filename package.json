@@ -1,20 +1,27 @@
 {
-  "name": "contributary",
+  "name": "www.contributary.community",
   "version": "0.1.0",
-  "description": "Helping contributors find OSS projects in GitHub to contribute to.",
+  "description": "A project for helping connect open source with the open source community.",
   "license": "MIT",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
   "main": "src/index.js",
+  "homepage": "https://github.com/ContributaryCommunity/www.contributary.community#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ContributaryCommunity/www.contributary.community.git"
+  },
   "keywords": [
     "GitHub",
-    "OSS"
+    "OSS",
+    "Community",
+    "Contributary"
   ],
   "scripts": {
     "build": "rimraf ./public && webpack --config ./webpack.config.prod.js --progress",
     "develop": "webpack-dev-server --config ./webpack.config.develop.js --open",
     "lint": "eslint *.js src/**/**/*.js",
-    "serve": "npm run build && ws",
-    "start": "npm run develop",
+    "serve": "yarn build && ws",
+    "start": "yarn develop",
     "test": "rimraf ./reports && karma start"
   },
   "dependencies": {
