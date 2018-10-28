@@ -4,7 +4,7 @@ describe('Footer Component', () => {
   let footer;
 
   beforeEach(async () => {
-    footer = document.createElement('eve-footer');
+    footer = document.createElement('cc-footer');
 
     document.body.appendChild(footer);
 

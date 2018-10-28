@@ -59,4 +59,4 @@ class IssuesListComponent extends LitElement {
   /* eslint-enable indent */
 }
 
-customElements.define('eve-issues-list', IssuesListComponent);
+customElements.define('cc-issues-list', IssuesListComponent);

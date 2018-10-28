@@ -18,4 +18,4 @@ class HeaderComponent extends LitElement {
   }
 }
 
-customElements.define('eve-header', HeaderComponent);
+customElements.define('cc-header', HeaderComponent);

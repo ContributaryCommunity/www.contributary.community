@@ -4,7 +4,7 @@ describe('Header Component', () => {
   let header;
 
   beforeEach(async () => {
-    header = document.createElement('eve-header');
+    header = document.createElement('cc-header');
 
     document.body.appendChild(header);
 

@@ -8,7 +8,7 @@ describe('Issues List Component', () => {
     let list;
 
     beforeEach(async () => {
-      list = document.createElement('eve-issues-list');
+      list = document.createElement('cc-issues-list');
   
       document.body.appendChild(list);
   
@@ -75,9 +75,9 @@ describe('Issues List Component', () => {
     beforeEach(async () => {
       testBed = document.createElement('div');
       template = html`
-        <eve-issues-list 
+        <cc-issues-list 
           .issues="${issues}"
-        ></eve-dropdown>
+        ></cc-dropdown>
       `;
 
       render(template, testBed);

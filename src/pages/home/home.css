@@ -5,7 +5,7 @@
 
 :host {
 
-  & eve-issues-list {
+  & cc-issues-list {
     margin: 0 auto;
     width: 90%;
   }
