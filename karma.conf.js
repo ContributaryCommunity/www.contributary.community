@@ -65,7 +65,7 @@ module.exports = function (config) {
     junitReporter: {
       outputDir: './reports/test-results/',
       outputFile: 'test-results.xml',
-      suite: 'create-evergreen-app',
+      suite: 'www.contributary.community',
       useBrowserName: false
     },
     coverageIstanbulReporter: {
