@@ -1,0 +1,14 @@
+{
+  "label": "C",
+  "projects": [{
+    "name": "Git",
+    "type": "org",
+    "repositories": ["*"]
+  }, {
+    "name": "Torvalds",
+    "type": "user",
+    "repositories": [{
+      "name": "linux"
+    }]
+  }]
+}

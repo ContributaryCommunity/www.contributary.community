@@ -4,5 +4,9 @@
     "name": "composer",
     "type": "org",
     "repositories": ["*"]
+  }, {
+    "name": "laravel",
+    "type": "org",
+    "repositories": ["*"]
   }]
 }
