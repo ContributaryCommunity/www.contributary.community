@@ -18,7 +18,7 @@ module.exports = webpackMerge(commonConfig, {
       prefix: '/',
       statsFilename: 'icons/stats.json',
       inject: true,
-      title: 'Create Evergreen App',
+      title: 'Contributary',
       background: '#466628',
       icons: {
         android: true,

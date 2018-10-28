@@ -8,7 +8,7 @@
 ## Overview
 The goal of Contributary is to help those looking to get started with contributing to OSS projects by providing a convenient and easy way to search for great projects on GitHub that could use their help!
 
-![Create Evergreen App](https://s3.amazonaws.com/hosted.contributary.community/contributary-demo.png)
+![Contributary](https://s3.amazonaws.com/hosted.contributary.community/media/contributary-demo.png)
 
 > Since the project only lives in this repo for right now, to run it, follow the development steps and make sure to create a GitHub personal access token (with _repo_ permissions) and put it into _src/credentials.js_.
 
