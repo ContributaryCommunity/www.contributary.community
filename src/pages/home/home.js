@@ -49,12 +49,6 @@ class HomePageComponent extends LitElement {
 
     this.topologyService = new TopologyService();
     this.githubService = new GitHubService();
-
-    this.githubService.getIssuesForRepository('ProjectEvergreen', 'create-evergreen-app').then(response => {
-      this.issues = [
-        ...response
-      ];
-    });
   }
 
   // step 0 - populate topology key (language) dropdown 

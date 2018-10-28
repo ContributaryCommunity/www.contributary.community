@@ -1,13 +1,3 @@
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 :host {
 
   & header {
@@ -18,14 +8,6 @@
     & small {
       display: block;
     }
-  }
-
-  & header a {
-    height: 40vh;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    animation: logo-spin infinite 30s linear;
   }
 
   & header h1 {

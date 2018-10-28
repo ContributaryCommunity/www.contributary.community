@@ -34,7 +34,6 @@ class IssuesListComponent extends LitElement {
 
         <tbody>
         ${issues.map((issue) => {
-          console.log('issue', issue);
           const labels = issue.labels.map((label) => {
             return html`
               <span

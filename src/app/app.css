@@ -4,4 +4,8 @@
     text-align: center;
   }
 
+  & section.eve-page {
+    margin-bottom: 50px;
+  }
+
 }
