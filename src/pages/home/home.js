@@ -194,8 +194,21 @@ class HomePageComponent extends LitElement {
   render() {
     // clean up mixed this. vs destructuring usage 
     const { username, avatarUrl, topology, repositoriesCache } = this;
-    
-    // console.log('render', topology);
+    const languageOptions = Object.keys(topology).map((key) => {
+      return {
+        value: key
+      };
+    });
+    const projectOptions = topology[this.selectedLanguage].projects.map((project) => {
+      return {
+        value: project.name
+      };
+    });
+    const repositoryOptions = repositoriesCache[this.selectedProjectName].repositories.map((repository) => {
+      return {
+        value: repository.name
+      };
+    });
 
     /* eslint-disable indent */
     return html`
@@ -208,14 +221,11 @@ class HomePageComponent extends LitElement {
       
       <h2>Step 1: Pick a language!</h2>
 
-      <select @change="${this.getSelectedLanguage.bind(this)}">
-        <option value="">Languages...</option>
-
-        ${Object.keys(topology).map((key) => {
-            return html`<option value="${key}">${key}</option>`;
-          })
-        }                        
-      </select>
+      <eve-dropdown 
+        label="Languages.."
+        .options="${languageOptions}"
+        .optionSelectedCallback="${this.getSelectedLanguage.bind(this)}"
+      ></eve-dropdown>
 
       <br/>
       <br/>
@@ -227,7 +237,7 @@ class HomePageComponent extends LitElement {
       <h2>Step 2: Pick a project!</h2>
       <eve-dropdown 
         label="Projects..."
-        .options="${topology[this.selectedLanguage].projects}"
+        .options="${projectOptions}"
         .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
       ></eve-dropdown>
 
@@ -241,7 +251,7 @@ class HomePageComponent extends LitElement {
       <h2>Step 3: Pick a repo!</h2>
       <eve-dropdown 
         label="Repositories..."
-        .options="${repositoriesCache[this.selectedProjectName].repositories}"
+        .options="${repositoryOptions}"
         .optionSelectedCallback="${this.getSelectedRepository.bind(this)}"
       ></eve-dropdown>
 

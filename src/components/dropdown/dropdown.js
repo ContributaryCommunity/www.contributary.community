@@ -25,7 +25,7 @@ class DropdownComponent extends LitElement {
         <option value="">${label}</option>
 
         ${options.map((option) => {
-            return html`<option value="${option.name}">${option.name}</option>`;
+            return html`<option value="${option.value}">${option.value}</option>`;
           })
         }                        
       </select>
