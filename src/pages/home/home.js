@@ -171,9 +171,6 @@ class HomePageComponent extends LitElement {
   render() {
     const { username, avatarUrl, issues } = this;
     const { languageOptions, projectOptions, repositoryOptions } = this;
-    const hasProjects = projectOptions && projectOptions.length > 0;
-    const hasRepositories = repositoryOptions && repositoryOptions.length > 0;
-    const hasIssues = issues && issues.length > 0;
 
     /* eslint-disable indent */
     return html`
@@ -190,7 +187,7 @@ class HomePageComponent extends LitElement {
         .optionSelectedCallback="${this.getSelectedLanguage.bind(this)}"
       ></eve-dropdown>
 
-      ${hasProjects
+      ${projectOptions
         ? html`
             <hr/>
             
@@ -206,7 +203,7 @@ class HomePageComponent extends LitElement {
         : ''
       }
     
-      ${hasRepositories
+      ${repositoryOptions
         ? html`
             <p>Selected Project: ${this.selectedProjectName}<p>
     
@@ -222,7 +219,7 @@ class HomePageComponent extends LitElement {
         : ''
       }
 
-      ${hasIssues
+      ${issues
         ? html`
             <p>Selected Repo: ${this.selectedRepositoryName}<p>
 
