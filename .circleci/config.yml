@@ -34,4 +34,5 @@ jobs:
 
       - run:
           name: Execute The Build
+          command: touch ./src/credential.js
           command: yarn build
