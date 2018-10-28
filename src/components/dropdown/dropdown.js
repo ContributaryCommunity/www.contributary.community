@@ -38,4 +38,4 @@ class DropdownComponent extends LitElement {
   /* eslint-enable indent */
 }
 
-customElements.define('eve-dropdown', DropdownComponent);
+customElements.define('cc-dropdown', DropdownComponent);

@@ -8,7 +8,7 @@ describe('Dropdown Component', () => {
     let dropdown;
 
     beforeEach(async () => {
-      dropdown = document.createElement('eve-dropdown');
+      dropdown = document.createElement('cc-dropdown');
   
       document.body.appendChild(dropdown);
   
@@ -49,10 +49,10 @@ describe('Dropdown Component', () => {
     beforeEach(async () => {
       testBed = document.createElement('div');
       template = html`
-        <eve-dropdown 
+        <cc-dropdown 
           label="${label}"
           .options="${options}"
-        ></eve-dropdown>
+        ></cc-dropdown>
       `;
 
       render(template, testBed);

@@ -189,11 +189,11 @@ class HomePageComponent extends LitElement {
 
       <div class="selection-wrapper">
         <h2>Step 1: Select a Language</h2>
-        <eve-dropdown 
+        <cc-dropdown 
           label="Languages.."
           .options="${languageOptions}"
           .optionSelectedCallback="${this.getSelectedLanguage.bind(this)}"
-        ></eve-dropdown>
+        ></cc-dropdown>
       </div>
 
       ${projectOptions
@@ -204,11 +204,11 @@ class HomePageComponent extends LitElement {
               <p>Selected Language: ${languageOptions[this.selectedLanguageIndex].value}<p>
               
               <h2>Step 2: Select a Project</h2>
-              <eve-dropdown 
+              <cc-dropdown 
                 label="Projects..."
                 .options="${projectOptions}"
                 .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
-              ></eve-dropdown>
+              ></cc-dropdown>
             </div>
           `
         : ''
@@ -222,11 +222,11 @@ class HomePageComponent extends LitElement {
               <hr/>
               
               <h2>Step 3: Select a Repository</h2>
-              <eve-dropdown 
+              <cc-dropdown 
                 label="Repositories..."
                 .options="${repositoryOptions}"
                 .optionSelectedCallback="${this.getSelectedRepository.bind(this)}"
-              ></eve-dropdown>
+              ></cc-dropdown>
             </div>
           `
         : ''
@@ -241,9 +241,9 @@ class HomePageComponent extends LitElement {
 
               <h2>Step 4: Find an issue and help out!</h2>
 
-              <eve-issues-list 
+              <cc-issues-list 
                 .issues="${issues}">
-              </eve-issues-list>
+              </cc-issues-list>
             </div>
           `
         : ''
@@ -256,4 +256,4 @@ class HomePageComponent extends LitElement {
   }
 }
 
-customElements.define('eve-home-page', HomePageComponent);
+customElements.define('cc-home-page', HomePageComponent);

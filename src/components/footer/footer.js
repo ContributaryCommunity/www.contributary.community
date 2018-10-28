@@ -18,4 +18,4 @@ class FooterComponent extends LitElement {
   }
 }
 
-customElements.define('eve-footer', FooterComponent);
+customElements.define('cc-footer', FooterComponent);

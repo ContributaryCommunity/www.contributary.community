@@ -15,15 +15,15 @@ class AppComponent extends LitElement {
       <div>
 
         <section>
-          <eve-header></eve-header>
+          <cc-header></cc-header>
         </section>
         
-        <section class="eve-page">
-          <eve-home-page></eve-home-page>
+        <section class="cc-page">
+          <cc-home-page></cc-home-page>
         </section>
 
         <section>
-          <eve-footer></eve-footer>
+          <cc-footer></cc-footer>
         </section>
 
       </div>
@@ -31,4 +31,4 @@ class AppComponent extends LitElement {
   }
 }
 
-customElements.define('eve-app', AppComponent);
+customElements.define('cc-app', AppComponent);
