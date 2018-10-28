@@ -1,10 +1,8 @@
 import * as axios from 'axios';
 import { credentials } from '../credentials';
 
-// static?
 export class GitHubService {
 
-  // TODO should use fetch
   constructor() {
     axios.defaults.headers.common.Accept = 'application/vnd.github.v3+json';
     axios.defaults.headers.common.Authorization = `token ${credentials.token}`;

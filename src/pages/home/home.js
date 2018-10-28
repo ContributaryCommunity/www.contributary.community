@@ -9,6 +9,9 @@ class HomePageComponent extends LitElement {
   
   static get properties() {
     return {
+      selectedLanguage: {
+        type: String
+      },
       languageOptions: {
         type: Array
       },
@@ -27,29 +30,17 @@ class HomePageComponent extends LitElement {
       selectedProjectIndex: {
         type: Number
       },
-      selectedProjectName: {
-        type: String
-      },
       selectedRepositoryIndex: {
         type: Number
       },
-      selectedRepositoryName: {
-        type: String
-      },
-      selectedLanguage: {
-        type: String
+      issues: {
+        type: Array
       },
       username: {
         type: String
       },
       avatarUrl: {
         type: String
-      },
-      selectedLanguage: {
-        type: String
-      },
-      issues: {
-        type: Array
       }
     };
   }
@@ -74,10 +65,13 @@ class HomePageComponent extends LitElement {
 
   getTopologyKeys() {
     this.topologyService.getTopologyKeys().then((response) => {
-      const newLanguageOptions = response.map((key) => {
-        return {
+      const newLanguageOptions = [];
+
+      Object.keys(response).forEach((key) => {
+        newLanguageOptions.push({
+          label: response[key].label,
           value: key
-        };
+        });
       });
       
       this.languageOptions = [
@@ -115,7 +109,7 @@ class HomePageComponent extends LitElement {
     }
   }
 
-  // step 3 - user select a project to see available repositories for that project
+  // step 2 - user select a project to see available repositories for that project
   getSelectedProject(event) {
     const selectElement = event.path[0];
     const selectOptions = Array.from(selectElement.children);   
@@ -158,7 +152,7 @@ class HomePageComponent extends LitElement {
     ];
   }
 
-  // step 4 - user selects an repository to see available issues
+  // step 3 - user selects a repository to see available issues
   getSelectedRepository(event) {
     const selectElement = event.path[0];
     const selectOptions = Array.from(selectElement.children);   
@@ -183,19 +177,21 @@ class HomePageComponent extends LitElement {
     });
   }
 
-  // TODO conditional rendering
   render() {
     const { username, avatarUrl, issues } = this;
     const { languageOptions, projectOptions, repositoryOptions } = this;
+    const hasProjects = projectOptions && projectOptions.length > 0;
+    const hasRepositories = repositoryOptions && repositoryOptions.length > 0;
+    const hasIssues = issues && issues.length > 0;
 
-    /* eslint-disable */
+    /* eslint-disable indent */
     return html`
 
       <img src="${avatarUrl}" alt="${username}"/>
       <p>Hello ${username}!</p>
 
-      <hr/>
-      
+      <hr/></p>
+
       <h2>Step 1: Pick a language!</h2>
       <eve-dropdown 
         label="Languages.."
@@ -203,44 +199,56 @@ class HomePageComponent extends LitElement {
         .optionSelectedCallback="${this.getSelectedLanguage.bind(this)}"
       ></eve-dropdown>
 
-      <p>Selected Language: ${this.selectedLanguage}<p>
-      
-      <hr/>
+      ${hasProjects
+        ? html`
+            <hr/>
+            
+            <p>Selected Language: ${languageOptions[this.selectedLanguageIndex].label}<p>
+            
+            <h2>Step 2: Pick a project!</h2>
+            <eve-dropdown 
+              label="Projects..."
+              .options="${projectOptions}"
+              .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
+            ></eve-dropdown>
+          `
+        : ''
+      }
     
-      <h2>Step 2: Pick a project!</h2>
-      <eve-dropdown 
-        label="Projects..."
-        .options="${projectOptions}"
-        .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
-      ></eve-dropdown>
+      ${hasRepositories
+        ? html`
+            <p>Selected Project: ${this.selectedProjectName}<p>
+    
+            <hr/>
+            
+            <h2>Step 3: Pick a repo!</h2>
+            <eve-dropdown 
+              label="Repositories..."
+              .options="${repositoryOptions}"
+              .optionSelectedCallback="${this.getSelectedRepository.bind(this)}"
+            ></eve-dropdown>
+          `
+        : ''
+      }
 
-      <p>Selected Project: ${this.selectedProjectName}<p>
-          
-      <hr/>
+      ${hasIssues
+        ? html`
+            <p>Selected Repo: ${this.selectedRepositoryName}<p>
 
-      <h2>Step 3: Pick a repo!</h2>
-      <eve-dropdown 
-        label="Repositories..."
-        .options="${repositoryOptions}"
-        .optionSelectedCallback="${this.getSelectedRepository.bind(this)}"
-      ></eve-dropdown>
+            <hr/>
 
-      <br/>
-      <br/>
-
-      <p>Selected Repo: ${this.selectedRepositoryName}<p>
-
-      <hr/>
-
-      <h2>Step 4: Find an issue and help out!</h2>
-      <eve-issues-list 
-        .issues="${issues}">
-      </eve-issues-list>
-
+            <h2>Step 4: Find an issue and help out!</h2>
+            <eve-issues-list 
+              .issues="${issues}">
+            </eve-issues-list>
+          `
+        : ''
+      }
+    
     </div>
   `;
+  /* eslint-enable */
 
-    /* eslint-enable */
   }
 }
 

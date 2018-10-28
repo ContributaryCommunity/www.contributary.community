@@ -14,7 +14,7 @@ export class TopologyService {
 
   getTopologyKeys() {
     return new Promise((resolve) => {
-      const keys = Object.keys(this.topology.language);
+      const keys = this.topology.language;
 
       resolve(keys);
     });

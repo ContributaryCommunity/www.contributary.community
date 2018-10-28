@@ -23,8 +23,6 @@ class DropdownComponent extends LitElement {
     if (!options) {
       options = [];
     }
-
-    console.log('options', options);
     
     return html`
       <select @change="${optionSelectedCallback}">
