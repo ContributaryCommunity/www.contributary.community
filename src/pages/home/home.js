@@ -3,22 +3,26 @@ import { GitHubService } from '../../services/github-service';
 import { TopologyService } from '../../services/topology-service';
 
 import '../../components/dropdown/dropdown';
+import '../../components/issues-list/issues-list';
 
 class HomePageComponent extends LitElement {
   
   static get properties() {
     return {
-      username: {
-        type: String
+      languageOptions: {
+        type: Array
       },
-      avatarUrl: {
-        type: String
+      projectOptions: {
+        type: Array
       },
-      topology: {
-        type: Object
+      repositoryOptions: {
+        type: Array
       },
-      selectedLanguage: {
-        type: String
+      selectedProjectIndex: {
+        type: Number
+      },
+      selectedLanguageIndex: {
+        type: Number
       },
       selectedProjectIndex: {
         type: Number
@@ -32,8 +36,20 @@ class HomePageComponent extends LitElement {
       selectedRepositoryName: {
         type: String
       },
-      repositoriesCache: {
-        types: String
+      selectedLanguage: {
+        type: String
+      },
+      username: {
+        type: String
+      },
+      avatarUrl: {
+        type: String
+      },
+      selectedLanguage: {
+        type: String
+      },
+      issues: {
+        type: Array
       }
     };
   }
@@ -41,32 +57,11 @@ class HomePageComponent extends LitElement {
   constructor() {
     super();
 
-    // TODO handle defaults, index vs name?  more ambigious
-    this.selectedLanguage = 'javascript';
-    this.selectedProjectIndex = 0;
-    this.selectedProjectName = 'ProjectEvergreen';
-    this.selectedRepositoryIndex = 0;
-    this.selectedRepositoryName = 'project-evergreen';
-    this.topology = {
-      javascript: {
-        projects: [{
-          repositories: []
-        }]
-      }
-    };
-    this.repositoriesCache = {
-      ProjectEvergreen: {
-        repositories: [{
-          issues: [] 
-        }]
-      }
-    };
-
     this.topologyService = new TopologyService();
     this.githubService = new GitHubService();
   }
 
-  // step 1 - populate topology key (language) dropdown 
+  // step 0 - populate topology key (language) dropdown 
   connectedCallback() {
     this.getTopologyKeys();
 
@@ -79,21 +74,19 @@ class HomePageComponent extends LitElement {
 
   getTopologyKeys() {
     this.topologyService.getTopologyKeys().then((response) => {
-      response.forEach((key) => {
-        this.topology = {
-          ...this.topology,
-          // TODO needed ???
-          [key]: {
-            projects: [{
-              repositories: []
-            }]
-          }
+      const newLanguageOptions = response.map((key) => {
+        return {
+          value: key
         };
       });
+      
+      this.languageOptions = [
+        ...newLanguageOptions
+      ];
     });
   }
 
-  // step 2 - select a language from the topology to get available projects
+  // step 1 - user selects a language from the topology to see available projects
   getSelectedLanguage(event) {
     const selectElement = event.path[0];
     const selectOptions = Array.from(selectElement.children);   
@@ -101,17 +94,28 @@ class HomePageComponent extends LitElement {
 
     if (selectedOption.value !== '') {
       this.selectedLanguage = selectedOption.value;
-      
+      this.selectedLanguageIndex = selectElement.selectedIndex - 1;
+
       this.topologyService.getFullTopologyByKey(this.selectedLanguage).then((response) => {
-        this.topology = {
-          ...this.topology,
-          [this.selectedLanguage]: response
-        };
+        const newProjectOptions = response.projects.map((project) => {
+          const { name, type, repositories } = project;
+
+          return {
+            value: name,
+            type,
+            name,
+            repositories
+          };
+        });
+
+        this.projectOptions = [
+          ...newProjectOptions
+        ];
       });
     }
   }
 
-  // step 2 - select a project to get available repos
+  // step 3 - user select a project to see available repositories for that project
   getSelectedProject(event) {
     const selectElement = event.path[0];
     const selectOptions = Array.from(selectElement.children);   
@@ -119,10 +123,9 @@ class HomePageComponent extends LitElement {
 
     if (selectedOption.value !== '') {
       this.selectedProjectIndex = selectElement.selectedIndex - 1;
-      this.selectedProjectName = selectedOption.value; 
+      this.selectedProjectName = selectedOption.value;
 
-      // TODO if wild card, fetch from github
-      const projectRepositories = this.topology[this.selectedLanguage].projects[this.selectedProjectIndex].repositories;
+      const projectRepositories = this.projectOptions[this.selectedProjectIndex].repositories;
 
       if (projectRepositories[0] === '*') {
         this.fetchRepositoriesForProject();
@@ -133,7 +136,7 @@ class HomePageComponent extends LitElement {
   }
 
   fetchRepositoriesForProject() {
-    const project = this.topology[this.selectedLanguage].projects[this.selectedProjectIndex];
+    const project = this.projectOptions[this.selectedProjectIndex];
     
     this.githubService.getRepositoriesForProject(project.name, project.type).then((response) => {
       this.setRepositoriesForProject(response);
@@ -141,22 +144,21 @@ class HomePageComponent extends LitElement {
   }
 
   setRepositoriesForProject(repositories) {
-    const modeledRepositories = repositories.map((repo) => {
+    const newRepositoryOptions = repositories.map((repository) => {
+      const { name } = repository;
+
       return {
-        ...repo,
-        issues: []
+        value: name,
+        name
       };
     });
 
-    this.repositoriesCache = {
-      ...this.repositoriesCache,
-      [this.selectedProjectName]: {
-        repositories: modeledRepositories
-      }
-    };
+    this.repositoryOptions = [
+      ...newRepositoryOptions
+    ];
   }
 
-  // step 3 - dropdown to browse repos per project
+  // step 4 - user selects an repository to see available issues
   getSelectedRepository(event) {
     const selectElement = event.path[0];
     const selectOptions = Array.from(selectElement.children);   
@@ -170,70 +172,41 @@ class HomePageComponent extends LitElement {
     }
   }
 
-  // step 4 - scroll to views issues per repo
   getIssuesForRepository() {
-    this.githubService.getIssuesForRepository(this.selectedProjectName, this.selectedRepositoryName).then(response => {
-      const currentRepoName = this.selectedProjectName;
-      const repositories = this.repositoriesCache[this.selectedProjectName].repositories.map((repo) => {
-        return {
-          ...repo,
-          issues: response
-        };
-      });
+    const currentProjectName = this.projectOptions[this.selectedProjectIndex].name;
+    const currentRepoName = this.repositoryOptions[this.selectedRepositoryIndex].name;
 
-      this.repositoriesCache = {
-        ...this.repositoriesCache,
-        [currentRepoName]: {
-          repositories
-        }
-      };
+    this.githubService.getIssuesForRepository(currentProjectName, currentRepoName).then(response => {
+      this.issues = [
+        ...response
+      ];
     });
   }
 
   // TODO conditional rendering
   render() {
-    // clean up mixed this. vs destructuring usage 
-    const { username, avatarUrl, topology, repositoriesCache } = this;
-    const languageOptions = Object.keys(topology).map((key) => {
-      return {
-        value: key
-      };
-    });
-    const projectOptions = topology[this.selectedLanguage].projects.map((project) => {
-      return {
-        value: project.name
-      };
-    });
-    const repositoryOptions = repositoriesCache[this.selectedProjectName].repositories.map((repository) => {
-      return {
-        value: repository.name
-      };
-    });
+    const { username, avatarUrl, issues } = this;
+    const { languageOptions, projectOptions, repositoryOptions } = this;
 
-    /* eslint-disable indent */
+    /* eslint-disable */
     return html`
 
       <img src="${avatarUrl}" alt="${username}"/>
-      
       <p>Hello ${username}!</p>
 
       <hr/>
       
       <h2>Step 1: Pick a language!</h2>
-
       <eve-dropdown 
         label="Languages.."
         .options="${languageOptions}"
         .optionSelectedCallback="${this.getSelectedLanguage.bind(this)}"
       ></eve-dropdown>
 
-      <br/>
-      <br/>
-
-      <span>Selected Language: ${this.selectedLanguage}<span>
+      <p>Selected Language: ${this.selectedLanguage}<p>
       
       <hr/>
-
+    
       <h2>Step 2: Pick a project!</h2>
       <eve-dropdown 
         label="Projects..."
@@ -241,13 +214,10 @@ class HomePageComponent extends LitElement {
         .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
       ></eve-dropdown>
 
-      <br/>
-      <br/>
-
-      <span>Selected Project: ${this.selectedProjectName}<span>
+      <p>Selected Project: ${this.selectedProjectName}<p>
           
       <hr/>
-      
+
       <h2>Step 3: Pick a repo!</h2>
       <eve-dropdown 
         label="Repositories..."
@@ -258,18 +228,18 @@ class HomePageComponent extends LitElement {
       <br/>
       <br/>
 
-      <span>Selected Repo: ${this.selectedRepositoryName}<span>
+      <p>Selected Repo: ${this.selectedRepositoryName}<p>
 
       <hr/>
 
       <h2>Step 4: Find an issue and help out!</h2>
-        ${repositoriesCache[this.selectedProjectName].repositories[this.selectedRepositoryIndex].issues.map((issue) => {
-            return html`<p><a href="${issue.url}" target="_blank">${issue.title}</a></p>`;
-          })
-        }
+      <eve-issues-list 
+        .issues="${issues}">
+      </eve-issues-list>
 
     </div>
   `;
+
     /* eslint-enable */
   }
 }

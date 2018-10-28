@@ -25,7 +25,6 @@ export class GitHubService {
   }
 
   // https://developer.github.com/v3/repos/#get
-  // TODO static list
   getRepositoriesForProject(projectName, type) {
     const urlSuffix = type === 'org'
       ? `orgs/${projectName}/repos`

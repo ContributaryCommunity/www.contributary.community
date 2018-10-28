@@ -18,8 +18,14 @@ class DropdownComponent extends LitElement {
 
   /* eslint-disable indent */
   render() {
-    const { options, label, optionSelectedCallback } = this;
+    let { options, label, optionSelectedCallback } = this;
 
+    if (!options) {
+      options = [];
+    }
+
+    console.log('options', options);
+    
     return html`
       <select @change="${optionSelectedCallback}">
         <option value="">${label}</option>
