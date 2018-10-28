@@ -1,7 +1,14 @@
 # contributary
+[![GitHub release](https://img.shields.io/github/tag/ContributaryCommunity/www.contributary.community.svg)](https://github.com/ContributaryCommunity/www.contributary.community/tags)
+![CircleCI branch](https://img.shields.io/circleci/project/github/ContributaryCommunity/www.contributary.community/master.svg?style=plastic)
+[![GitHub issues](https://img.shields.io/github/issues-raw/ContributaryCommunity/www.contributary.community.svg)](https://github.com/ContributaryCommunity/www.contributary.community/issues)
+[![GitHub issues](https://img.shields.io/github/issues-pr-raw/ContributaryCommunity/www.contributary.community.svg)](https://github.com/ContributaryCommunity/www.contributary.community/issues)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ContributaryCommunity/www.contributary.community/master/LICENSE.md)
 
 ## Overview
 The goal of Contributary is to help those looking to get started with contributing to OSS projects by providing a convenient and easy way to search for great projects on GitHub that could use their help!
+
+![Create Evergreen App](https://s3.amazonaws.com/hosted.contributary.community/contributary-demo.png)
 
 > Since the project only lives in this repo for right now, to run it, follow the development steps and make sure to create a GitHub personal access token (with _repo_ permissions) and put it into _src/credentials.js_.
 
@@ -64,7 +71,7 @@ Here a small example:
 For more information, visit the [wiki](https://github.com/ContributaryCommunity/contributary/wiki).
 
 ## Development
-This project is an evergreen web application, bootstrapped from [Create Evergeen App](https://github.com/ProjectEvergreen/create-evergreen-app) using modern JavaScript and CSS features, powered by [`LitElement`](https://github.com/Polymer/lit-element) and [Web Components](https://www.webcomponents.org/).  
+This project is an evergreen web application, bootstrapped from [Create Evergeen App](https://github.com/ContributaryCommunity/www.contributary.community) using modern JavaScript and CSS features, powered by [`LitElement`](https://github.com/Polymer/lit-element) and [Web Components](https://www.webcomponents.org/).  
 
 ### Setup
 To start developing, you will need:
@@ -74,4 +81,4 @@ To start developing, you will need:
 1. Run `yarn install`
 
 ### Tasks
-Tasks are defined per [Create Evergreen App](https://github.com/ProjectEvergreen/create-evergreen-app#development).
+Tasks are defined per [Create Evergreen App](https://github.com/ContributaryCommunity/www.contributary.community#development).
