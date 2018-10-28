@@ -1,0 +1,23 @@
+:host {
+
+  & table {
+    margin: 0 auto;
+  }
+  
+  & tr {
+    text-align: left;
+  }
+
+  & tr.issue-row {
+    border: solid 1px;
+    margin-bottom: 20px;
+  }
+
+  & .issue-label {
+    display: inline-block;
+    border: 1px solid gray;
+    padding: 2px;
+    margin: 2px;
+  }
+  
+}

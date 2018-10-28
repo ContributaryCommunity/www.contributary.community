@@ -50,7 +50,10 @@ export class GitHubService {
           return {
             id: issue.id,
             title: issue.title,
-            url: issue.html_url
+            url: issue.html_url,
+            labels: issue.labels,
+            assignees: issue.assignee ? [issue.assignee] : issue.assignees,
+            number: issue.number
           };
         });
       });

@@ -5,6 +5,8 @@ import { TopologyService } from '../../services/topology-service';
 import '../../components/dropdown/dropdown';
 import '../../components/issues-list/issues-list';
 
+import css from './home.css';
+
 class HomePageComponent extends LitElement {
   
   static get properties() {
@@ -47,6 +49,12 @@ class HomePageComponent extends LitElement {
 
     this.topologyService = new TopologyService();
     this.githubService = new GitHubService();
+
+    this.githubService.getIssuesForRepository('ProjectEvergreen', 'create-evergreen-app').then(response => {
+      this.issues = [
+        ...response
+      ];
+    });
   }
 
   // step 0 - populate topology key (language) dropdown 
@@ -174,6 +182,9 @@ class HomePageComponent extends LitElement {
 
     /* eslint-disable indent */
     return html`
+      <style>
+        ${css}
+      </style>
 
       <img src="${avatarUrl}" alt="${username}"/>
       <p>Hello ${username}!</p>
@@ -226,6 +237,7 @@ class HomePageComponent extends LitElement {
             <hr/>
 
             <h2>Step 4: Find an issue and help out!</h2>
+
             <eve-issues-list 
               .issues="${issues}">
             </eve-issues-list>

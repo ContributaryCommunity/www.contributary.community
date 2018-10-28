@@ -1,4 +1,5 @@
 import { html, LitElement } from '@polymer/lit-element'; 
+import css from './issues-list.css';
 
 class IssuesListComponent extends LitElement {
 
@@ -19,10 +20,40 @@ class IssuesListComponent extends LitElement {
     }
 
     return html`
-      ${issues.map((issue) => {
-          return html`<p><a href="${issue.url}" target="_blank">${issue.title}</a></p>`;
-        })
-      }
+      <style>
+        ${css}
+      </style>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Issue No.</th>  
+            <th>Title</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        ${issues.map((issue) => {
+          console.log('issue', issue);
+          const labels = issue.labels.map((label) => {
+            return html`
+              <span
+                style="background-color: #${label.color}"
+                class="issue-label">${label.name}
+              </span>
+            `;
+          });
+
+          return html`
+            <tr class="issue-row">
+              <td><a href="${issue.url}" target="_blank">${issue.number}</a></td>
+              <td><a href="${issue.url}" target="_blank">${issue.title}</a></td>
+              ${labels}
+            </tr>
+          `;
+        })}
+        </tbody>
+      </table>
     `;
   }
   /* eslint-enable indent */
