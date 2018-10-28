@@ -1,0 +1,8 @@
+{
+  "label": "PHP",
+  "projects": [{
+    "name": "composer",
+    "type": "org",
+    "repositories": ["*"]
+  }]
+}

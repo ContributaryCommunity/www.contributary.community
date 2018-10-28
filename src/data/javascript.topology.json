@@ -1,0 +1,14 @@
+{
+  "label": "JavaScript",
+  "projects": [{
+    "name": "ProjectEvergreen",
+    "type": "org",
+    "repositories": ["*"]
+  }, {
+    "name": "thescientist13",
+    "type": "user",
+    "repositories": [{
+      "name": "github-dashboard"
+    }]
+  }]
+}
