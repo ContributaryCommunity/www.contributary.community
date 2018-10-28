@@ -19,10 +19,10 @@ class DropdownComponent extends LitElement {
   /* eslint-disable indent */
   render() {
     let { options, label, optionSelectedCallback } = this;
-
+    
     if (!options) {
       options = [];
-    }
+    } 
     
     return html`
       <select @change="${optionSelectedCallback}">
