@@ -91,6 +91,7 @@ class HomePageComponent extends LitElement {
 
           return {
             value: name,
+            label: name,
             type,
             name,
             repositories
@@ -136,6 +137,7 @@ class HomePageComponent extends LitElement {
       const { name } = repository;
 
       return {
+        label: name,
         value: name,
         name
       };
@@ -186,7 +188,7 @@ class HomePageComponent extends LitElement {
       <hr/>
 
       <div class="selection-wrapper">
-        <h2>Step 1: Pick a language!</h2>
+        <h2>Step 1: Select a Language</h2>
         <eve-dropdown 
           label="Languages.."
           .options="${languageOptions}"
@@ -199,9 +201,9 @@ class HomePageComponent extends LitElement {
             <div class="selection-wrapper">
               <hr/>
               
-              <p>Selected Language: ${languageOptions[this.selectedLanguageIndex].label}<p>
+              <p>Selected Language: ${languageOptions[this.selectedLanguageIndex].value}<p>
               
-              <h2>Step 2: Pick a project!</h2>
+              <h2>Step 2: Select a Project</h2>
               <eve-dropdown 
                 label="Projects..."
                 .options="${projectOptions}"
@@ -215,11 +217,11 @@ class HomePageComponent extends LitElement {
       ${repositoryOptions
         ? html`
             <div class="selection-wrapper">
-              <p>Selected Project: ${this.selectedProjectName}<p>
+              <p>Selected Project: ${projectOptions[this.selectedProjectIndex].value}<p>
       
               <hr/>
               
-              <h2>Step 3: Pick a repo!</h2>
+              <h2>Step 3: Select a Repository</h2>
               <eve-dropdown 
                 label="Repositories..."
                 .options="${repositoryOptions}"
@@ -233,7 +235,7 @@ class HomePageComponent extends LitElement {
       ${issues
         ? html`
             <div class="selection-wrapper">
-              <p>Selected Repo: ${this.selectedRepositoryName}<p>
+            <p>Selected Project: ${repositoryOptions[this.selectedRepositoryIndex].value}<p>
 
               <hr/>
 

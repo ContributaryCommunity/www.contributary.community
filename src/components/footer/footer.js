@@ -11,7 +11,7 @@ class FooterComponent extends LitElement {
 
       <footer>
 
-        <a href="https://projectevergreen.github.io/" title="Contributary home link">Contributary</a>
+        <a href="https://www.contributary.community/" title="Contributary home link">💙 The Contributary Community</a>
       
       </footer>
     `;
