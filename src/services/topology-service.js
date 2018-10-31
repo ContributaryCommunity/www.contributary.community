@@ -1,6 +1,5 @@
-import topology from './topology.json';
+import topology from '../data/topology';
 
-// static?
 export class TopologyService {
   constructor() {
     this.topology = topology;
