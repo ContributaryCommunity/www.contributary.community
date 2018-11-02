@@ -1,28 +1,25 @@
-import topology from '../data/topology';
-
 export class TopologyService {
   constructor() {
-    this.topology = topology;
+    this.baseUrl = '/api/topology';
+    this.topology;
   }
 
-  getTopologies() {
-    return new Promise((resolve) => {
-      resolve(this.topologies);
-    });
-  }
+  getTopology(useCache) {
+    if (useCache && this.topology) {
+      return new Promise((resolve) => {
+        resolve(this.topology);
+      });
+    }
 
-  getTopologyKeys() {
-    return new Promise((resolve) => {
-      const keys = this.topology.language;
+    return fetch(this.baseUrl)
+      .then((resp) => resp.json())
+      .then((response) => {
+        const data = response.body;
 
-      resolve(keys);
-    });
-  }
+        this.topology = data;
 
-  getFullTopologyByKey(key) {
-    return new Promise((resolve) => {
-      resolve(this.topology.language[key]);
-    });
+        return data;
+      });
   }
 
 }

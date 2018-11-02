@@ -53,12 +53,13 @@ class HomePageComponent extends LitElement {
 
   // step 0 - populate topology key (language) dropdown 
   connectedCallback() {
-    this.topologyService.getTopologyKeys().then((response) => {
+    this.topologyService.getTopology().then((response) => {      
+      const hierarchies = response.language;
       const newLanguageOptions = [];
 
-      Object.keys(response).forEach((key) => {
+      Object.keys(hierarchies).forEach((key) => {
         newLanguageOptions.push({
-          label: response[key].label,
+          label: hierarchies[key].label,
           value: key
         });
       });
@@ -85,8 +86,10 @@ class HomePageComponent extends LitElement {
     if (value !== '') {
       this.selectedLanguageIndex = selectElement.selectedIndex - 1;
 
-      this.topologyService.getFullTopologyByKey(value).then((response) => {
-        const newProjectOptions = response.projects.map((project) => {
+      this.topologyService.getTopology(true).then((response) => {
+        const hierarchy = response.language[value];
+
+        const newProjectOptions = hierarchy.projects.map((project) => {
           const { name, type, repositories } = project;
 
           return {

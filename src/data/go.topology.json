@@ -1,8 +1,0 @@
-{
-  "label": "Go",
-  "projects": [{
-    "name": "Docker",
-    "type": "org",
-    "repositories": ["*"]
-  }]
-}
