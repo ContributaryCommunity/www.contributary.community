@@ -14,11 +14,9 @@ export class TopologyService {
     return fetch(this.baseUrl)
       .then((resp) => resp.json())
       .then((response) => {
-        const data = response.body;
+        this.topology = response;
 
-        this.topology = data;
-
-        return data;
+        return this.topology;
       });
   }
 
