@@ -23,10 +23,6 @@ jobs:
       - run:
           name: Run Linter
           command: yarn lint
-      
-      - run:
-          name: Setup Credentials File
-          command: touch ./src/credentials.js
 
       - run:
           name: Run Unit Tests
