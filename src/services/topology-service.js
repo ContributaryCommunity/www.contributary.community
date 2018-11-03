@@ -1,4 +1,5 @@
 export class TopologyService {
+  
   constructor() {
     this.baseUrl = '/api/topology';
     this.topology;

@@ -34,12 +34,6 @@ class HomePageComponent extends LitElement {
       },
       issues: {
         type: Array
-      },
-      username: {
-        type: String
-      },
-      avatarUrl: {
-        type: String
       }
     };
   }
@@ -67,12 +61,6 @@ class HomePageComponent extends LitElement {
       this.languageOptions = [
         ...newLanguageOptions
       ];
-    });
-
-    // just for testing github by showing user details
-    this.githubService.getUserDetails().then((data) => {
-      this.username = data.username;
-      this.avatarUrl = data.avatar;
     });
   }
 
@@ -176,17 +164,13 @@ class HomePageComponent extends LitElement {
   }
 
   render() {
-    const { username, avatarUrl, issues } = this;
-    const { languageOptions, projectOptions, repositoryOptions } = this;
+    const { issues, languageOptions, projectOptions, repositoryOptions } = this;
 
     /* eslint-disable indent */
     return html`
       <style>
         ${css}
       </style>
-
-      <img src="${avatarUrl}" alt="${username}"/>
-      <p>Hello ${username}!</p>
 
       <hr/>
 

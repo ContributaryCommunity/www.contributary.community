@@ -19,11 +19,6 @@ module.exports = webpackMerge(commonConfig, {
         target: 'http://stage.contributary.community/',
         secure: false,
         changeOrigin: true
-      },
-      '/api.github.com/*': {
-        target: 'http://api.github.com/',
-        secure: false,
-        changeOrigin: true
       }
     }
   }

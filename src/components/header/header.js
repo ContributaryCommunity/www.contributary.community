@@ -12,6 +12,7 @@ class HeaderComponent extends LitElement {
       <header>
 
         <h1>Welcome to Contributary!</h1>
+        <span>logo here please :)</span>
 
       </header>
     `;
