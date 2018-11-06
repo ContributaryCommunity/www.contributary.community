@@ -66,7 +66,7 @@ class HomePageComponent extends LitElement {
 
   // step 1 - user selects a language from the topology to see available projects
   getSelectedLanguage(event) {
-    const selectElement = event.path[0];
+    const selectElement = event.composedPath()[0];
     const selectOptions = Array.from(selectElement.children);   
     const selectedOption = selectOptions[selectElement.selectedIndex];
     const { value } = selectedOption;
@@ -98,7 +98,7 @@ class HomePageComponent extends LitElement {
 
   // step 2 - user select a project to see available repositories for that project
   getSelectedProject(event) {
-    const selectElement = event.path[0];
+    const selectElement = event.composedPath()[0];
     const selectOptions = Array.from(selectElement.children);   
     const selectedOption = selectOptions[selectElement.selectedIndex];
 
@@ -141,7 +141,7 @@ class HomePageComponent extends LitElement {
 
   // step 3 - user selects a repository to see available issues
   getSelectedRepository(event) {
-    const selectElement = event.path[0];
+    const selectElement = event.composedPath()[0];
     const selectOptions = Array.from(selectElement.children);   
     const selectedOption = selectOptions[selectElement.selectedIndex];
 
@@ -176,7 +176,7 @@ class HomePageComponent extends LitElement {
 
       <div class="selection-wrapper">
         <h2>Step 1: Select a Language</h2>
-        <cc-dropdown 
+        <cc-dropdown
           label="Languages.."
           .options="${languageOptions}"
           .optionSelectedCallback="${this.getSelectedLanguage.bind(this)}"
