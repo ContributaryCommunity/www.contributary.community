@@ -32,18 +32,18 @@ jobs:
           name: Execute The Build
           command: yarn build
 
-       - run:
+      # TODO figure out how to manually build to stage v prod
+      - run:
           name: Build / Deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "Master branch, releasing deploy to...? (stage)"
 
-              # TODO figure out how to manually build to prod
-              # export RELEASE_ENV=production
+              echo "Master branch, releasing deploy to...? (stage)"
               yarn run release
 
             else
 
               echo "Branch undetermined, likely a CI build, just run the build"
               yarn run build
+
             fi
