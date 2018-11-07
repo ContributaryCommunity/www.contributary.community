@@ -17,12 +17,14 @@
     "Contributary"
   ],
   "scripts": {
-    "build": "rimraf ./public && webpack --config ./webpack.config.prod.js --progress",
+    "build": "yarn clean ./public && webpack --config ./webpack.config.prod.js --progress",
+    "clean": "rimraf ./public ./reports",
     "develop": "webpack-dev-server --config ./webpack.config.develop.js --open",
     "lint": "eslint *.js src/**/**/*.js",
+    "release": "yarn clean && webpack --config ./webpack.config.release.js --progress",
     "serve": "yarn build && ws",
     "start": "yarn develop",
-    "test": "rimraf ./reports && karma start"
+    "test": "yarn clean && karma start"
   },
   "dependencies": {
     "@polymer/lit-element": "^0.6.2"
@@ -60,6 +62,7 @@
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.9",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "webpack-s3-plugin": "^1.0.2"
   }
 }

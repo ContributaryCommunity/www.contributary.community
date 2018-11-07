@@ -1,5 +1,6 @@
 *DS_Store
 *.log
+aws.json
 node_modules/
 public/
 reports/
