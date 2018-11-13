@@ -20,7 +20,7 @@
     "build": "yarn clean ./public && webpack --config ./webpack.config.prod.js --progress",
     "clean": "rimraf ./public ./reports",
     "develop": "webpack-dev-server --config ./webpack.config.develop.js --open",
-    "lint": "eslint *.js src/**/**/*.js",
+    "lint": "eslint \"*.js\" \"src/**/**/*.js\"",
     "release": "yarn clean && webpack --config ./webpack.config.release.js --progress",
     "serve": "yarn build && ws",
     "start": "yarn develop",

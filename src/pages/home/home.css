@@ -14,4 +14,7 @@
     animation: fadein 2s;
   }
   
+  & h2 {
+    color: #38597a;
+  }
 }

@@ -1,5 +1,6 @@
 import { html, LitElement } from '@polymer/lit-element';
 import css from './header.css';
+import logo from './logo.png';
 
 class HeaderComponent extends LitElement {
 
@@ -12,8 +13,9 @@ class HeaderComponent extends LitElement {
       <header>
 
         <h1>Welcome to Contributary!</h1>
-        <span>logo here please :)</span>
-
+        <img src="${logo}"/>
+        <h3><i>Helping connect open source with the open source community.</i></h3>
+        
       </header>
     `;
   }

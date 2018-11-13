@@ -10,8 +10,8 @@ module.exports = {
   open: true,
 
   rewrite: [{
-    from: '/some-api/*',
-    to: 'http://your-domain.com/some-api/$1'
+    from: '/api/*',
+    to: 'http://stage.contributary.community/api/$1'
   }]
 
 };
