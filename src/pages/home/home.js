@@ -186,10 +186,6 @@ class HomePageComponent extends LitElement {
       ${projectOptions
         ? html`
             <div class="selection-wrapper">
-              <hr/>
-              
-              <p>Selected Language: ${languageOptions[this.selectedLanguageIndex].value}<p>
-              
               <h2>Step 2: Select a Project</h2>
               <cc-dropdown 
                 label="Projects..."
@@ -203,11 +199,7 @@ class HomePageComponent extends LitElement {
     
       ${repositoryOptions
         ? html`
-            <div class="selection-wrapper">
-              <p>Selected Project: ${projectOptions[this.selectedProjectIndex].value}<p>
-      
-              <hr/>
-              
+            <div class="selection-wrapper">           
               <h2>Step 3: Select a Repository</h2>
               <cc-dropdown 
                 label="Repositories..."
@@ -222,10 +214,6 @@ class HomePageComponent extends LitElement {
       ${issues
         ? html`
             <div class="selection-wrapper">
-            <p>Selected Project: ${repositoryOptions[this.selectedRepositoryIndex].value}<p>
-
-              <hr/>
-
               <h2>Step 4: Find an issue and help out!</h2>
 
               <cc-issues-list 
