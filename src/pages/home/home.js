@@ -34,6 +34,9 @@ class HomePageComponent extends LitElement {
       },
       issues: {
         type: Array
+      },
+      filterByGoodFirstIssue: {
+        type: Boolean
       }
     };
   }
@@ -164,7 +167,12 @@ class HomePageComponent extends LitElement {
   }
 
   render() {
-    const { issues, languageOptions, projectOptions, repositoryOptions } = this;
+    const { issues, languageOptions, projectOptions, repositoryOptions, filterByGoodFirstIssue } = this;
+    const labelFilters = [];
+    
+    if (filterByGoodFirstIssue) {
+      labelFilters.push('good first issue');
+    }
 
     /* eslint-disable indent */
     return html`
@@ -215,9 +223,12 @@ class HomePageComponent extends LitElement {
         ? html`
             <div class="selection-wrapper">
               <h2>Step 4: Find an issue and help out!</h2>
+              <label for="gfi">Filter By Good First Issue</label>
+              <input type="checkbox" @change="${() => this.filterByGoodFirstIssue = !this.filterByGoodFirstIssue}"/>
 
               <cc-issues-list 
-                .issues="${issues}">
+                .issues="${issues}"
+                .labelFilters="${labelFilters}">
               </cc-issues-list>
             </div>
           `

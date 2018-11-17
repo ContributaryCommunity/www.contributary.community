@@ -120,4 +120,51 @@ describe('Issues List Component', () => {
 
   });
 
+  describe('Using Filters: Good First Issue', () => {
+    let testBed;
+    let template;
+    let list;
+    const filters = ['good first issue'];
+    const numItems = 6;
+    const expectedItems = numItems / 2;
+    const issues = new Array(numItems).fill(null).map((key, index) => {
+      return {
+        title: `title${index}`,
+        url: `http://github.com/issue/${index + 1}`,
+        number: index.toString(),
+        labels: [{
+          name: index % 2 === 0 ? `name${index}` : 'good first issue',
+          color: index % 2 === 0 ? '010101' : 'aaaaaa'
+        }]
+      };
+    });
+
+    beforeEach(async () => {
+      testBed = document.createElement('div');
+      template = html`
+        <cc-issues-list 
+          .issues="${issues}"
+          .labelFilters="${filters}">
+        ></cc-dropdown>
+      `;
+
+      render(template, testBed);
+      list = testBed.firstElementChild;
+
+      await list.updateComplete;
+    });
+  
+    afterEach(() => {
+      list.remove();
+      list = null;
+    });
+
+    it(`should show ${expectedItems} issues when the good first issue filter is provided`, () => {
+      const rows = list.shadowRoot.querySelectorAll('table tbody tr');
+  
+      expect(rows.length).toBe(expectedItems);
+    });
+
+  });
+
 });

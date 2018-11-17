@@ -7,16 +7,33 @@ class IssuesListComponent extends LitElement {
     return {
       issues: {
         type: Array
+      },
+      labelFilters: {
+        type: Array
       }
     };
   }
 
   /* eslint-disable indent */
   render() {
-    let { issues } = this;
+    let { issues, labelFilters } = this;
 
     if (!issues) {
       issues = [];
+    }
+
+    if (labelFilters && labelFilters.length > 0) {
+      const filteredIssues = [];
+      
+      issues.forEach((issue) => {
+        issue.labels.forEach((label) => {
+          if (labelFilters.indexOf(label.name) >= 0) {
+            filteredIssues.push(issue);
+          }
+        });
+      });
+
+      issues = filteredIssues;
     }
 
     return html`
