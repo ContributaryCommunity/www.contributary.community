@@ -35,7 +35,7 @@ class HomePageComponent extends LitElement {
       issues: {
         type: Array
       },
-      filterGoodFirstIssue: {
+      filterByGoodFirstIssue: {
         type: Boolean
       }
     };
@@ -166,21 +166,11 @@ class HomePageComponent extends LitElement {
     });
   }
 
-  // additional form handling
-  handleGoodFirstIssueFilterToggle() {
-    console.log('handleGoodFirstIssueFilterToggle before?', this.filterByGoodFirstIssue); // eslint-disable-line
-
-    this.filterByGoodFirstIssue = !this.filterByGoodFirstIssue;
-
-    console.log('handleGoodFirstIssueFilterToggle now?', this.filterByGoodFirstIssue); // eslint-disable-line
-  }
-
   render() {
-    const { issues, languageOptions, projectOptions, repositoryOptions, filterGoodFirstIssue } = this;
+    const { issues, languageOptions, projectOptions, repositoryOptions, filterByGoodFirstIssue } = this;
     const filters = [];
     
-    if (filterGoodFirstIssue) {
-      console.log('enable GFI filter'); // eslint-disable-line
+    if (filterByGoodFirstIssue) {
       filters.push('good first issue');
     }
 
@@ -234,7 +224,7 @@ class HomePageComponent extends LitElement {
             <div class="selection-wrapper">
               <h2>Step 4: Find an issue and help out!</h2>
               <label for="gfi">Filter By Good First Issue</label>
-              <input type="checkbox" @change="${() => this.filterGoodFirstIssue = !this.filterGoodFirstIssue}"/>
+              <input type="checkbox" @change="${() => this.filterByGoodFirstIssue = !this.filterByGoodFirstIssue}"/>
 
               <cc-issues-list 
                 .issues="${issues}"
