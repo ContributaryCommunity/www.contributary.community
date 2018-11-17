@@ -1,6 +1,7 @@
 const commonConfig = require('./webpack.config.common');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const path = require('path');
 const webpackMerge = require('webpack-merge');
 
 module.exports = webpackMerge(commonConfig, {
@@ -13,13 +14,12 @@ module.exports = webpackMerge(commonConfig, {
 
   plugins: [
     new FaviconsWebpackPlugin({
-      logo: './favicon.png',
+      logo: path.join(__dirname, 'src', 'favicon.png'),
       emitStats: true,
-      prefix: '/',
       statsFilename: 'icons/stats.json',
       inject: true,
       title: 'Contributary',
-      background: '#466628',
+      background: '#efefef',
       icons: {
         android: true,
         appleIcon: false,
