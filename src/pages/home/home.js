@@ -34,6 +34,9 @@ class HomePageComponent extends LitElement {
       },
       issues: {
         type: Array
+      },
+      filterGoodFirstIssue: {
+        type: Boolean
       }
     };
   }
@@ -163,8 +166,23 @@ class HomePageComponent extends LitElement {
     });
   }
 
+  // additional form handling
+  handleGoodFirstIssueFilterToggle() {
+    console.log('handleGoodFirstIssueFilterToggle before?', this.filterByGoodFirstIssue); // eslint-disable-line
+
+    this.filterByGoodFirstIssue = !this.filterByGoodFirstIssue;
+
+    console.log('handleGoodFirstIssueFilterToggle now?', this.filterByGoodFirstIssue); // eslint-disable-line
+  }
+
   render() {
-    const { issues, languageOptions, projectOptions, repositoryOptions } = this;
+    const { issues, languageOptions, projectOptions, repositoryOptions, filterGoodFirstIssue } = this;
+    const filters = [];
+    
+    if (filterGoodFirstIssue) {
+      console.log('enable GFI filter'); // eslint-disable-line
+      filters.push('good first issue');
+    }
 
     /* eslint-disable indent */
     return html`
@@ -215,9 +233,12 @@ class HomePageComponent extends LitElement {
         ? html`
             <div class="selection-wrapper">
               <h2>Step 4: Find an issue and help out!</h2>
+              <label for="gfi">Filter By Good First Issue</label>
+              <input type="checkbox" @change="${() => this.filterGoodFirstIssue = !this.filterGoodFirstIssue}"/>
 
               <cc-issues-list 
-                .issues="${issues}">
+                .issues="${issues}"
+                .labelFilters="${filters}">
               </cc-issues-list>
             </div>
           `
