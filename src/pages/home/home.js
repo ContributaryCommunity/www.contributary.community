@@ -168,10 +168,10 @@ class HomePageComponent extends LitElement {
 
   render() {
     const { issues, languageOptions, projectOptions, repositoryOptions, filterByGoodFirstIssue } = this;
-    const filters = [];
+    const labelFilters = [];
     
     if (filterByGoodFirstIssue) {
-      filters.push('good first issue');
+      labelFilters.push('good first issue');
     }
 
     /* eslint-disable indent */
@@ -228,7 +228,7 @@ class HomePageComponent extends LitElement {
 
               <cc-issues-list 
                 .issues="${issues}"
-                .labelFilters="${filters}">
+                .labelFilters="${labelFilters}">
               </cc-issues-list>
             </div>
           `
