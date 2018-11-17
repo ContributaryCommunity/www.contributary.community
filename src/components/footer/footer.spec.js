@@ -30,11 +30,11 @@ describe('Footer Component', () => {
       });
 
       it('should have a href that links to Project Evergreen', () => {   
-        expect(link.href).toBe('https://www.contributary.community/');
+        expect(link.href).toBe('https://github.com/ContributaryCommunity');
       });
 
       it('should have a title with a meaningful value', () => {   
-        expect(link.title).toBe('Contributary home link');
+        expect(link.title).toBe('Contributary GitHub link');
       });
 
       it('should say Contributary', () => {   
