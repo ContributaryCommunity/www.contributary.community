@@ -6,7 +6,7 @@
 const webpackMerge = require('webpack-merge');
 const prodConfig = require('./webpack.config.prod');
 const S3Plugin = require('webpack-s3-plugin');
-const isProductionRelease = process.env.RELEASE_ENV === 'production';
+const isProductionRelease = process.env.RELEASE_ENV === 'prod';
 const bucketPrefix = isProductionRelease ? 'www' : 'stage';
 const releaseConfig = {
   bucket: `${bucketPrefix}.contributary.community`,
