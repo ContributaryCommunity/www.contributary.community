@@ -13,11 +13,16 @@
     margin-bottom: 20px;
   }
 
+  & tr.issue-row a:visited {
+    color: #38597a;
+  }
+
   & .issue-label {
     display: inline-block;
-    border: 1px solid gray;
-    padding: 2px;
+    padding: 5px;
     margin: 2px;
+    border-radius: 8px;
+    box-shadow: 2px 3px #888888;
   }
   
 }

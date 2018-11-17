@@ -8,7 +8,7 @@
 ## Overview
 The goal of Contributary is to help those looking to get started with contributing to OSS projects by providing a convenient and easy way to search for great projects on GitHub that could use their help!
 
-![Contributary](https://s3.amazonaws.com/hosted.contributary.community/media/contributary-demo.png)
+![Contributary](https://s3.amazonaws.com/hosted.contributary.community/media/contributary-screenshot-0.2.0.png)
 
 ## Usage
 To use the application, follow the prompts:
@@ -23,15 +23,10 @@ To use the application, follow the prompts:
 This is the main UI to the entire project.  It maps a custom topology created to help the UI stitch together repositories and issues for given GitHub projects.
 
 Essentially, the topology is heirachical based on
-```shell
-- language: it all starts with a programming language
-
-  - projects: array of projects (orgs, users) which is right now a static list
-
-    - repostiories: array or repos, this can be a wildcard (`*`), which will be fetched from GitHub, or as a static list
-      
-      - issues: array of issues from a repo, and not part of the topology here as issues will always be fetched from GitHub
-```
+- Language: it all starts with a programming language
+- Projects: array of projects (orgs, users) which is right now a static list
+- Repostiories: array or repos, this can be a wildcard (`*`), which will be fetched from GitHub, or as a static list
+- Issues: array of issues from a repo, and not part of the topology here as issues will always be fetched from GitHub
 
 Here a small example:
 ```json
@@ -60,7 +55,7 @@ Here a small example:
       }]
     },
     "etc": {
-      /* ... */
+      "//": "/* ... */"
     }
   }
 }
