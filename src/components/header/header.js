@@ -13,7 +13,7 @@ class HeaderComponent extends LitElement {
       <header>
 
         <h1>Welcome to Contributary!</h1>
-        <img src="${logo}"/>
+        <img src="${logo}" alt="Contributary logo"/>
         <h3><i>Helping connect open source with the open source community.</i></h3>
         
       </header>
