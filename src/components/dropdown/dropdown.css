@@ -1,0 +1,14 @@
+:host {
+  & select {
+    border: 0;
+    display: block;
+    width: 85%;
+    font-size: 1.5em;
+    margin: 0 auto;
+    color: #999;
+
+    @media only screen and (min-width: 700px) {
+      width: 30%;
+    }
+  }
+}
