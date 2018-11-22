@@ -1,4 +1,5 @@
 import { html, LitElement } from '@polymer/lit-element'; 
+import css from './dropdown.css';
 
 class DropdownComponent extends LitElement {
 
@@ -25,6 +26,9 @@ class DropdownComponent extends LitElement {
     } 
     
     return html`
+      <style>
+        ${css}
+      </style>
       <select @change="${optionSelectedCallback}">
         <option value="">${label}</option>
 
