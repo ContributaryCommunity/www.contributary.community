@@ -2,8 +2,21 @@
 
   & table {
     margin: 0 auto;
+    background-color: var(--secondary-color);
+    border-spacing: 0px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
   }
-  
+
+  & thead{
+    background-color: var(--primary-color);
+  }
+
+  & th {
+    color: var(--secondary-text-color, #000000);
+    padding:4px;
+  }
+
   & tr {
     text-align: left;
   }
@@ -17,6 +30,10 @@
     color: #38597a;
   }
 
+  & td {
+    padding:4px;
+  }
+
   & .issue-label {
     display: inline-block;
     padding: 5px;
@@ -24,5 +41,5 @@
     border-radius: 8px;
     box-shadow: 2px 3px #888888;
   }
-  
+
 }

@@ -8,7 +8,7 @@ import '../../components/issues-list/issues-list';
 import css from './home.css';
 
 class HomePageComponent extends LitElement {
-  
+
   static get properties() {
     return {
       languageOptions: {
@@ -48,9 +48,9 @@ class HomePageComponent extends LitElement {
     this.githubService = new GitHubService();
   }
 
-  // step 0 - populate topology key (language) dropdown 
+  // step 0 - populate topology key (language) dropdown
   connectedCallback() {
-    this.topologyService.getTopology().then((response) => {      
+    this.topologyService.getTopology().then((response) => {
       const hierarchies = response.language;
       const newLanguageOptions = [];
 
@@ -60,7 +60,7 @@ class HomePageComponent extends LitElement {
           value: key
         });
       });
-      
+
       this.languageOptions = [
         ...newLanguageOptions
       ];
@@ -68,14 +68,10 @@ class HomePageComponent extends LitElement {
   }
 
   // step 1 - user selects a language from the topology to see available projects
-  getSelectedLanguage(event) {
-    const selectElement = event.composedPath()[0];
-    const selectOptions = Array.from(selectElement.children);   
-    const selectedOption = selectOptions[selectElement.selectedIndex];
-    const { value } = selectedOption;
-    
+  getSelectedLanguage(value, idx) {
+
     if (value !== '') {
-      this.selectedLanguageIndex = selectElement.selectedIndex - 1;
+      this.selectedLanguageIndex = idx;
 
       this.topologyService.getTopology(true).then((response) => {
         const hierarchy = response.language[value];
@@ -100,13 +96,9 @@ class HomePageComponent extends LitElement {
   }
 
   // step 2 - user select a project to see available repositories for that project
-  getSelectedProject(event) {
-    const selectElement = event.composedPath()[0];
-    const selectOptions = Array.from(selectElement.children);   
-    const selectedOption = selectOptions[selectElement.selectedIndex];
-
-    if (selectedOption.value !== '') {
-      this.selectedProjectIndex = selectElement.selectedIndex - 1;
+  getSelectedProject(value, idx) {
+    if (value !== '') {
+      this.selectedProjectIndex = idx;
 
       const projectRepositories = this.projectOptions[this.selectedProjectIndex].repositories;
 
@@ -120,7 +112,7 @@ class HomePageComponent extends LitElement {
 
   fetchRepositoriesForProject() {
     const project = this.projectOptions[this.selectedProjectIndex];
-    
+
     this.githubService.getRepositoriesForProject(project.name, project.type).then((response) => {
       this.setRepositoriesForProject(response);
     });
@@ -143,13 +135,9 @@ class HomePageComponent extends LitElement {
   }
 
   // step 3 - user selects a repository to see available issues
-  getSelectedRepository(event) {
-    const selectElement = event.composedPath()[0];
-    const selectOptions = Array.from(selectElement.children);   
-    const selectedOption = selectOptions[selectElement.selectedIndex];
-
-    if (selectedOption.value !== '') {
-      this.selectedRepositoryIndex = selectElement.selectedIndex - 1;
+  getSelectedRepository(value, idx) {
+    if (value !== '') {
+      this.selectedRepositoryIndex = idx;
 
       this.getIssuesForRepository();
     }
@@ -169,7 +157,7 @@ class HomePageComponent extends LitElement {
   render() {
     const { issues, languageOptions, projectOptions, repositoryOptions, filterByGoodFirstIssue } = this;
     const labelFilters = [];
-    
+
     if (filterByGoodFirstIssue) {
       labelFilters.push('good first issue');
     }
@@ -195,7 +183,7 @@ class HomePageComponent extends LitElement {
         ? html`
             <div class="selection-wrapper">
               <h2>Step 2: Select a Project</h2>
-              <cc-dropdown 
+              <cc-dropdown
                 label="Projects..."
                 .options="${projectOptions}"
                 .optionSelectedCallback="${this.getSelectedProject.bind(this)}"
@@ -204,12 +192,12 @@ class HomePageComponent extends LitElement {
           `
         : ''
       }
-    
+
       ${repositoryOptions
         ? html`
-            <div class="selection-wrapper">           
+            <div class="selection-wrapper">
               <h2>Step 3: Select a Repository</h2>
-              <cc-dropdown 
+              <cc-dropdown
                 label="Repositories..."
                 .options="${repositoryOptions}"
                 .optionSelectedCallback="${this.getSelectedRepository.bind(this)}"
@@ -226,7 +214,7 @@ class HomePageComponent extends LitElement {
               <label for="gfi">Filter By Good First Issue</label>
               <input type="checkbox" @change="${() => this.filterByGoodFirstIssue = !this.filterByGoodFirstIssue}"/>
 
-              <cc-issues-list 
+              <cc-issues-list
                 .issues="${issues}"
                 .labelFilters="${labelFilters}">
               </cc-issues-list>
@@ -234,10 +222,10 @@ class HomePageComponent extends LitElement {
           `
         : ''
       }
-    
+
     </div>
   `;
-  /* eslint-enable */
+    /* eslint-enable */
 
   }
 }
