@@ -18,7 +18,6 @@ class DropdownComponent extends LitElement {
 
   constructor() {
     super();
-    this.open = false;
     this._boundListener = this.close.bind(this);
     this.setDropdown = this.handleDropdown.bind(this);
   }
@@ -83,27 +82,14 @@ class DropdownComponent extends LitElement {
   }
 
   renderItems(items, label) {
+    const renderOption = (label, value, checked, id) => html`<input type="checkbox" name="sortType" ?checked=${checked} value=${value} id=${id}><label for=${id}>${label}</label>`;
+
     if (typeof label === 'undefined') {
       return items.map(({ label, value, checked }, idx) => {
-        /// can't bind checked/default attribute
-        if (checked) {
-          const check = checked === true ? checked : ''; // eslint-disable-line
-
-          return html`
-          <input type="checkbox" name="sortType" checked value=${value} id="option_${idx}"><label for="option_${idx}">${label}</label>
-        `;
-
-        } else {
-          return html`
-          <input type="checkbox" name="sortType" value=${value} id="option_${idx}"><label for="option_${idx}">${label}</label>
-        `;
-        }
+        return renderOption(label, value, checked, `option_${idx}`);
       });
     }
-    // default option/label
-    return html`
-          <input type="checkbox" name="sortType" value="" id="option_def"><label for="option_def">${label}</label>
-        `;
+    return renderOption(label, '', false, 'option_def');
   }
 
   render() {
