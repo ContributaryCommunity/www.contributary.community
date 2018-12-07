@@ -16,12 +16,6 @@ class DropdownComponent extends LitElement {
     };
   }
 
-  constructor() {
-    super();
-    this._boundListener = this.close.bind(this);
-    this.setDropdown = this.handleDropdown.bind(this);
-  }
-
   handleEvent(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -67,12 +61,12 @@ class DropdownComponent extends LitElement {
 
   connectedCallback() {
     this.shadowRoot.addEventListener('click', this.handleEvent.bind(this), true);
-    window.addEventListener('click', this._boundListener, false);
+    window.addEventListener('click', this.close.bind(this), false);
   }
 
   disconnectedCallback() {
     this.shadowRoot.addEventListener('click', this.handleEvent.bind(this), true);
-    window.addEventListener('click', this._boundListener, false);
+    window.addEventListener('click', this.close.bind(this), false);
   }
 
   close() {
