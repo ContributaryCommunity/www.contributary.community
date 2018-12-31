@@ -65,8 +65,8 @@ class DropdownComponent extends LitElement {
   }
 
   disconnectedCallback() {
-    this.shadowRoot.addEventListener('click', this.handleEvent.bind(this), true);
-    window.addEventListener('click', this.close.bind(this), false);
+    this.shadowRoot.removeEventListener('click', this.handleEvent.bind(this), true);
+    window.removeEventListener('click', this.close.bind(this), false);
   }
 
   close() {
@@ -76,9 +76,9 @@ class DropdownComponent extends LitElement {
   }
 
   renderItems(items, label) {
-    const renderOption = (label, value, checked, id) => html`<input type="checkbox" name="sortType" ?checked=${checked} value=${value} id=${id}><label for=${id}>${label}</label>`;
+    const renderOption = (label, value, checked, id) => html`<input type="checkbox" name="option_drop" ?checked=${checked} value=${value} id=${id}><label for=${id}>${label}</label>`;
 
-    if (typeof label === 'undefined') {
+    if (typeof label === 'undefined' && items) {
       return items.map(({ label, value, checked }, idx) => {
         return renderOption(label, value, checked, `option_${idx}`);
       });
