@@ -16,7 +16,7 @@ class DropdownComponent extends LitElement {
     };
   }
 
-  handleEvent(e) {
+  handleDropdownClickEvent(e) {
     e.preventDefault();
     e.stopPropagation();
     let selected = '';
@@ -24,17 +24,18 @@ class DropdownComponent extends LitElement {
     if (e.target.htmlFor) {
       selected = e.target.parentNode;
       if (e.target.htmlFor !== 'option_def') {
-        this.setSelected(this.shadowRoot.querySelector('#' + e.target.htmlFor).value);
+        this.setSelectedDropdownOption(this.shadowRoot.querySelector('#' + e.target.htmlFor).value);
         selected.classList.add('selection');
+        this.shadowRoot.querySelector('[for="option_def"]').textContent = e.target.textContent;
       }
     } else {
       selected = e.target;
     }
-    this.handleDropdown(selected);
+    this.dropdown = selected;
     selected.classList.toggle('expanded');
   }
 
-  setSelected(selected) {
+  setSelectedDropdownOption(selected) {
     let idx = this.options.findIndex(({ value }) => {
       return value === selected;
     });
@@ -55,17 +56,13 @@ class DropdownComponent extends LitElement {
     this.dropdown.scrollTop = 0;
   }
 
-  handleDropdown(drop) {
-    this.dropdown = drop;
-  }
-
   connectedCallback() {
-    this.shadowRoot.addEventListener('click', this.handleEvent.bind(this), true);
+    this.shadowRoot.addEventListener('click', this.handleDropdownClickEvent.bind(this), true);
     window.addEventListener('click', this.close.bind(this), false);
   }
 
   disconnectedCallback() {
-    this.shadowRoot.removeEventListener('click', this.handleEvent.bind(this), true);
+    this.shadowRoot.removeEventListener('click', this.handleDropdownClickEvent.bind(this), true);
     window.removeEventListener('click', this.close.bind(this), false);
   }
 
