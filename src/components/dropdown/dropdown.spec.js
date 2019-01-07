@@ -17,13 +17,19 @@ describe('Dropdown Component', () => {
       };
     });
 
+    const handleSelection = (value, idx) => {
+      console.log('selected', value);
+      console.log('index', idx);
+    };
+
     beforeEach(async () => {
       testBed = document.createElement('div');
       template = html`
-        <cc-dropdown label="${label}" .options="${options}"></cc-dropdown>
+        <cc-dropdown label="${label}" .options="${options}" .optionSelectedCallback="${handleSelection}"></cc-dropdown>
       `;
 
       render(template, testBed);
+      document.body.appendChild(testBed);
       dropdown = testBed.firstElementChild;
 
       await dropdown.updateComplete;
@@ -68,6 +74,56 @@ describe('Dropdown Component', () => {
         expect(option.value).toBe(options[index].value);
         expect(option.value).toMatch(options[index].value);
       });
+    });
+
+    it('should add a click event listener', () => {
+      const button = dropdown.shadowRoot.querySelector('.dropdown-el');
+      const spyEvent = spyOn(button, 'click');
+
+      button.click();
+
+      expect(spyEvent).toHaveBeenCalled();
+    });
+
+    it('should expand on click', () => {
+      const button = dropdown.shadowRoot.querySelector('.dropdown-el');
+
+      button.click();
+      expect(button).toHaveClass('expanded');
+    });
+
+    it('should collapse after an item is clicked', () => {
+      const button = dropdown.shadowRoot.querySelector('.dropdown-el');
+
+      button.click();
+      const selection = button.querySelector('[for="option_0"]');
+
+      selection.click();
+
+      expect(button).not.toHaveClass('expanded');
+    });
+
+    it('should display selected item as default option', () => {
+      const button = dropdown.shadowRoot.querySelector('.dropdown-el');
+
+      button.click();
+      const selection = button.querySelector('[for="option_0"]');
+
+      selection.click();
+
+      const defaultOption = button.querySelector('[for="option_def"]').textContent;
+
+      expect(defaultOption).toEqual(options[0].label);
+    });
+
+    it('should collapse on click anywhere else in the window', () => {
+      const button = dropdown.shadowRoot.querySelector('.dropdown-el');
+
+      button.click();
+
+      document.body.click();
+
+      expect(button).not.toHaveClass('expanded');
     });
   });
 
