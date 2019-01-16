@@ -4,6 +4,20 @@
 }
 
 :host {
+  --primary-color: #41a6ef;
+  --primary-text-color: #000000;
+  --secondary-color: #ecfdff;
+  --secondary-text-color: #fff;
+
+  /* dropdown theme */
+  --dropdown-color: var(--primary-color);
+  --dropdown-border-color: var(--primary-color);
+  --dropdown-text-color: var(--secondary-text-color);
+  --dropdown-text-size: 1rem;
+  --dropdown-text-expanded-color: var(--primary-color);
+  --dropdown-text-hover-color: var(--secondary-text-color);
+  --dropdown-text-background-hover: var(--primary-color);
+  --drop-timing: .3s;
 
   & cc-issues-list {
     margin: 0 auto;
@@ -13,8 +27,8 @@
   & .selection-wrapper {
     animation: fadein 2s;
   }
-  
+
   & h2 {
-    color: #38597a;
+    color: var(--primary-color);
   }
 }
