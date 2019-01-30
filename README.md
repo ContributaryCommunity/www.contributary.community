@@ -8,7 +8,7 @@
 ## Overview
 The goal of Contributary is to help those looking to get started with contributing to OSS projects by providing a convenient and easy way to search for great projects on GitHub that could use their help!
 
-![Contributary](https://s3.amazonaws.com/hosted.contributary.community/media/contributary-screenshot-0.2.0.png)
+![Contributary](https://s3.amazonaws.com/hosted.contributary.community/media/contributary-screenshot-0.3.0.png)
 
 ## Usage
 To use the application, follow the prompts:
