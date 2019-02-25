@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement } from 'lit-element';
 import '../components/footer/footer.js';
 import '../components/header/header.js';
 import '../pages/home/home.js';
@@ -11,13 +11,13 @@ class AppComponent extends LitElement {
       <style>
         ${css}
       </style>
-      
+
       <div>
 
         <section>
           <cc-header></cc-header>
         </section>
-        
+
         <section class="cc-page">
           <cc-home-page></cc-home-page>
         </section>

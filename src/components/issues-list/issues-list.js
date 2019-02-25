@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element'; 
+import { html, LitElement } from 'lit-element';
 import css from './issues-list.css';
 
 class IssuesListComponent extends LitElement {
@@ -24,7 +24,7 @@ class IssuesListComponent extends LitElement {
 
     if (labelFilters && labelFilters.length > 0) {
       const filteredIssues = [];
-      
+
       issues.forEach((issue) => {
         issue.labels.forEach((label) => {
           if (labelFilters.indexOf(label.name) >= 0) {
@@ -44,7 +44,7 @@ class IssuesListComponent extends LitElement {
       <table>
         <thead>
           <tr>
-            <th>Issue No.</th>  
+            <th>Issue No.</th>
             <th>Title</th>
             <th>Labels</th>
           </tr>

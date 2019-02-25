@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement } from 'lit-element';
 import { GitHubService } from '../../services/github-service';
 import { TopologyService } from '../../services/topology-service';
 
@@ -50,6 +50,7 @@ class HomePageComponent extends LitElement {
 
   // step 0 - populate topology key (language) dropdown
   connectedCallback() {
+    super.connectedCallback();
     this.topologyService.getTopology().then((response) => {
       const hierarchies = response.language;
       const newLanguageOptions = [];
