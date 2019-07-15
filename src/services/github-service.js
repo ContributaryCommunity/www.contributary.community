@@ -10,12 +10,16 @@ export class GitHubService {
     return fetch(`${this.baseUrl}/repositories?${query}`)
       .then((resp) => { return resp.json(); })
       .then((response) => {
-        return response.map((repo) => {
-          return {
-            id: repo.id,
-            name: repo.name
-          };
-        });
+        if (response && response.length) {
+          return response.map((repo) => {
+            return {
+              id: repo.id,
+              name: repo.name
+            };
+          });
+        } else {
+          return [];
+        }
       });
   }
 

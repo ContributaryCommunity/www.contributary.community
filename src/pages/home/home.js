@@ -91,6 +91,8 @@ class HomePageComponent extends LitElement {
         this.projectOptions = [
           ...newProjectOptions
         ];
+        this.repositoryOptions = null;
+        this.issues = null;
       });
     }
   }
@@ -132,6 +134,7 @@ class HomePageComponent extends LitElement {
     this.repositoryOptions = [
       ...newRepositoryOptions
     ];
+    this.issues = null;
   }
 
   // step 3 - user selects a repository to see available issues
@@ -193,7 +196,7 @@ class HomePageComponent extends LitElement {
         : ''
       }
 
-      ${repositoryOptions
+      ${repositoryOptions && repositoryOptions.length
         ? html`
             <div class="selection-wrapper">
               <h2>Step 3: Select a Repository</h2>
@@ -204,10 +207,16 @@ class HomePageComponent extends LitElement {
               ></cc-dropdown>
             </div>
           `
-        : ''
+        : repositoryOptions && !repositoryOptions.length
+          ? html`
+          <div class="selection-wrapper">
+            <h3>No repositories found for the selected project</h3>
+          </div>
+        `
+          : ''
       }
 
-      ${issues
+      ${issues && issues.length
         ? html`
             <div class="selection-wrapper">
               <h2>Step 4: Find an issue and help out!</h2>
@@ -220,7 +229,13 @@ class HomePageComponent extends LitElement {
               </cc-issues-list>
             </div>
           `
-        : ''
+        : issues && !issues.length
+          ? html`
+            <div class="selection-wrapper">
+              <h3>No issues found for the selected repository</h3>
+            </div>
+          `
+          : ''
       }
 
     </div>
