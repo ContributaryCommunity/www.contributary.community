@@ -42,7 +42,7 @@ jobs:
         - checkout
         - run:
             name: Deploy to Stage
-            command: export RELEASE_ENV=stage && yarn release
+            command: export RELEASE_ENV=stage && yarn install && yarn build && yarn release
 
   deploy_prod:
       docker:
@@ -54,7 +54,7 @@ jobs:
         - checkout
         - run:
             name: Deploy to Stage
-            command: export RELEASE_ENV=prod && yarn release
+            command: export RELEASE_ENV=prod && yarn install && yarn build && yarn release
            
 workflows:
   version: 2
@@ -62,9 +62,15 @@ workflows:
     jobs:
       - build
       - deploy_stage:
+          filters:
+            branches:
+              only: master
           requires:
             - build
       - deploy_prod:
-          type: approval
+          filters:
+            branches:
+              only: master
           requires:
             - build
+          type: approval
