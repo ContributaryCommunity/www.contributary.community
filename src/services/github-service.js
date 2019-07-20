@@ -4,18 +4,24 @@ export class GitHubService {
     this.baseUrl = '/api/github';
   }
 
-  getRepositoriesForProject(projectName, repoType) {
-    const query = `projectName=${projectName}&repoType=${repoType}`;
+  getRepositoriesForProject(projectName, repositoryType) {
+    const query = `projectName=${projectName}&repoType=${repositoryType}`;
 
     return fetch(`${this.baseUrl}/repositories?${query}`)
       .then((resp) => { return resp.json(); })
       .then((response) => {
-        return response.map((repo) => {
-          return {
-            id: repo.id,
-            name: repo.name
-          };
-        });
+        const repositories = [];
+
+        if (response && response.length) {
+          response.forEach((repository) => {
+            repositories.push({
+              id: repository.id,
+              name: repository.name
+            });
+          });
+        }
+
+        return repositories;
       });
   }
 
