@@ -18,7 +18,7 @@ jobs:
 
       - run:
           name: Install Project Dependencies
-          command: yarn install
+          command: yarn install --frozen-lockfile
 
       - run:
           name: Run Linter
@@ -29,21 +29,42 @@ jobs:
           command: export NODE_ENV=production && yarn test
 
       - run:
-          name: Build / Deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+          name: Run the Build
+          command: yarn build
+  
+  deploy_stage:
+      docker:
+        - image: thegreenhouse/nodejs-dev:0.4.0
 
-              echo "Master branch, releasing to production"
-              export RELEASE_ENV=prod && yarn release
+      working_directory: ~/repo
 
-            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+      steps:
+        - checkout
+        - run:
+            name: Deploy to Stage
+            command: export RELEASE_ENV=stage && yarn release
 
-              echo "Develop branch, releasing to stage"
-              export RELEASE_ENV=stage && yarn release
+  deploy_prod:
+      docker:
+        - image: thegreenhouse/nodejs-dev:0.4.0
 
-            else
+      working_directory: ~/repo
 
-              echo "Branch undetermined, likely a CI build"
-              yarn build
-
-            fi
+      steps:
+        - checkout
+        - run:
+            name: Deploy to Stage
+            command: export RELEASE_ENV=prod && yarn release
+           
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy_stage:
+          requires:
+            - build
+      - deploy_prod:
+          type: approval
+          requires:
+            - build
