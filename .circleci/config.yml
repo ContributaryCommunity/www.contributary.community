@@ -53,7 +53,7 @@ jobs:
       steps:
         - checkout
         - run:
-            name: Deploy to Stage
+            name: Deploy to Prod
             command: export RELEASE_ENV=prod && yarn install && yarn build && yarn release
            
 workflows:
@@ -67,10 +67,13 @@ workflows:
               only: master
           requires:
             - build
-      - deploy_prod:
+      - hold:
           filters:
             branches:
               only: master
-          requires:
-            - build
           type: approval
+          requires:
+           - build
+      - deploy_prod:
+          requires:
+            - hold
