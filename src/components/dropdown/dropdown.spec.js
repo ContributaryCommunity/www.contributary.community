@@ -17,14 +17,14 @@ describe('Dropdown Component', () => {
       };
     });
     let optionSelected = {
-      value: null,
-      index: null
+      index: null,
+      value: null
     };
 
-    const handleSelection = (value, idx) => {
+    const handleSelection = (value, index) => {
       optionSelected = {
-        value,
-        index: idx
+        index,
+        value
       };
     };
 
@@ -138,7 +138,7 @@ describe('Dropdown Component', () => {
 
       selection.click();
 
-      expect(optionSelected).toEqual({ value: 'value3', index: 3 });
+      expect(optionSelected).toEqual({ index: 3, value: 'value3' });
     });
 
     it('should collapse on click anywhere else in the window', () => {
