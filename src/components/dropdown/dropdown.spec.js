@@ -128,7 +128,7 @@ describe('Dropdown Component', () => {
     });
 
     it('should pass the selected option to the optionSelectedCallback', () => {
-      expect(optionSelected).toEqual({ value: null, index: null });
+      expect(optionSelected).toEqual({ index: null, value: null });
 
       const button = dropdown.shadowRoot.querySelector('.dropdown-el');
 
