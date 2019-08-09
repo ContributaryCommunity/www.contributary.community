@@ -27,7 +27,7 @@ class IssuesListComponent extends LitElement {
       
       issues.forEach((issue) => {
         issue.labels.forEach((label) => {
-          if (labelFilters.indexOf(label.name) >= 0) {
+          if (labelFilters.indexOf(label.name.toLowerCase()) >= 0) {
             filteredIssues.push(issue);
           }
         });
