@@ -1,4 +1,4 @@
-import { html } from '@polymer/lit-element';
+import { html } from 'lit-element';
 import { render } from 'lit-html';
 import './dropdown.js';
 
@@ -16,16 +16,27 @@ describe('Dropdown Component', () => {
         label: `label${index}`
       };
     });
+    let optionSelected = {
+      index: null,
+      value: null
+    };
 
-    const handleSelection = (value, idx) => {
-      console.log('selected', value);
-      console.log('index', idx);
+    const handleSelection = (value, index) => {
+      optionSelected = {
+        index,
+        value
+      };
     };
 
     beforeEach(async () => {
+      optionSelected = {
+        value: null,
+        index: null
+      };
+
       testBed = document.createElement('div');
       template = html`
-        <cc-dropdown label="${label}" .options="${options}" .optionSelectedCallback="${handleSelection}"></cc-dropdown>
+        <cc-dropdown label="${label}" .options="${options}" .optionSelectedCallback="${handleSelection}" />
       `;
 
       render(template, testBed);
@@ -114,6 +125,20 @@ describe('Dropdown Component', () => {
       const defaultOption = button.querySelector('[for="option_def"]').textContent;
 
       expect(defaultOption).toEqual(options[0].label);
+    });
+
+    it('should pass the selected option to the optionSelectedCallback', () => {
+      expect(optionSelected).toEqual({ index: null, value: null });
+
+      const button = dropdown.shadowRoot.querySelector('.dropdown-el');
+
+      button.click();
+
+      const selection = button.querySelector('[for="option_3"]');
+
+      selection.click();
+
+      expect(optionSelected).toEqual({ index: 3, value: 'value3' });
     });
 
     it('should collapse on click anywhere else in the window', () => {

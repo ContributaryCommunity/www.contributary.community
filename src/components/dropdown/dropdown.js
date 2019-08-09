@@ -1,4 +1,4 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement } from 'lit-element';
 import css from './dropdown.css';
 
 class DropdownComponent extends LitElement {
@@ -57,6 +57,7 @@ class DropdownComponent extends LitElement {
   }
 
   connectedCallback() {
+    super.connectedCallback();
     this.shadowRoot.addEventListener('click', this.handleDropdownClickEvent.bind(this), true);
     window.addEventListener('click', this.close.bind(this), false);
   }
@@ -64,6 +65,7 @@ class DropdownComponent extends LitElement {
   disconnectedCallback() {
     this.shadowRoot.removeEventListener('click', this.handleDropdownClickEvent.bind(this), true);
     window.removeEventListener('click', this.close.bind(this), false);
+    super.disconnectedCallback();
   }
 
   close() {

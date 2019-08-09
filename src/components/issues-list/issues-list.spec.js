@@ -1,4 +1,4 @@
-import { html } from '@polymer/lit-element';
+import { html } from 'lit-element';
 import { render } from 'lit-html';
 import './issues-list';
 
@@ -9,17 +9,17 @@ describe('Issues List Component', () => {
 
     beforeEach(async () => {
       list = document.createElement('cc-issues-list');
-  
+
       document.body.appendChild(list);
-  
+
       await list.updateComplete;
     });
-  
+
     afterEach(() => {
       list.remove();
       list = null;
     });
-      
+
     it('should have one table element', () => {
       const table = list.shadowRoot.querySelectorAll('table');
 
@@ -52,7 +52,7 @@ describe('Issues List Component', () => {
 
       expect(select.length).toBe(0);
     });
-    
+
   });
 
   describe('Passing Multiple Issues', () => {
@@ -75,17 +75,16 @@ describe('Issues List Component', () => {
     beforeEach(async () => {
       testBed = document.createElement('div');
       template = html`
-        <cc-issues-list 
-          .issues="${issues}"
-        ></cc-dropdown>
+        <cc-issues-list .issues="${issues}" />
       `;
 
       render(template, testBed);
+      document.body.appendChild(testBed);
       list = testBed.firstElementChild;
 
       await list.updateComplete;
     });
-  
+
     afterEach(() => {
       list.remove();
       list = null;
@@ -93,13 +92,13 @@ describe('Issues List Component', () => {
 
     it(`should have ${numItems} table rows`, () => {
       const rows = list.shadowRoot.querySelectorAll('table tbody tr');
-  
+
       expect(rows.length).toBe(numItems);
     });
 
     it(`should have the correct data for all ${numItems} table rows`, () => {
       const rows = list.shadowRoot.querySelectorAll('table tbody tr');
-  
+
       rows.forEach((row, index) => {
         const issue = issues[index];
         const td = row.querySelectorAll('td');
@@ -142,18 +141,16 @@ describe('Issues List Component', () => {
     beforeEach(async () => {
       testBed = document.createElement('div');
       template = html`
-        <cc-issues-list 
-          .issues="${issues}"
-          .labelFilters="${filters}">
-        ></cc-dropdown>
+        <cc-issues-list .issues="${issues}" .labelFilters="${filters}" />
       `;
 
       render(template, testBed);
+      document.body.appendChild(testBed);
       list = testBed.firstElementChild;
 
       await list.updateComplete;
     });
-  
+
     afterEach(() => {
       list.remove();
       list = null;
@@ -161,7 +158,7 @@ describe('Issues List Component', () => {
 
     it(`should show ${expectedItems} issues when the good first issue filter is provided`, () => {
       const rows = list.shadowRoot.querySelectorAll('table tbody tr');
-  
+
       expect(rows.length).toBe(expectedItems);
     });
 

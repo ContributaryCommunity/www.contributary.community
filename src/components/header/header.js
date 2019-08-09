@@ -1,11 +1,11 @@
-import { html, LitElement } from '@polymer/lit-element';
+import { html, LitElement } from 'lit-element';
 import css from './header.css';
 import logo from './logo.png';
 
 class HeaderComponent extends LitElement {
 
   render() {
-    return html`      
+    return html`
       <style>
         ${css}
       </style>
@@ -15,7 +15,7 @@ class HeaderComponent extends LitElement {
         <h1>Welcome to Contributary!</h1>
         <img src="${logo}" alt="Contributary logo"/>
         <h3><i>Helping connect open source with the open source community.</i></h3>
-        
+
       </header>
     `;
   }
