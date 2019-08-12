@@ -164,6 +164,7 @@ class HomePageComponent extends LitElement {
 
     if (filterByGoodFirstIssue) {
       labelFilters.push('good first issue');
+      labelFilters.push('good first contribution');
     }
 
     /* eslint-disable indent */
