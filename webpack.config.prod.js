@@ -9,7 +9,10 @@ module.exports = webpackMerge(commonConfig, {
   mode: 'production',
 
   performance: {
-    hints: 'error'
+    hints: 'error',
+    assetFilter: (assetFilename) => {
+      return assetFilename.indexOf('webcomponents') < 0;
+    }
   },
 
   plugins: [
