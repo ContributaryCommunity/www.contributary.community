@@ -1,5 +1,9 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+
+const outputDir = path.join(__dirname, 'public');
+const webcomponentsDepRoot = path.join(__dirname, 'node_modules/@webcomponents/webcomponentsjs');
 
 module.exports = {
   context: path.resolve('./src'),
@@ -9,7 +13,7 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'public'),
+    path: outputDir,
     filename: '[name].[chunkhash].bundle.js'
   },
   
@@ -34,6 +38,19 @@ module.exports = {
   },
 
   plugins: [
+
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: path.join(webcomponentsDepRoot, 'bundles/'),
+        to: outputDir
+      }, {
+        from: path.join(webcomponentsDepRoot, 'webcomponents-loader.js'),
+        to: outputDir
+      }, {
+        from: path.join(webcomponentsDepRoot, 'webcomponents-bundle.js'),
+        to: outputDir
+      }]
+    }),
 
     new HtmlWebpackPlugin({
       template: './index.html',
