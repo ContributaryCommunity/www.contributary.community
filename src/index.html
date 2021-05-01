@@ -11,16 +11,13 @@
     <meta name='apple-mobile-web-app-capable' content='yes' />
     <meta name='apple-mobile-web-app-status-bar-style' content='black' />
     <meta name="description" content="A project for helping connect open source with the open source community." />
-    <link rel="manifest" href="/manifest.json">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
 
     <meta property="og:title" content="Contributary" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.contributary.community/" />
     <meta property="og:image" content="https://s3.amazonaws.com/hosted.contributary.community/media/contributary-logo-invert.png" />
     <meta property="og:description" content="A project for helping connect open source with the open source community." />
-
-    <!-- Web Components poyfill for Firefox / Edge -->
-    <script src="webcomponents-loader.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
@@ -32,6 +29,8 @@
         font-family: 'Quicksand', sans-serif;
       }
     </style>
+
+    <script type="module" src="./index.js"></script>
   </head>
 
   <body>
