@@ -1,6 +1,5 @@
 module.exports = {
-  plugins: {
-    'postcss-cssnext': {},
-    'cssnano': {}
-  }
+  plugins: [
+    require('postcss-nested')
+  ]
 };

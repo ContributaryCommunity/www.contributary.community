@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit-element';
-import githubLogo from './images/github-logo.png';
-import twitterLogo from './images/twitter-logo.png';
+// import githubLogo from './images/github-logo.png';
+// import twitterLogo from './images/twitter-logo.png';
 import css from './footer.css';
 
 class FooterComponent extends LitElement {
@@ -17,11 +17,11 @@ class FooterComponent extends LitElement {
 
         <div>
           <a href="https://github.com/ContributaryCommunity" class="social-icon" target="_blank" rel="noopener">
-            <img src="${githubLogo}" alt="GitHub Logo"/>
+            <img src="/assets/github-logo.png" alt="GitHub Logo"/>
           </a>
 
           <a href="https://twitter.com/ContributaryCmt" class="social-icon" target="_blank" rel="noopener">
-            <img src="${twitterLogo}" alt="Twitter Logo"/>
+            <img src="/assets/twitter-logo.png" alt="Twitter Logo"/>
           </a>
         </div>
 

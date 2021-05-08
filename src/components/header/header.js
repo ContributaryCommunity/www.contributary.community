@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit-element';
 import css from './header.css';
-import logo from './logo.png';
+// import logo from './logo.png';
 
 class HeaderComponent extends LitElement {
 
@@ -13,7 +13,7 @@ class HeaderComponent extends LitElement {
       <header>
 
         <h1>Welcome to Contributary!</h1>
-        <img src="${logo}" alt="Contributary logo"/>
+        <img src="/assets/logo.png" alt="Contributary logo"/>
         <h3><i>Helping connect open source with the open source community.</i></h3>
 
       </header>
