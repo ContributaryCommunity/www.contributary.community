@@ -9,8 +9,8 @@
   NODE_VERSION = "14.16.0"
 
 [[redirects]]
-  from = "/api*"
-  to = "https://www.contributary.community/"
+  from = "/api"
+  to = "https://www.contributary.community"
   status = 200
 
 [[redirects]]
