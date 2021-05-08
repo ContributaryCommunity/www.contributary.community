@@ -10,7 +10,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://www.contributary.community/api/"
+  to = "https://www.contributary.community/:splat"
   status = 200
 
 [[redirects]]
