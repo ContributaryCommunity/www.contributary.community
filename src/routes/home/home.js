@@ -1,9 +1,9 @@
 import { html, LitElement } from 'lit-element';
-import { GitHubService } from '../../services/github-service';
-import { TopologyService } from '../../services/topology-service';
+import { GitHubService } from '../../services/github-service.js';
+import { TopologyService } from '../../services/topology-service.js';
 
-import '../../components/dropdown/dropdown';
-import '../../components/issues-list/issues-list';
+import '../../components/dropdown/dropdown.js';
+import '../../components/issues-list/issues-list.js';
 
 import css from './home.css';
 
