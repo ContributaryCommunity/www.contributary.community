@@ -10,18 +10,19 @@ export class GitHubService {
     return fetch(`${this.baseUrl}/repositories?${query}`)
       .then((resp) => resp.json())
       .then((response) => {
-        const repositories = [];
-
         if (response && response.length) {
-          response.forEach((repository) => {
-            repositories.push({
+          return response.map((repository) => {
+            return {
               id: repository.id,
               name: repository.name
-            });
+            };
           });
+        } else {
+          return {
+            error: true,
+            ...response
+          };
         }
-
-        return repositories;
       });
   }
 

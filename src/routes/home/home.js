@@ -127,7 +127,11 @@ class HomePageComponent extends LitElement {
     const project = this.projectOptions[this.selectedProjectIndex];
 
     this.githubService.getRepositoriesForProject(project.name, project.type).then((response) => {
-      this.setRepositoriesForProject(response);
+      if (!response.error) {
+        this.setRepositoriesForProject(response);
+      } else {
+        this.message = response.message;
+      }
     });
   }
 
