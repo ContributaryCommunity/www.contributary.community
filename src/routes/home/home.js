@@ -11,6 +11,9 @@ class HomePageComponent extends LitElement {
 
   static get properties() {
     return {
+      message: {
+        type: String
+      },
       languageOptions: {
         type: Array
       },
@@ -44,6 +47,7 @@ class HomePageComponent extends LitElement {
   constructor() {
     super();
 
+    this.message = '';
     this.topologyService = new TopologyService();
     this.githubService = new GitHubService();
   }
@@ -70,7 +74,11 @@ class HomePageComponent extends LitElement {
 
   // step 1 - user selects a language from the topology to see available projects
   getSelectedLanguage(value, idx) {
-
+    this.reset();
+    this.projects = [];
+    this.selectedProjectIndex = 0;
+    this.projectOptions = [];
+    
     if (value !== '') {
       this.selectedLanguageIndex = idx;
 
@@ -100,6 +108,8 @@ class HomePageComponent extends LitElement {
 
   // step 2 - user select a project to see available repositories for that project
   getSelectedProject(value, idx) {
+    this.reset();
+
     if (value !== '') {
       this.selectedProjectIndex = idx;
 
@@ -117,7 +127,11 @@ class HomePageComponent extends LitElement {
     const project = this.projectOptions[this.selectedProjectIndex];
 
     this.githubService.getRepositoriesForProject(project.name, project.type).then((response) => {
-      this.setRepositoriesForProject(response);
+      if (!response.error) {
+        this.setRepositoriesForProject(response);
+      } else {
+        this.message = response.message;
+      }
     });
   }
 
@@ -147,19 +161,31 @@ class HomePageComponent extends LitElement {
     }
   }
 
+  reset() {
+    this.message = null;
+    this.repositories = [];
+    this.selectedRepositoryIndex = 0;
+    this.repositoryOptions = [];
+  }
+
   getIssuesForRepository() {
+    this.message = null;
     const currentProjectName = this.projectOptions[this.selectedProjectIndex].name;
     const currentRepoName = this.repositoryOptions[this.selectedRepositoryIndex].name;
 
     this.githubService.getIssuesForRepository(currentProjectName, currentRepoName).then(response => {
-      this.issues = [
-        ...response
-      ];
+      if (!response.error) {
+        this.issues = [
+          ...response
+        ];
+      } else {
+        this.message = response.message;
+      }
     });
   }
 
   render() {
-    const { issues, languageOptions, projectOptions, repositoryOptions, filterByGoodFirstIssue } = this;
+    const { issues, languageOptions, message, projectOptions, repositoryOptions, filterByGoodFirstIssue } = this;
     const labelFilters = [];
 
     if (filterByGoodFirstIssue) {
@@ -167,7 +193,7 @@ class HomePageComponent extends LitElement {
       labelFilters.push('good first contribution');
     }
 
-    /* eslint-disable indent */
+    /* eslint-disable indent, max-len */
     return html`
       <style>
         ${css}
@@ -238,6 +264,16 @@ class HomePageComponent extends LitElement {
             </div>
           `
           : ''
+      }
+
+      ${message 
+        ? html`
+          <div class="selection-wrapper">
+            <h3 class="error">Oops, there was an issue with this request: <i>${message}</i>.<br/>  Please consider opening an issue at our <a href="https://github.com/ContributaryCommunity/www.contributary.community/issues" target="_blank" rel="noopener noreferrer">repo issue tracker</a> with the repo name and message you received.
+            </h3>
+          </div>
+        `
+        : ''
       }
 
     </div>

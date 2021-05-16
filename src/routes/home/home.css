@@ -33,4 +33,9 @@
   & h2 {
     color: var(--primary-color);
   }
+
+  h3.error {
+    color: red;
+    font-weight: bold;
+  }
 }
