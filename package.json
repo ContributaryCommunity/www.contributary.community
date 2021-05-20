@@ -1,6 +1,6 @@
 {
   "name": "www.contributary.community",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "A project for helping connect open source with the open source community.",
   "license": "MIT",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
@@ -36,10 +36,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
-    "@greenwood/cli": "^0.12.0",
-    "@greenwood/plugin-import-css": "^0.12.0",
-    "@greenwood/plugin-polyfills": "^0.12.0",
-    "@greenwood/plugin-postcss": "^0.12.0",
+    "@greenwood/cli": "^0.12.2",
+    "@greenwood/plugin-import-css": "^0.12.2",
+    "@greenwood/plugin-polyfills": "^0.12.2",
+    "@greenwood/plugin-postcss": "^0.12.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
