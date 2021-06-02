@@ -5,7 +5,7 @@
 
 :host {
   --primary-color: #41a6ef;
-  --primary-text-color: #000000;
+  --primary-text-color: #000;
   --secondary-color: #ecfdff;
   --secondary-text-color: #fff;
 
@@ -17,11 +17,21 @@
   --dropdown-text-expanded-color: var(--primary-color);
   --dropdown-text-hover-color: var(--secondary-text-color);
   --dropdown-text-background-hover: var(--primary-color);
-  --drop-timing: .3s;
+  --drop-timing: 0.3s;
 
   & cc-issues-list {
     margin: 0 auto;
     width: 90%;
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    & .selection-wrapper {
+      animation: none;
+
+      @media (prefers-reduced-motion) {
+        animation: 0;
+      }
+    }
   }
 
   & .selection-wrapper {
