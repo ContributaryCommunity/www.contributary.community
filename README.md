@@ -68,7 +68,7 @@ This project is an evergreen web application, bootstrapped from [Create Evergeen
 
 ### Setup
 To start developing, you will need:
-1. [NodeJS LTS](https://nodejs.org) >= 8.x
+1. [NodeJS LTS](https://nodejs.org) >= 14.x
 1. [Yarn](https://yarnpkg.com/) >= 1.x
 1. Clone this repo
 1. Run `yarn install`
