@@ -74,4 +74,9 @@ To start developing, you will need:
 1. Run `yarn install`
 
 ### Tasks
-Tasks are defined per [Create Evergreen App](https://github.com/ContributaryCommunity/www.contributary.community#development).
+The underlying framework used is [**Greenwood**](), but all workflows are available as npm `scripts` in the project's [_package.json_](https://github.com/ContributaryCommunity/www.contributary.community/blob/master/package.json).
+
+- `yarn develop` - starts a local development server
+- `yarn build` - generate a production build
+- `yarn serve` - generates a production build locally and serves it
+- `yarn test` - run tests (use `test:tdd` to enable file watching and test re-running)
