@@ -64,7 +64,7 @@ Here a small example:
 For more information, visit the [wiki](https://github.com/ContributaryCommunity/contributary/wiki).
 
 ## Development
-This project is an evergreen web application, bootstrapped from [Create Evergeen App](https://github.com/ContributaryCommunity/www.contributary.community) using modern JavaScript and CSS features, powered by [`LitElement`](https://github.com/Polymer/lit-element) and [Web Components](https://www.webcomponents.org/).  
+This project is an evergreen web application using [**Greenwood**](https://www.greenwoodjs.io/) and modern JavaScript and CSS features, powered by [`LitElement`](https://github.com/Polymer/lit-element) and [Web Components](https://www.webcomponents.org/).  
 
 ### Setup
 To start developing, you will need:
@@ -74,7 +74,7 @@ To start developing, you will need:
 1. Run `yarn install`
 
 ### Tasks
-The underlying framework used is [**Greenwood**](), but all workflows are available as npm `scripts` in the project's [_package.json_](https://github.com/ContributaryCommunity/www.contributary.community/blob/master/package.json).
+All workflows are available as npm `scripts` in the project's [_package.json_](https://github.com/ContributaryCommunity/www.contributary.community/blob/master/package.json).
 
 - `yarn develop` - starts a local development server
 - `yarn build` - generate a production build
