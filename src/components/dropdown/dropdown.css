@@ -1,14 +1,15 @@
+/* stylelint-disable  no-descending-specificity, a11y/media-prefers-reduced-motion */
 :host {
   --primary-color: #41a6ef;
   --secondary-color: #fff;
   --drop-background: var(--dropdown-color, var(--primary-color));
-  --drop-border:  var(--dropdown-border-color, var(--primary-color));
+  --drop-border: var(--dropdown-border-color, var(--primary-color));
   --drop-text-color: var(--dropdown-text-color, var(--secondary-color));
-  --drop-text-size:  var(--dropdown-text-size, 1rem);
+  --drop-text-size: var(--dropdown-text-size, 1rem);
   --drop-text-hover-color: var(--dropdown-text-hover-color, var(--secondary-color));
   --drop-text-expanded-color: var(--dropdown-text-expanded-color, var(--primary-color));
   --drop-text-background-hover: var(--dropdown-text-background-hover, var(--primary-color));
-  --drop-timing: var(--global--dropdown-timing, .3s);
+  --drop-timing: var(--global--dropdown-timing, 0.3s);
 
   height: 2em;
   position: relative;
@@ -20,41 +21,59 @@
     display: inline-block;
     margin-right: 1em;
     min-height: 2em;
-    max-height:2em;
-    overflow:hidden;
+    max-height: 2em;
+    overflow: hidden;
     font-size: var(--drop-text-size);
-    top: .5em;
+    top: 0.5em;
     cursor: pointer;
     text-align: left;
     white-space: nowrap;
     color: var(--drop-text-color);
 
     outline: none;
-    border: .06em solid transparent;
+    border: 0.06em solid transparent;
     border-radius: 1em;
     background-color: var(--drop-background);
 
     transition: var(--drop-timing) all ease-in-out;
+
     & input {
-      display:none;
+      display: none;
     }
+
     & label {
-      border-top: .06em solid #d9d9d9;
-      display:block;
+      border-top: 0.06em solid #d9d9d9;
+      display: block;
       height: 2em;
       line-height: 2em;
       padding-left: 1em;
       padding-right: 3em;
       cursor: pointer;
       position: relative;
-      /* &:nth-child(2) {
-        margin-top: 2em;
-        border-top: .06em solid #d9d9d9;
-      } */
     }
+
+    /* If selection made & expanded, don't display default, display selected */
+    &.selection.expanded {
+      & input + label {
+        margin-top: 0;
+      }
+
+      & input:checked + label {
+        display: block;
+        border-top: 0.06em solid #d9d9d9;
+        position: unset;
+        top: unset;
+      }
+    }
+
+    & input:checked + label {
+      color: var(--drop-background);
+      font-weight: 600;
+    }
+
     /* Display default option first, if not selected/expanded */
     & #option_def + label {
-      display:block;
+      display: block;
       border-top: none;
       position: absolute;
       top: 0;
@@ -64,60 +83,49 @@
         position: relative;
       }
     }
-    /* If selection made & expanded, don't display default, display selected */
-    &.selection.expanded {
-      & input + label {
-        margin-top: 0;
-      }
-      & input:checked + label {
-        display:block;
-        border-top: .06em solid #d9d9d9;
-        position: unset;
-        top: unset;
-      }
-    }
+
     &::after {
       content: \"\";
       position: absolute;
       right: 0.8em;
       top: 0.9em;
-      border: .3em solid var(--drop-text-color);
+      border: 0.3em solid var(--drop-text-color);
       border-color: var(--drop-text-color) transparent transparent transparent;
-      transition: .4s all ease-in-out;
+      transition: 0.4s all ease-in-out;
     }
 
     &.expanded {
-      border: .06em solid var(--drop-border);
+      border: 0.06em solid var(--drop-border);
       background: #fff;
-      border-radius: .25em;
+      border-radius: 0.25em;
       padding: 0;
-      box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
-      max-height:15em;
+      box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0;
+      max-height: 15em;
       overflow: overlay;
       z-index: 100;
 
       & label {
-        border-top: .06em solid #d9d9d9;
-        color:var(--drop-text-expanded-color);
-        &:hover {
-          color:var(--drop-text-hover-color) !important;
-          background-color: var( --drop-text-background-hover) !important;
+        border-top: 0.06em solid #d9d9d9;
+        color: var(--drop-text-expanded-color);
+
+        & :hover,
+        & :active,
+        & :focus {
+          color: var(--drop-text-hover-color) !important;
+          background-color: var(--drop-text-background-hover) !important;
         }
-      }
-      & input:checked + label {
-        color:var(--drop-background);
-        font-weight:600;
       }
 
       &::after {
         transform: rotate(-180deg);
-        top:.55em;
-        border: .3em solid var(--drop-text-expanded-color);
+        top: 0.55em;
+        border: 0.3em solid var(--drop-text-expanded-color);
         border-color: var(--drop-text-expanded-color) transparent transparent transparent;
       }
+
       /* If expanded, display default at top of list */
       & #option_def + label {
-        display:block !important;
+        display: block !important;
         border-top: none;
         position: absolute;
         top: 0;

@@ -20,7 +20,9 @@
     "clean": "rimraf ./public ./reports",
     "build": "greenwood build",
     "develop": "greenwood develop",
-    "lint": "eslint \"*.js\" \"src/**/**/*.js\"",
+    "lint:js": "eslint \"*.js\" \"./src/**/**/*.js\"",
+    "lint:css": "stylelint \"./src/**/*.css\"",
+    "lint": "ls-lint && yarn lint:js && yarn lint:css",
     "serve": "greenwood serve",
     "start": "yarn develop",
     "release": "yarn clean && echo \"todo\"",
@@ -40,6 +42,7 @@
     "@greenwood/plugin-import-css": "^0.12.2",
     "@greenwood/plugin-polyfills": "^0.12.2",
     "@greenwood/plugin-postcss": "^0.12.2",
+    "@ls-lint/ls-lint": "^1.9.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
@@ -55,6 +58,9 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^5.0.0-alpha.3.0",
     "postcss-nested": "^4.1.2",
+    "stylelint": "^13.8.0",
+    "stylelint-a11y": "^1.2.3",
+    "stylelint-config-standard": "^20.0.0",
     "rimraf": "^2.6.2",
     "webpack": "^4.37.0"
   }
