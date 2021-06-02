@@ -1,8 +1,8 @@
 # contributary
 [![GitHub release](https://img.shields.io/github/tag/ContributaryCommunity/www.contributary.community.svg)](https://github.com/ContributaryCommunity/www.contributary.community/tags)
-![CircleCI branch](https://img.shields.io/circleci/project/github/ContributaryCommunity/www.contributary.community/master.svg?style=plastic)
+![GitHub Actions status](https://github.com/ProjectEvergreen/greenwood/workflows/Master%20Integration/badge.svg)
 [![GitHub issues](https://img.shields.io/github/issues-raw/ContributaryCommunity/www.contributary.community.svg)](https://github.com/ContributaryCommunity/www.contributary.community/issues)
-[![GitHub issues](https://img.shields.io/github/issues-pr-raw/ContributaryCommunity/www.contributary.community.svg)](https://github.com/ContributaryCommunity/www.contributary.community/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/ContributaryCommunity/www.contributary.community.svg)](https://github.com/ContributaryCommunity/www.contributary.community/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ContributaryCommunity/www.contributary.community/master/LICENSE.md)
 
 ## Overview
