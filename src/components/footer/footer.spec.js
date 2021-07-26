@@ -1,3 +1,4 @@
+import { expect } from '@esm-bundle/chai';
 import './footer.js';
 
 describe('Footer Component', () => {
@@ -21,13 +22,13 @@ describe('Footer Component', () => {
     it('should have one footer element', () => {
       const footerElement = footer.shadowRoot.querySelectorAll('footer');
 
-      expect(footerElement.length).toBe(1);
+      expect(footerElement.length).to.equal(1);
     });
 
     it('should have a message', () => {
-      const message = footer.shadowRoot.querySelectorAll('footer span');
+      const message = footer.shadowRoot.querySelector('footer span');
 
-      expect(message.innerHTML).toBeUndefined('💙 The Contributary Community');
+      expect(message.textContent).to.equal('💙 The Contributary Community');
     });
   });
 
@@ -46,22 +47,22 @@ describe('Footer Component', () => {
     });
 
     it('should have 2 links', () => {
-      expect(links.length).toBe(2);
+      expect(links.length).to.equal(2);
     });
 
     it('should have two images', () => {
-      expect(images.length).toBe(2);
+      expect(images.length).to.equal(2);
     });
 
     describe('GitHub Link', () => {
       const index = 0;
 
       it('should have a link to the Contributary GitHub repo', () => {
-        expect(links[index].href).toBe('https://github.com/ContributaryCommunity');
+        expect(links[index].href).to.equal('https://github.com/ContributaryCommunity');
       });
 
       it('should have an image inside the Contributary GitHub repo link', () => {
-        expect(images[index].alt).toBe('GitHub Logo');
+        expect(images[index].alt).to.equal('GitHub Logo');
       });
     });
 
@@ -69,11 +70,11 @@ describe('Footer Component', () => {
       const index = 1;
 
       it('should have a link to the Contributary Twitter account', () => {
-        expect(links[index].href).toBe('https://twitter.com/ContributaryCmt');
+        expect(links[index].href).to.equal('https://twitter.com/ContributaryCmt');
       });
 
       it('should have an image inside the Contributary Twitter account link', () => {
-        expect(images[index].alt).toBe('Twitter Logo');
+        expect(images[index].alt).to.equal('Twitter Logo');
       });
     });
   });

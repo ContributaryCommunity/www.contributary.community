@@ -26,8 +26,8 @@
     "serve": "greenwood serve",
     "start": "yarn develop",
     "release": "yarn clean && echo \"todo\"",
-    "test": "export CI=true && yarn clean && karma start",
-    "test:tdd": "yarn clean && karma start"
+    "test": "wtr",
+    "test:tdd": "yarn test --watch"
   },
   "dependencies": {
     "lit-element": "^2.4.0",
@@ -38,30 +38,22 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
+    "@esm-bundle/chai": "^4.3.4",
     "@greenwood/cli": "^0.14.0",
     "@greenwood/plugin-import-css": "^0.14.0",
     "@greenwood/plugin-polyfills": "^0.14.0",
     "@greenwood/plugin-postcss": "^0.14.0",
     "@ls-lint/ls-lint": "^1.9.2",
+    "@web/test-runner": "^0.13.13",
+    "@web/test-runner-junit-reporter": "^0.4.4",
+    "@web/test-runner-puppeteer": "^0.10.0",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.0.1",
     "eslint": "^6.1.0",
-    "istanbul-instrumenter-loader": "^3.0.1",
-    "jasmine": "^3.3.1",
-    "jasmine-core": "^3.2.1",
-    "karma": "^4.2.0",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-coverage-istanbul-reporter": "^2.1.0",
-    "karma-jasmine": "^2.0.1",
-    "karma-junit-reporter": "^1.2.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^5.0.0-alpha.3.0",
     "postcss-nested": "^4.1.2",
     "rimraf": "^2.6.2",
+    "sinon": "^11.1.1",
     "stylelint": "^13.8.0",
     "stylelint-a11y": "^1.2.3",
-    "stylelint-config-standard": "^20.0.0",
-    "webpack": "^4.37.0"
+    "stylelint-config-standard": "^20.0.0"
   }
 }

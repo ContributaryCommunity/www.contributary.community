@@ -1,3 +1,5 @@
+import { expect } from '@esm-bundle/chai';
+import { spy } from 'sinon';
 import { html } from 'lit-element';
 import { render } from 'lit-html';
 import './dropdown.js';
@@ -54,26 +56,26 @@ describe('Dropdown Component', () => {
     it('should have one default element', () => {
       const select = dropdown.shadowRoot.querySelectorAll('#option_def');
 
-      expect(select.length).toBe(1);
+      expect(select.length).to.equal(1);
     });
 
     it(`should have ${numOptions} options`, () => {
       const selectOptions = dropdown.shadowRoot.querySelectorAll('.dropdown-el input');
 
       // +1  accounts for default option
-      expect(selectOptions.length).toBe(numOptions + 1);
+      expect(selectOptions.length).to.equal(numOptions + 1);
     });
 
     it('first option should have no value', () => {
       const defaultSelectOption = dropdown.shadowRoot.querySelectorAll('.dropdown-el input')[0];
 
-      expect(defaultSelectOption.value).toBe('');
+      expect(defaultSelectOption.value).to.equal('');
     });
 
     it('should have a label for default option that matches the passed in label', () => {
       const defaultSelectOption = dropdown.shadowRoot.querySelectorAll('.dropdown-el label')[0];
 
-      expect(defaultSelectOption.innerText).toMatch(label);
+      expect(defaultSelectOption.innerText).to.equal(label);
     });
 
     it('should have option values that match the passed in options', () => {
@@ -82,25 +84,24 @@ describe('Dropdown Component', () => {
       });
 
       userSelectOptions.forEach((option, index) => {
-        expect(option.value).toBe(options[index].value);
-        expect(option.value).toMatch(options[index].value);
+        expect(option.value).to.equal(options[index].value);
       });
     });
 
     it('should add a click event listener', () => {
       const button = dropdown.shadowRoot.querySelector('.dropdown-el');
-      const spyEvent = spyOn(button, 'click');
+      const spyEvent = spy(button, 'click');
 
       button.click();
 
-      expect(spyEvent).toHaveBeenCalled();
+      expect(spyEvent.called).to.equal(true);
     });
 
     it('should expand on click', () => {
       const button = dropdown.shadowRoot.querySelector('.dropdown-el');
 
       button.click();
-      expect(button).toHaveClass('expanded');
+      expect(Array.from(button.classList).indexOf('expanded')).to.be.greaterThanOrEqual(0);
     });
 
     it('should collapse after an item is clicked', () => {
@@ -111,7 +112,7 @@ describe('Dropdown Component', () => {
 
       selection.click();
 
-      expect(button).not.toHaveClass('expanded');
+      expect(Array.from(button.classList).indexOf('expanded')).to.equal(-1);
     });
 
     it('should display selected item as default option', () => {
@@ -124,11 +125,12 @@ describe('Dropdown Component', () => {
 
       const defaultOption = button.querySelector('[for="option_def"]').textContent;
 
-      expect(defaultOption).toEqual(options[0].label);
+      expect(defaultOption).to.equal(options[0].label);
     });
 
     it('should pass the selected option to the optionSelectedCallback', () => {
-      expect(optionSelected).toEqual({ index: null, value: null });
+      expect(optionSelected.value).to.equal(null);
+      expect(optionSelected.index).to.equal(null);
 
       const button = dropdown.shadowRoot.querySelector('.dropdown-el');
 
@@ -138,7 +140,8 @@ describe('Dropdown Component', () => {
 
       selection.click();
 
-      expect(optionSelected).toEqual({ index: 3, value: 'value3' });
+      expect(optionSelected.value).to.equal('value3');
+      expect(optionSelected.index).to.equal(3);
     });
 
     it('should collapse on click anywhere else in the window', () => {
@@ -148,7 +151,7 @@ describe('Dropdown Component', () => {
 
       document.body.click();
 
-      expect(button).not.toHaveClass('expanded');
+      expect(Array.from(button.classList).indexOf('expanded')).to.equal(-1);
     });
   });
 
