@@ -1,3 +1,4 @@
+import { expect } from '@esm-bundle/chai';
 import './header.js';
 
 describe('Header Component', () => {
@@ -23,7 +24,7 @@ describe('Header Component', () => {
       it('should have a greeting', () => { 
         const greeting = header.shadowRoot.querySelectorAll('header h1')[0];
   
-        expect(greeting.innerHTML).toBe('Welcome to Contributary!');
+        expect(greeting.innerHTML).to.equal('Welcome to Contributary!');
       });
     });
     

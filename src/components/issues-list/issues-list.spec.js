@@ -1,3 +1,4 @@
+import { expect } from '@esm-bundle/chai';
 import { html } from 'lit-element';
 import { render } from 'lit-html';
 import './issues-list';
@@ -23,34 +24,34 @@ describe('Issues List Component', () => {
     it('should have one table element', () => {
       const table = list.shadowRoot.querySelectorAll('table');
 
-      expect(table.length).toBe(1);
+      expect(table.length).to.equal(1);
     });
 
     it('should have one table head element', () => {
       const thead = list.shadowRoot.querySelectorAll('table thead');
 
-      expect(thead.length).toBe(1);
+      expect(thead.length).to.equal(1);
     });
 
     it('should have two table head rows', () => {
       const thead = list.shadowRoot.querySelectorAll('table thead tr th');
 
-      expect(thead.length).toBe(3);
-      expect(thead[0].innerHTML).toBe('Issue No.');
-      expect(thead[1].innerHTML).toBe('Title');
-      expect(thead[2].innerHTML).toBe('Labels');
+      expect(thead.length).to.equal(3);
+      expect(thead[0].innerHTML).to.equal('Issue No.');
+      expect(thead[1].innerHTML).to.equal('Title');
+      expect(thead[2].innerHTML).to.equal('Labels');
     });
 
     it('should have one table body', () => {
       const tbody = list.shadowRoot.querySelectorAll('table tbody');
 
-      expect(tbody.length).toBe(1);
+      expect(tbody.length).to.equal(1);
     });
 
     it('should have no issue rows', () => {
       const select = list.shadowRoot.querySelectorAll('select');
 
-      expect(select.length).toBe(0);
+      expect(select.length).to.equal(0);
     });
 
   });
@@ -93,7 +94,7 @@ describe('Issues List Component', () => {
     it(`should have ${numItems} table rows`, () => {
       const rows = list.shadowRoot.querySelectorAll('table tbody tr');
 
-      expect(rows.length).toBe(numItems);
+      expect(rows.length).to.equal(numItems);
     });
 
     it(`should have the correct data for all ${numItems} table rows`, () => {
@@ -105,15 +106,15 @@ describe('Issues List Component', () => {
         const a = td[1].querySelectorAll('a')[0];
         const labels = td[2].querySelectorAll('span');
 
-        expect(td[0].innerHTML).toMatch(issue.number);
-        expect(a.href).toMatch(issue.url);
-        expect(a.target).toBe('_blank');
-        expect(a.innerHTML).toMatch(issue.title);
+        expect(td[0].textContent).to.equal(issue.number);
+        expect(a.href).to.equal(issue.url);
+        expect(a.target).to.equal('_blank');
+        expect(a.textContent).to.equal(issue.title);
 
-        expect(labels.length).toBe(1);
+        expect(labels.length).to.equal(1);
         // comes back as rgb? - http://forums.mozillazine.org/viewtopic.php?t=18738
-        // expect(labels[0].style.backgroundColor).toMatch(`background-color: #${issue.labels[0].color}`);
-        expect(labels[0].innerHTML).toMatch(`${issue.labels[0].name}`);
+        // expect(labels[0].style.backgroundColor).match(`background-color: #${issue.labels[0].color}`);
+        expect(labels[0].textContent).to.contain(`${issue.labels[0].name}`);
       });
     });
 
@@ -159,7 +160,7 @@ describe('Issues List Component', () => {
     it(`should show ${expectedItems} issues when the good first issue filter is provided`, () => {
       const rows = list.shadowRoot.querySelectorAll('table tbody tr');
 
-      expect(rows.length).toBe(expectedItems);
+      expect(rows.length).to.equal(expectedItems);
     });
 
   });
