@@ -1,4 +1,5 @@
 import { expect } from '@esm-bundle/chai';
+import { spy } from 'sinon';
 import { html } from 'lit-element';
 import { render } from 'lit-html';
 import './dropdown.js';
@@ -87,13 +88,13 @@ describe('Dropdown Component', () => {
       });
     });
 
-    xit('should add a click event listener', () => {
+    it('should add a click event listener', () => {
       const button = dropdown.shadowRoot.querySelector('.dropdown-el');
-      const spyEvent = spyOn(button, 'click');
+      const spyEvent = spy(button, 'click');
 
       button.click();
 
-      expect(spyEvent).toHaveBeenCalled();
+      expect(spyEvent.called).to.equal(true);
     });
 
     it('should expand on click', () => {
