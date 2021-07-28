@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 // import githubLogo from './images/github-logo.png';
 // import twitterLogo from './images/twitter-logo.png';
 import css from './footer.css';

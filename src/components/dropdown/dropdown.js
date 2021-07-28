@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import css from './dropdown.css';
 
 class DropdownComponent extends LitElement {

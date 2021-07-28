@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import { connectRouter } from 'lit-redux-router';
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
 import { lazyReducerEnhancer } from 'pwa-helpers';
