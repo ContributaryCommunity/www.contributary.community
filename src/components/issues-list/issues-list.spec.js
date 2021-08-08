@@ -1,6 +1,5 @@
 import { expect } from '@esm-bundle/chai';
-import { html } from 'lit-element';
-import { render } from 'lit-html';
+import { html, render } from 'lit';
 import './issues-list';
 
 describe('Issues List Component', () => {

@@ -5,7 +5,7 @@ import { TopologyService } from '../../services/topology-service.js';
 import '../../components/dropdown/dropdown.js';
 import '../../components/issues-list/issues-list.js';
 
-import css from './home.css';
+import css from './home.css?type=css';
 
 class HomePageComponent extends LitElement {
 

@@ -1,7 +1,6 @@
 import { expect } from '@esm-bundle/chai';
 import { spy } from 'sinon';
-import { html } from 'lit-element';
-import { render } from 'lit-html';
+import { html, render } from 'lit';
 import './dropdown.js';
 
 describe('Dropdown Component', () => {

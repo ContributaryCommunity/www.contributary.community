@@ -22,7 +22,7 @@ module.exports = {
   plugins: [{
     name: 'import-css',
     async transform(context) {
-      const { url } = context.request;
+      const url = importCssResource.getBareUrlPath(context.request.url);
       const shouldIntercept = await importCssResource.shouldIntercept(url, context.body, { request: context.headers });
       
       if (shouldIntercept) {
