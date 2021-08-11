@@ -85,7 +85,7 @@
     }
 
     &::after {
-      content: "";
+      content: \"\";
       position: absolute;
       right: 0.8em;
       top: 0.9em;
