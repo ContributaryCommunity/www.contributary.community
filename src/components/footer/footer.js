@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 // import githubLogo from './images/github-logo.png';
 // import twitterLogo from './images/twitter-logo.png';
-import css from './footer.css';
+import css from './footer.css?type=css';
 
 class FooterComponent extends LitElement {
 
