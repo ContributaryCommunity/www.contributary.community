@@ -1,3 +1,4 @@
+const googleAnalyticsPlugin = require('@greenwood/plugin-google-analytics');
 const pluginImportCSS = require('@greenwood/plugin-import-css');
 const pluginPolyfills = require('@greenwood/plugin-polyfills');
 const pluginPostcss = require('@greenwood/plugin-postcss');
@@ -15,9 +16,10 @@ module.exports = {
 
   plugins: [
     pluginPostcss(),
-    
     ...pluginImportCSS(),
-
-    pluginPolyfills()
+    pluginPolyfills(),
+    googleAnalyticsPlugin({
+      analyticsId: 'G-0F85VEMETN'
+    })
   ]
 };
