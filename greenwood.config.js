@@ -17,7 +17,7 @@ module.exports = {
   plugins: [
     pluginPostcss(),
     ...pluginImportCSS(),
-    pluginPolyfills(),
+    ...pluginPolyfills(),
     googleAnalyticsPlugin({
       analyticsId: 'G-0F85VEMETN'
     })
