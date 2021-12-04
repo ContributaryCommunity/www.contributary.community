@@ -1,12 +1,12 @@
-const { defaultReporter } = require('@web/test-runner');
-const greenwoodPluginImportCss = require('@greenwood/plugin-import-css/src/index');
-const { junitReporter } = require('@web/test-runner-junit-reporter');
-const path = require('path');
+import { defaultReporter } from '@web/test-runner';
+import { greenwoodPluginImportCss } from '@greenwood/plugin-import-css/src/index.js';
+import { junitReporter } from '@web/test-runner-junit-reporter';
+import path from 'path';
 
 // create a direct instance of ImportCssResource
 const importCssResource = greenwoodPluginImportCss()[0].provider({});
 
-module.exports = {
+export default {
   files: './src/**/*.spec.js',
   nodeResolve: true,
   reporters: [
