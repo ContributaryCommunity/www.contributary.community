@@ -1,9 +1,9 @@
-const googleAnalyticsPlugin = require('@greenwood/plugin-google-analytics');
-const pluginImportCSS = require('@greenwood/plugin-import-css');
-const pluginPolyfills = require('@greenwood/plugin-polyfills');
-const pluginPostcss = require('@greenwood/plugin-postcss');
+import { greenwoodPluginGoogleAnalytics } from '@greenwood/plugin-google-analytics';
+import { greenwoodPluginImportCss } from '@greenwood/plugin-import-css';
+import { greenwoodPluginPolyfills } from '@greenwood/plugin-polyfills';
+import { greenwoodPluginPostCss } from '@greenwood/plugin-postcss';
 
-module.exports = {
+export default {
   title: 'Contributary Community',
   
   devServer: {
@@ -15,10 +15,10 @@ module.exports = {
   mode: 'spa',
 
   plugins: [
-    pluginPostcss(),
-    ...pluginImportCSS(),
-    ...pluginPolyfills(),
-    googleAnalyticsPlugin({
+    greenwoodPluginPostCss(),
+    ...greenwoodPluginImportCss(),
+    ...greenwoodPluginPolyfills(),
+    greenwoodPluginGoogleAnalytics({
       analyticsId: 'G-0F85VEMETN'
     })
   ]
