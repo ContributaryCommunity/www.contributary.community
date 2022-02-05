@@ -12,8 +12,6 @@ export default {
     }
   },
 
-  mode: 'spa',
-
   plugins: [
     greenwoodPluginPostCss(),
     ...greenwoodPluginImportCss(),
