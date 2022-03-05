@@ -4,7 +4,6 @@ import { greenwoodPluginPolyfills } from '@greenwood/plugin-polyfills';
 import { greenwoodPluginPostCss } from '@greenwood/plugin-postcss';
 
 export default {
-  title: 'Contributary Community',
   
   devServer: {
     proxy: {
