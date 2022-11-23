@@ -4,7 +4,6 @@ import { greenwoodPluginPolyfills } from '@greenwood/plugin-polyfills';
 import { greenwoodPluginPostCss } from '@greenwood/plugin-postcss';
 
 export default {
-  
   devServer: {
     proxy: {
       '/api': 'https://www.contributary.community'
@@ -13,8 +12,8 @@ export default {
 
   plugins: [
     greenwoodPluginPostCss(),
-    ...greenwoodPluginImportCss(),
-    ...greenwoodPluginPolyfills(),
+    greenwoodPluginImportCss(),
+    greenwoodPluginPolyfills(),
     greenwoodPluginGoogleAnalytics({
       analyticsId: 'G-0F85VEMETN'
     })
