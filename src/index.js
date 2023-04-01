@@ -4,8 +4,8 @@ import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
 import { lazyReducerEnhancer } from 'pwa-helpers';
 import thunk from 'redux-thunk';
 
-import '/components/footer/footer.js';
-import '/components/header/header.js';
+import './components/footer/footer.js';
+import './components/header/header.js';
 
 const store = createStore((state) => state,
   compose(lazyReducerEnhancer(combineReducers), applyMiddleware(thunk))
@@ -26,7 +26,7 @@ class App extends LitElement {
           <lit-route 
             path="/" 
             component="cc-home-page"
-            .resolve="${() => import('/routes/home/home.js')}"
+            .resolve="${() => import('./routes/home/home.js')}"
           ></lit-route>
         </section>
 
