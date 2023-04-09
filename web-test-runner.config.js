@@ -1,7 +1,7 @@
 import { defaultReporter } from '@web/test-runner';
+import fs from 'fs/promises';
 import { greenwoodPluginImportCss } from '@greenwood/plugin-import-css/src/index.js';
 import { junitReporter } from '@web/test-runner-junit-reporter';
-import path from 'path';
 
 // create a direct instance of ImportCssResource
 const importCssResource = greenwoodPluginImportCss()[0].provider({});
@@ -22,23 +22,19 @@ export default {
   plugins: [{
     name: 'import-css',
     async transform(context) {
-      const url = importCssResource.getBareUrlPath(context.request.url); // need to remove query strings first
-      const customHeaders = {
-        request: {
-          originalUrl: url,
-          ...context.headers
-        }
-      };
-      const shouldIntercept = await importCssResource.shouldIntercept(url, context.body, customHeaders);
-      
+      const url = new URL(`.${context.request.url}`, import.meta.url);
+      const request = new Request(url, { headers: new Headers(context.headers) });
+      const shouldIntercept = await importCssResource.shouldIntercept(url, request);
+
       if (shouldIntercept) {
-        const cssResource = await importCssResource.intercept(url, context.body, customHeaders);
-        const { body, contentType } = cssResource;
+        const contents = await fs.readFile(url);
+        const initResponse = new Response(contents, { headers: new Headers(context.headers) });
+        const response = await importCssResource.intercept(url, request, initResponse.clone());
 
         return {
-          body,
+          body: await response.text(),
           headers: {
-            'content-type': contentType
+            'Content-Type': response.headers.get('Content-Type')
           }
         };
       }
@@ -49,7 +45,7 @@ export default {
       const { url } = context.request;
 
       if (url.indexOf('/assets') === 0) {
-        context.request.url = path.join(process.cwd(), 'src', url);
+        context.request.url = new URL(`./src/${url}`, import.meta.url).pathname;
       }
 
       return next();
