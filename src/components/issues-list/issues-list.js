@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import css from './issues-list.css?type=css';
+import css from './issues-list.css?type=raw';
 
 class IssuesListComponent extends LitElement {
 

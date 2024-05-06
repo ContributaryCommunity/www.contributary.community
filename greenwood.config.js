@@ -1,5 +1,5 @@
 import { greenwoodPluginGoogleAnalytics } from '@greenwood/plugin-google-analytics';
-import { greenwoodPluginImportCss } from '@greenwood/plugin-import-css';
+import { greenwoodPluginImportRaw } from '@greenwood/plugin-import-raw';
 import { greenwoodPluginPolyfills } from '@greenwood/plugin-polyfills';
 import { greenwoodPluginPostCss } from '@greenwood/plugin-postcss';
 
@@ -12,7 +12,7 @@ export default {
 
   plugins: [
     greenwoodPluginPostCss(),
-    greenwoodPluginImportCss(),
+    greenwoodPluginImportRaw(),
     greenwoodPluginPolyfills(),
     greenwoodPluginGoogleAnalytics({
       analyticsId: 'G-0F85VEMETN'
