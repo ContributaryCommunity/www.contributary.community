@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import css from './header.css?type=css';
+import css from './header.css?type=raw';
 // import logo from './logo.png';
 
 class HeaderComponent extends LitElement {

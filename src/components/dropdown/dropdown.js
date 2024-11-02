@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import css from './dropdown.css?type=css';
+import css from './dropdown.css?type=raw';
 
 class DropdownComponent extends LitElement {
   static get properties() {
