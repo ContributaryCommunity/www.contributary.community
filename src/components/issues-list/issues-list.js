@@ -14,7 +14,6 @@ class IssuesListComponent extends LitElement {
     };
   }
 
-  /* eslint-disable indent */
   render() {
     let { issues, labelFilters } = this;
 
@@ -73,7 +72,6 @@ class IssuesListComponent extends LitElement {
       </table>
     `;
   }
-  /* eslint-enable indent */
 }
 
 customElements.define('cc-issues-list', IssuesListComponent);

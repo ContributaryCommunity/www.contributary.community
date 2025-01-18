@@ -29,9 +29,6 @@ class HomePageComponent extends LitElement {
       selectedLanguageIndex: {
         type: Number
       },
-      selectedProjectIndex: {
-        type: Number
-      },
       selectedRepositoryIndex: {
         type: Number
       },
@@ -193,7 +190,6 @@ class HomePageComponent extends LitElement {
       labelFilters.push('good first contribution');
     }
 
-    /* eslint-disable indent, max-len */
     return html`
       <style>
         ${css}
@@ -277,8 +273,7 @@ class HomePageComponent extends LitElement {
       }
 
     </div>
-  `;
-    /* eslint-enable */
+    `;
 
   }
 }
