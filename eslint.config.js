@@ -8,7 +8,7 @@ export default [
       '.greenwood/*',
       'node_modules/*',
       'public/*',
-      'www/**'
+      'reports/*'
     ]
   },
   {

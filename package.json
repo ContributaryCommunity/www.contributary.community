@@ -38,7 +38,6 @@
     "redux-thunk": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
     "@eslint/js": "^9.11.1",
     "@esm-bundle/chai": "^4.3.4",
     "@greenwood/cli": "^0.31.0-alpha.2",
@@ -50,7 +49,6 @@
     "@web/test-runner": "^0.13.13",
     "@web/test-runner-junit-reporter": "^0.4.4",
     "@web/test-runner-puppeteer": "^0.10.0",
-    "babel-eslint": "^10.1.0",
     "eslint": "^9.11.1",
     "globals": "^15.10.0",
     "postcss-nested": "^4.1.2",
