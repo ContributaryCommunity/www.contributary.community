@@ -222,10 +222,10 @@
   dependencies:
     "@types/chai" "^4.2.12"
 
-"@greenwood/cli@^0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/cli/-/cli-0.31.0.tgz#4850600fa81bd8d417c126ff7904386f27fd310a"
-  integrity sha512-fkkN0HNHFsbafcBSGn+LfHtoy+NiApnyw+p/hushZzRLCi7XqS4DH2C/0Tr2pIABWWurm4M1o2hGy9OyHMKV1g==
+"@greenwood/cli@^0.32.0-alpha.7":
+  version "0.32.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@greenwood/cli/-/cli-0.32.0-alpha.7.tgz#1c33b5d600a52182a2923fa394db93bf0d5479ba"
+  integrity sha512-JVlArqEId2ccB/QO29k0KpX+EguDvx4G+rPh9XWrRcuUg6arEoClkjHykzSdKqlp7tsb+u4pfA4lNKHX6KSYHw==
   dependencies:
     "@rollup/plugin-commonjs" "^28.0.0"
     "@rollup/plugin-node-resolve" "^15.0.0"
@@ -247,30 +247,31 @@
     remark-parse "^11.0.0"
     remark-rehype "^11.1.1"
     rollup "^4.26.0"
+    sucrase "^3.35.0"
     unified "^11.0.5"
     wc-compiler "~0.16.0"
 
-"@greenwood/plugin-google-analytics@^0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-google-analytics/-/plugin-google-analytics-0.31.0.tgz#ceea1608bd697e620d5f4d382080b92dde0fd75c"
-  integrity sha512-CVElJMf+wzU0Q3Wo6Pl1dAPZAgzyf4dmfyPLJL9B1giOzhMoNmijY9gSU1VYF6U8PW8LMyzz6KXiAj98QMtstA==
+"@greenwood/plugin-google-analytics@^0.32.0-alpha.7":
+  version "0.32.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-google-analytics/-/plugin-google-analytics-0.32.0-alpha.7.tgz#9972d555d6f5658399beb33a51b208d2ec2f74f5"
+  integrity sha512-JI8LhBS377ztD4YM3AhYs/Sk1booF1tkleY85GELgqs/XOwO3X+Xsq1OGCOcMQhZudfxVOpVqFt3vAQ0G2Xmrg==
 
-"@greenwood/plugin-import-raw@^0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-import-raw/-/plugin-import-raw-0.31.0.tgz#6c7fd38cd9eadf59b94dfcd19540a79754ca84c7"
-  integrity sha512-KTZt6Htg6ccPrnr4R6gnRvHorkVxauswK6b37BdSAQGOMTxOAOBLPxlfo4qk2LukMl0NaU1pHllMXcJDl1Bmhw==
+"@greenwood/plugin-import-raw@^0.32.0-alpha.7":
+  version "0.32.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-import-raw/-/plugin-import-raw-0.32.0-alpha.7.tgz#d5939b8afdfda085c6574b37ae231cd1564ed416"
+  integrity sha512-yv5tkftGN1GA0y1cJ2aUnFzp7nyTqiR1JiyhV8j9LDdIfuJJjWJmpBo60AQGn3r6wh4uKuOwh4SUv5LGfGJKLA==
 
-"@greenwood/plugin-polyfills@^0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-polyfills/-/plugin-polyfills-0.31.0.tgz#0fc2cfc3bf01c8f4e13932d321982aece09854c3"
-  integrity sha512-dl11lThSf+yLWzhT7mu9WNZ5H8ZcY7QX3keLBj7JetTlzifQWHHF4jro9pdjQxjm3olUXuHCNAft4choZcBiFw==
+"@greenwood/plugin-polyfills@^0.32.0-alpha.7":
+  version "0.32.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-polyfills/-/plugin-polyfills-0.32.0-alpha.7.tgz#ed11978e4587d8745d72e689621d36c986928830"
+  integrity sha512-jDl8qZoiTNqKSYOi60UrJH/Ts4Yoz+k/6NhXFHgFouxViLJsAMWrpSoA6YUxXZghvWt69NAFfZl5o5LYM10sHA==
   dependencies:
     "@webcomponents/webcomponentsjs" "^2.6.0"
 
-"@greenwood/plugin-postcss@^0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-postcss/-/plugin-postcss-0.31.0.tgz#6a76aa01ab8582734fa9d81a37aa753fc9def33b"
-  integrity sha512-TevqMpxLpHXVwrVBzvhRvzLEKxPwnnJI2q4MIh55urjcbNIEy4COu3cQhsysppBjGEaTcwijNY+rCYwrFUNWgw==
+"@greenwood/plugin-postcss@^0.32.0-alpha.7":
+  version "0.32.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-postcss/-/plugin-postcss-0.32.0-alpha.7.tgz#b685b2da9c8f2ed727cca4273d8478181aa28550"
+  integrity sha512-H41NitnnXOr0T3hd8rG+RSDh+etyFgjuhmlaWM/inIFZ+a8wqrh3/PA5K8lkn2XPR8SZdw80NCI8eVJPmMWhNg==
   dependencies:
     postcss "^8.4.49"
     postcss-import "^16.1.0"
