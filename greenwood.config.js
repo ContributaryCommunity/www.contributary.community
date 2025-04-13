@@ -2,12 +2,9 @@ import { greenwoodPluginGoogleAnalytics } from '@greenwood/plugin-google-analyti
 import { greenwoodPluginImportRaw } from '@greenwood/plugin-import-raw';
 import { greenwoodPluginPolyfills } from '@greenwood/plugin-polyfills';
 import { greenwoodPluginPostCss } from '@greenwood/plugin-postcss';
-import { ResourceInterface } from '@greenwood/cli/src/lib/resource-interface.js';
 
-class ProcessEnvReplaceResource extends ResourceInterface {
+class ProcessEnvReplaceResource {
   constructor(compilation) {
-    super();
-
     this.compilation = compilation;
   }
 
