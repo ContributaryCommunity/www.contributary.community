@@ -222,10 +222,10 @@
   dependencies:
     "@types/chai" "^4.2.12"
 
-"@greenwood/cli@^0.32.0":
-  version "0.32.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/cli/-/cli-0.32.0.tgz#7011a65553bf43dee28d364fa9a79f686cbb1ecb"
-  integrity sha512-8n4ja1ZTDho29JTv+ZjCTOVlB36YT0Uo4XmN/zp/tleprE5/Y1olwWD2gi9zLMyPRIzez6X7wyNwPEj8Eu+rQA==
+"@greenwood/cli@^0.33.0-alpha.2":
+  version "0.33.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/cli/-/cli-0.33.0-alpha.2.tgz#51a7b089bd4e36329d5eb5741032df7e4ec19265"
+  integrity sha512-KN+UUth6qNv46UcSje70PE4hRGCTu4jnJ6BSYr8ZhLqpjCdGcmXCqAICTeNUSH8duZBAMmAqgcXiF+pY/bQysw==
   dependencies:
     "@rollup/plugin-commonjs" "^28.0.0"
     "@rollup/plugin-node-resolve" "^15.0.0"
@@ -251,27 +251,27 @@
     unified "^11.0.5"
     wc-compiler "~0.17.0"
 
-"@greenwood/plugin-google-analytics@^0.32.0":
-  version "0.32.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-google-analytics/-/plugin-google-analytics-0.32.0.tgz#f13cbd50003b29adb64010503435f5bc2c645c76"
-  integrity sha512-GoDk8KFn0vIV0dT0Q9xMPGjZ9RlcgfpJStx1qFhhngoCFnwg51ub+vnJVi5/QToHTxAChq9HIk/5JNF+tLpetQ==
+"@greenwood/plugin-google-analytics@^0.33.0-alpha.2":
+  version "0.33.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-google-analytics/-/plugin-google-analytics-0.33.0-alpha.2.tgz#ccc4d8e2a9712e313288495475f0de92dc591ff2"
+  integrity sha512-8SxSMuYCTc9gwZ19gexDkfeCr3mpVuINcws4ci/MgDyDx7pufMDQ8xdgOl8jzfNT3rkkzPij8jKZyj+CSxeFvw==
 
-"@greenwood/plugin-import-raw@^0.32.0":
-  version "0.32.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-import-raw/-/plugin-import-raw-0.32.0.tgz#515ebf35258cb13df76560e0e87fd2cb9e321004"
-  integrity sha512-et8H6yRv0YSyAv1NAD+4XwDkV+MQ1BPx4xcypTQCWVkaBdvwGZrkcOdSBph4T3RCT/1Tkr+7E845oi+ZAVf49A==
+"@greenwood/plugin-import-raw@^0.33.0-alpha.2":
+  version "0.33.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-import-raw/-/plugin-import-raw-0.33.0-alpha.2.tgz#e1426541bbe02aded5c8bdef867ab825a133e91c"
+  integrity sha512-sgmQf7b+f9pyENR6xh/4ztCRpqWjYmuuPuGPHnfFZfRIx097Z0lL6rNEfT6SDkcBNt+a5NADTksSdnRuegtOMQ==
 
-"@greenwood/plugin-polyfills@^0.32.0":
-  version "0.32.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-polyfills/-/plugin-polyfills-0.32.0.tgz#832242236ece9b3269be143e9d6eaae29294bc88"
-  integrity sha512-vqgKfN/LPRSTIB03Xkjy89hYzrUwMjjncIEBGJVN2+k/sTvAnMEoecI+llA644Y8QSTHSens7UVUbfae++7DhQ==
+"@greenwood/plugin-polyfills@^0.33.0-alpha.2":
+  version "0.33.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-polyfills/-/plugin-polyfills-0.33.0-alpha.2.tgz#a70ff49e57a2c2ac0b7f979dd2bfe0bb153d6327"
+  integrity sha512-TY39w/AYgJnLHTv1RGsnRqbunpAvAhWwF3DENAMeRKoFOb//UI/JAgPtAkqyhsdGqYZfJdrwrh/5HsJdjPGGlA==
   dependencies:
     "@webcomponents/webcomponentsjs" "^2.6.0"
 
-"@greenwood/plugin-postcss@^0.32.0":
-  version "0.32.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-postcss/-/plugin-postcss-0.32.0.tgz#7c31f840f03e6f05e1499531f1cd970c5c88241b"
-  integrity sha512-aavrbhv8N2597+FaH+/RW8AcW+KpSS482kM9WGBs68UcLCsuK/LGDlyRZjAaYISx0p/KWAgL7yGm1ylYLB7A2A==
+"@greenwood/plugin-postcss@^0.33.0-alpha.2":
+  version "0.33.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-postcss/-/plugin-postcss-0.33.0-alpha.2.tgz#51f7c617f211b6d054410aa19e103e27d44b8d8a"
+  integrity sha512-xU9ycvaAivFySWNLhwkCoW1tTBKFW9IlNeklYYdwHV3u2sxUyxFHztiGeModVqxiOJ1uEtgoET41+6ke/FRR1g==
   dependencies:
     postcss "^8.4.49"
     postcss-import "^16.1.0"
@@ -2405,18 +2405,6 @@ glob@^10.3.10:
     package-json-from-dist "^1.0.0"
     path-scurry "^1.11.1"
 
-glob@^11.0.0:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-11.0.1.tgz#1c3aef9a59d680e611b53dcd24bb8639cef064d9"
-  integrity sha512-zrQDm8XPnYEKawJScsnM0QzobJxlT/kHOOlRTio8IH/GrmxRE5fjllkzdaHclIuNjUQTJYH2xHNIGfdpJkDJUw==
-  dependencies:
-    foreground-child "^3.1.0"
-    jackspeak "^4.0.1"
-    minimatch "^10.0.0"
-    minipass "^7.1.2"
-    package-json-from-dist "^1.0.0"
-    path-scurry "^2.0.0"
-
 glob@^7.1.3:
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.3.tgz#b8df0fb802bbfa8e89bd1d938b4e16578ed44f2b"
@@ -2948,13 +2936,6 @@ jackspeak@^3.1.2:
   optionalDependencies:
     "@pkgjs/parseargs" "^0.11.0"
 
-jackspeak@^4.0.1:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/jackspeak/-/jackspeak-4.0.2.tgz#11f9468a3730c6ff6f56823a820d7e3be9bef015"
-  integrity sha512-bZsjR/iRjl1Nk1UkjGpAzLNfQtzuijhn2g+pbZb98HQ1Gk8vM9hfbxeMBP+M2/UUdwj0RqGG3mlvk2MsAqwvEw==
-  dependencies:
-    "@isaacs/cliui" "^8.0.2"
-
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -3284,11 +3265,6 @@ lru-cache@^10.2.0:
   version "10.4.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.4.3.tgz#410fc8a17b70e598013df257c2446b7f3383f119"
   integrity sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==
-
-lru-cache@^11.0.0:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.0.2.tgz#fbd8e7cf8211f5e7e5d91905c415a3f55755ca39"
-  integrity sha512-123qHRfJBmo2jXDbo/a5YOQrJoHF/GNQTLzQ5+IdK5pWpceK17yRc6ozlWd25FxvGKQbIUs91fDFkXmDHTKcyA==
 
 lru-cache@^6.0.0:
   version "6.0.0"
@@ -3678,13 +3654,6 @@ mimic-fn@^2.1.0:
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
-minimatch@^10.0.0:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-10.0.1.tgz#ce0521856b453c86e25f2c4c0d03e6ff7ddc440b"
-  integrity sha512-ethXTt3SGGR+95gudmqJ1eNhRO7eGEGIgYA9vnPatK4/etz2MEVDno5GMCibdMTuBMyElzIlgxMna3K94XDIDQ==
-  dependencies:
-    brace-expansion "^2.0.1"
-
 minimatch@^3.1.1, minimatch@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
@@ -3986,14 +3955,6 @@ path-scurry@^1.11.1:
   dependencies:
     lru-cache "^10.2.0"
     minipass "^5.0.0 || ^6.0.2 || ^7.0.0"
-
-path-scurry@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/path-scurry/-/path-scurry-2.0.0.tgz#9f052289f23ad8bf9397a2a0425e7b8615c58580"
-  integrity sha512-ypGJsmGtdXUOeM5u93TyeIEfEhM6s+ljAhrk5vAvSx8uyY/02OvrZnA0YNGUrPXfpJMgI1ODd3nwz8Npx4O4cg==
-  dependencies:
-    lru-cache "^11.0.0"
-    minipass "^7.1.2"
 
 path-to-regexp@^6.2.1:
   version "6.3.0"
@@ -4659,14 +4620,6 @@ rimraf@3.0.2:
   integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
   dependencies:
     glob "^7.1.3"
-
-rimraf@^6.0.0:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-6.0.1.tgz#ffb8ad8844dd60332ab15f52bc104bc3ed71ea4e"
-  integrity sha512-9dkvaxAsk/xNXSJzMgFqqMCuFgt2+KsOFek3TMLfo8NCPfWpBmqwyNn5Y+NX56QUYfCtsyhF3ayiboEoUmJk/A==
-  dependencies:
-    glob "^11.0.0"
-    package-json-from-dist "^1.0.0"
 
 rollup@^2.67.0:
   version "2.79.2"
