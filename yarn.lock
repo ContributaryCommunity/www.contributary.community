@@ -222,10 +222,10 @@
   dependencies:
     "@types/chai" "^4.2.12"
 
-"@greenwood/cli@^0.33.0-alpha.2":
-  version "0.33.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@greenwood/cli/-/cli-0.33.0-alpha.2.tgz#51a7b089bd4e36329d5eb5741032df7e4ec19265"
-  integrity sha512-KN+UUth6qNv46UcSje70PE4hRGCTu4jnJ6BSYr8ZhLqpjCdGcmXCqAICTeNUSH8duZBAMmAqgcXiF+pY/bQysw==
+"@greenwood/cli@^0.33.0-alpha.5":
+  version "0.33.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@greenwood/cli/-/cli-0.33.0-alpha.5.tgz#fc8d0c9a6fec4eecf8eed55d2de3687a586f59db"
+  integrity sha512-fcIY3N8hyRLw+awSm03wu7qXK5D4/anuPpsJv6RzyS/AII2Hd360w19okPuA2umrKpV/Tvr+41nrUvHPqKWc1g==
   dependencies:
     "@rollup/plugin-commonjs" "^28.0.0"
     "@rollup/plugin-node-resolve" "^15.0.0"
@@ -240,7 +240,7 @@
     koa-body "^6.0.1"
     livereload "^0.9.1"
     markdown-toc "^1.2.0"
-    node-html-parser "^1.2.21"
+    node-html-parser "^7.0.1"
     rehype-raw "^7.0.0"
     rehype-stringify "^10.0.1"
     remark-frontmatter "^5.0.0"
@@ -251,27 +251,27 @@
     unified "^11.0.5"
     wc-compiler "~0.17.0"
 
-"@greenwood/plugin-google-analytics@^0.33.0-alpha.2":
-  version "0.33.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-google-analytics/-/plugin-google-analytics-0.33.0-alpha.2.tgz#ccc4d8e2a9712e313288495475f0de92dc591ff2"
-  integrity sha512-8SxSMuYCTc9gwZ19gexDkfeCr3mpVuINcws4ci/MgDyDx7pufMDQ8xdgOl8jzfNT3rkkzPij8jKZyj+CSxeFvw==
+"@greenwood/plugin-google-analytics@^0.33.0-alpha.5":
+  version "0.33.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-google-analytics/-/plugin-google-analytics-0.33.0-alpha.5.tgz#7a4de9ed161d46e8138f068b17e99f35f90b6395"
+  integrity sha512-g9ild1WbE0Y695cVDCDzveXkvKQO10i+1cW8hXhyJC2Zu34QzdWimgNs1JP1leEH8ZUAqrsC34XRxfhSIb5Org==
 
-"@greenwood/plugin-import-raw@^0.33.0-alpha.2":
-  version "0.33.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-import-raw/-/plugin-import-raw-0.33.0-alpha.2.tgz#e1426541bbe02aded5c8bdef867ab825a133e91c"
-  integrity sha512-sgmQf7b+f9pyENR6xh/4ztCRpqWjYmuuPuGPHnfFZfRIx097Z0lL6rNEfT6SDkcBNt+a5NADTksSdnRuegtOMQ==
+"@greenwood/plugin-import-raw@^0.33.0-alpha.5":
+  version "0.33.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-import-raw/-/plugin-import-raw-0.33.0-alpha.5.tgz#86be2d6d2b4dc9655cab9a008dde71030341e7e3"
+  integrity sha512-qRt/jGRU8OXWMbp0AcJEYXzrvIh+i8b+aTtHC2Bx4ew8RGmLckkbgiXjg5elGJFtd2G+aCamyFI4eeoHLww+AQ==
 
-"@greenwood/plugin-polyfills@^0.33.0-alpha.2":
-  version "0.33.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-polyfills/-/plugin-polyfills-0.33.0-alpha.2.tgz#a70ff49e57a2c2ac0b7f979dd2bfe0bb153d6327"
-  integrity sha512-TY39w/AYgJnLHTv1RGsnRqbunpAvAhWwF3DENAMeRKoFOb//UI/JAgPtAkqyhsdGqYZfJdrwrh/5HsJdjPGGlA==
+"@greenwood/plugin-polyfills@^0.33.0-alpha.5":
+  version "0.33.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-polyfills/-/plugin-polyfills-0.33.0-alpha.5.tgz#2ffe0a86b59c6cba222cfcdea89ac0efe83c1fae"
+  integrity sha512-PmslWPRb0XzbOtOo7la5cOhXa7cHwqh1AzVDd+lV5Jhv+HDONHgeG91CgvLsYmGGff1bwotWr+eo29Vl0Q7q7w==
   dependencies:
     "@webcomponents/webcomponentsjs" "^2.6.0"
 
-"@greenwood/plugin-postcss@^0.33.0-alpha.2":
-  version "0.33.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-postcss/-/plugin-postcss-0.33.0-alpha.2.tgz#51f7c617f211b6d054410aa19e103e27d44b8d8a"
-  integrity sha512-xU9ycvaAivFySWNLhwkCoW1tTBKFW9IlNeklYYdwHV3u2sxUyxFHztiGeModVqxiOJ1uEtgoET41+6ke/FRR1g==
+"@greenwood/plugin-postcss@^0.33.0-alpha.5":
+  version "0.33.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-postcss/-/plugin-postcss-0.33.0-alpha.5.tgz#bfc386cff71f248c46c6c0838375156e4acaa5d7"
+  integrity sha512-nb+6Vu0AmJa4UpElPln2VxPTsq6j2M4OFzJXIjDZHX7drDMr+4qr6RMiPDGA4hBTPoRPNyWfwIOGBAZT0fHatQ==
   dependencies:
     postcss "^8.4.49"
     postcss-import "^16.1.0"
@@ -1317,6 +1317,11 @@ bl@^4.0.3:
     inherits "^2.0.4"
     readable-stream "^3.4.0"
 
+boolbase@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
+  integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -1725,6 +1730,17 @@ css-prefers-color-scheme@^6.0.3:
   resolved "https://registry.yarnpkg.com/css-prefers-color-scheme/-/css-prefers-color-scheme-6.0.3.tgz#ca8a22e5992c10a5b9d315155e7caee625903349"
   integrity sha512-4BqMbZksRkJQx2zAjrokiGMd07RqOa2IxIrrN10lyBe9xhn9DEvjUK79J6jkeiv9D9hQFXKb6g1jwU62jziJZA==
 
+css-select@^5.1.0:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/css-select/-/css-select-5.2.2.tgz#01b6e8d163637bb2dd6c982ca4ed65863682786e"
+  integrity sha512-TizTzUddG/xYLA3NXodFM0fSbNizXjOKhqiQQwvhlspadZokn1KDy0NZFS0wuEubIYAV5/c1/lAr0TaaFXEXzw==
+  dependencies:
+    boolbase "^1.0.0"
+    css-what "^6.1.0"
+    domhandler "^5.0.2"
+    domutils "^3.0.1"
+    nth-check "^2.0.1"
+
 css-tree@^3.0.0, css-tree@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-3.1.0.tgz#7aabc035f4e66b5c86f54570d55e05b1346eb0fd"
@@ -1732,6 +1748,11 @@ css-tree@^3.0.0, css-tree@^3.1.0:
   dependencies:
     mdn-data "2.12.2"
     source-map-js "^1.0.1"
+
+css-what@^6.1.0:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.2.2.tgz#cdcc8f9b6977719fdfbd1de7aec24abf756b9dea"
+  integrity sha512-u/O3vwbptzhMs3L1fQE82ZSLHQQfto5gyZzwteVIEyeaY5Fc7R4dapF/BvRoSYFeqfBk4m0V1Vafq5Pjv25wvA==
 
 cssdb@^7.1.0:
   version "7.11.2"
@@ -1875,6 +1896,36 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+dom-serializer@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-2.0.0.tgz#e41b802e1eedf9f6cae183ce5e622d789d7d8e53"
+  integrity sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==
+  dependencies:
+    domelementtype "^2.3.0"
+    domhandler "^5.0.2"
+    entities "^4.2.0"
+
+domelementtype@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-2.3.0.tgz#5c45e8e869952626331d7aab326d01daf65d589d"
+  integrity sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==
+
+domhandler@^5.0.2, domhandler@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-5.0.3.tgz#cc385f7f751f1d1fc650c21374804254538c7d31"
+  integrity sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==
+  dependencies:
+    domelementtype "^2.3.0"
+
+domutils@^3.0.1:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/domutils/-/domutils-3.2.2.tgz#edbfe2b668b0c1d97c24baf0f1062b132221bc78"
+  integrity sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==
+  dependencies:
+    dom-serializer "^2.0.0"
+    domelementtype "^2.3.0"
+    domhandler "^5.0.3"
+
 dunder-proto@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/dunder-proto/-/dunder-proto-1.0.1.tgz#d7ae667e1dc83482f8b70fd0f6eefc50da30f58a"
@@ -1921,7 +1972,7 @@ end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-entities@^4.5.0:
+entities@^4.2.0, entities@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/entities/-/entities-4.5.0.tgz#5d268ea5e7113ec74c4d033b79ea5a35a488fb48"
   integrity sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
@@ -3765,11 +3816,12 @@ node-fetch@2.6.7:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-html-parser@^1.2.21:
-  version "1.4.9"
-  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-1.4.9.tgz#3c8f6cac46479fae5800725edb532e9ae8fd816c"
-  integrity sha512-UVcirFD1Bn0O+TSmloHeHqZZCxHjvtIeGdVdGMhyZ8/PWlEiZaZ5iJzR189yKZr8p0FXN58BUeC7RHRkf/KYGw==
+node-html-parser@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-7.0.1.tgz#e3056550bae48517ebf161a0b0638f4b0123dfe3"
+  integrity sha512-KGtmPY2kS0thCWGK0VuPyOS+pBKhhe8gXztzA2ilAOhbUbxa9homF1bOyKvhGzMLXUoRds9IOmr/v5lr/lqNmA==
   dependencies:
+    css-select "^5.1.0"
     he "1.2.0"
 
 node-releases@^2.0.19:
@@ -3786,6 +3838,13 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
   integrity sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==
+
+nth-check@^2.0.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-2.1.1.tgz#c9eab428effce36cd6b92c924bdb000ef1f1ed1d"
+  integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
+  dependencies:
+    boolbase "^1.0.0"
 
 object-assign@^4.0.1:
   version "4.1.1"
