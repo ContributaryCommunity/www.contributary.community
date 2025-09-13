@@ -28,6 +28,6 @@ jobs:
         yarn test
     - name: Build
       run: |
-        yarn clean && yarn build
+        yarn build
       env:
         CI: true
