@@ -222,10 +222,10 @@
   dependencies:
     "@types/chai" "^4.2.12"
 
-"@greenwood/cli@^0.33.0":
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/cli/-/cli-0.33.0.tgz#2b4e13b24a0e51cb8292c74d6a80dd4b10803e35"
-  integrity sha512-73gbvGdqbXVIv4h+30lYW+ccEZF47LpKdxNhlzvYvYjrJGHSQ/qfktA5KmKVCkW+a/+TJLToz0bhITN39lw4wA==
+"@greenwood/cli@^0.34.0-alpha.2":
+  version "0.34.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/cli/-/cli-0.34.0-alpha.2.tgz#d6cb42df1ed5f813aeabe2ace6a35c6a17f870eb"
+  integrity sha512-icN8psw/3RjThysJaOr/wVuB2aQPwW5XGHg4CTYR6hGVZ8nEQf5MtnLc0/lQkXL6Smde+a6xX0/fRGKub4Z7pQ==
   dependencies:
     "@rollup/plugin-commonjs" "^28.0.0"
     "@rollup/plugin-node-resolve" "^15.0.0"
@@ -241,29 +241,32 @@
     livereload "^0.9.1"
     node-html-parser "^7.0.1"
     rollup "^4.26.0"
-    wc-compiler "~0.17.0"
+    urlpattern-polyfill "^10.1.0"
+    wc-compiler "~0.18.0"
 
-"@greenwood/plugin-google-analytics@^0.33.0":
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-google-analytics/-/plugin-google-analytics-0.33.0.tgz#7593857833407a3ec0b0fbd5f5cf908c7fd8aea0"
-  integrity sha512-o+5yHWmzaXyCqeUL0Cce/OQuJ2Xc/IECXz1vsFBRUee2RmXArZPLH5Eqcf+96//QhMyFWAO5AYmVBGlfn6Sygw==
+"@greenwood/plugin-google-analytics@^0.34.0-alpha.2":
+  version "0.34.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-google-analytics/-/plugin-google-analytics-0.34.0-alpha.2.tgz#a324edb4283e6cd0a8e10015badf41dcfd7d2204"
+  integrity sha512-piS/K0O3rtMaLOF/ewcY3Bk36nNS7P6I8qzoE4pgNyujojOaEeKGKczksvP2wijbY2303BhI6AEH9PKrjOPPgQ==
 
-"@greenwood/plugin-import-raw@^0.33.0":
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-import-raw/-/plugin-import-raw-0.33.0.tgz#e1e7301e9a1394bddba3cef513e1eb7b3085a304"
-  integrity sha512-/qmW2/B2JLW1jyc81pclZOjnUn6Auze3eOfZUSFlolXyjazCf2quSI3T2SRPcLerGdtkhFeDRR0IESGYQTfgQg==
+"@greenwood/plugin-import-raw@^0.34.0-alpha.2":
+  version "0.34.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-import-raw/-/plugin-import-raw-0.34.0-alpha.2.tgz#16b33d6cc55e90be9521c1319b9e0b3571181609"
+  integrity sha512-uEojnmzJKNUUQY4suVOAzwgLlhk4Ik+rfhWrju24o1Nsfia0JDQkdq1wT3G74+BeKMWqZ26KH6D6fLYeLQgPGQ==
+  dependencies:
+    node-html-parser "^7.0.1"
 
-"@greenwood/plugin-polyfills@^0.33.0":
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-polyfills/-/plugin-polyfills-0.33.0.tgz#751a2fe2560342ecd8aca1333e0ac84e80a5a1dc"
-  integrity sha512-5PtTkco24h+9TvSj0jL9/sZyMCzH5WCrxY6wpm4HDBLctmFG3BmIKfLRF9MS3/j8HRxVeTG8lpqmcntdiimjnA==
+"@greenwood/plugin-polyfills@^0.34.0-alpha.2":
+  version "0.34.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-polyfills/-/plugin-polyfills-0.34.0-alpha.2.tgz#cfc39ef2e180d46e367bdec9f6ec7b35651f8999"
+  integrity sha512-UJXlsCxZvSIOreQJFhQxAi79jLfQGzzhSjaQKsABEszA8CzaktGqFZvGQUcDjip6pccQNgexmFMpr8q1mXcpwQ==
   dependencies:
     "@webcomponents/webcomponentsjs" "^2.6.0"
 
-"@greenwood/plugin-postcss@^0.33.0":
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/@greenwood/plugin-postcss/-/plugin-postcss-0.33.0.tgz#8f70430b938ca30e513c2adba7c1e1817cbb6ddc"
-  integrity sha512-9JDT9fOilgV21Wp96stDAWMy7wRn8/KVcH2wP46PkyLEx/uALTg9m7hVlbDZEs4zHUhqoj4h1YFPPbzpLrv1aQ==
+"@greenwood/plugin-postcss@^0.34.0-alpha.2":
+  version "0.34.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@greenwood/plugin-postcss/-/plugin-postcss-0.34.0-alpha.2.tgz#8cc7ba617119e8218097748b3d36377a9543f4c5"
+  integrity sha512-7vswMDCl+DTuHNBIKnSTu2Rkvw5c7e5zrtwnGC3PA/NCv7VGqWmp3aKTeOLHKbKE62Gyu7kYJTSc5ijbR0SNWg==
   dependencies:
     postcss "^8.4.49"
     postcss-import "^16.1.0"
@@ -4458,6 +4461,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+urlpattern-polyfill@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/urlpattern-polyfill/-/urlpattern-polyfill-10.1.0.tgz#1b2517e614136c73ba32948d5e7a3a063cba8e74"
+  integrity sha512-IGjKp/o0NL3Bso1PymYURCJxMPNAf/ILOpendP9f5B6e1rTJgdgiOvgfoT8VxCAdY+Wisb9uhGaJJf3yZ2V9nw==
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -4477,10 +4485,10 @@ vary@^1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-wc-compiler@~0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/wc-compiler/-/wc-compiler-0.17.0.tgz#f1faf7773f69ca4255c580c604f90ff030482660"
-  integrity sha512-08d31qhYjlJiTEfTEW3kpSdcNnx0j0eGaUIA1/+oyczJCxya7+tvbQ/Tz3wbS2kzd/t8iSxNYdfhpf43o6RVuA==
+wc-compiler@~0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/wc-compiler/-/wc-compiler-0.18.0.tgz#99d8d8e644fad62c2bbfbef86030f2ca7414ff55"
+  integrity sha512-zwhalz5/C3c/FOpIfq2S8sjSwNJEC3vJdS/Ddfvm41kuxGywu6cec7f68y5l31x+mERMa2I5DuX6gLOt4w2Qkw==
   dependencies:
     "@projectevergreen/acorn-jsx-esm" "~0.1.0"
     acorn "^8.14.0"
